@@ -1,0 +1,6 @@
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml1" xmlns:bmla="http://www.asap-project.org/bmla" bmla:preplan="true">
+  <speech id="speech1"><text>Preplanned speech</text></speech>
+</bml>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="activate" xmlns:bmla="http://www.asap-project.org/bmla">
+   <bmla:activate id="a1" start="3" target="bml1"/>
+</bml>

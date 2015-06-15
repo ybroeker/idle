@@ -1,0 +1,6 @@
+#!/bin/bash
+cd ..
+ant run -Drun.jvmargs="-Ddefaultbmlexamples.path=vhs_examples" -Drun.main.class="asap.realizerdemo.AsapIpaacaRealizerPortUIDemo" -Drun.argline="Armandia"
+
+
+

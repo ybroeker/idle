@@ -1,12 +1,39 @@
+# Folder #
+########## 	
+bin/
+target/
+lib/
+build/
+log/
+privateprops/
+
+# Packages #	
+############
+*.jar
+*.rar
+*.zip
+	
+#Java#
 *.class
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# Tex Files # 
+############# 	
+*.aux
+*.log
+*.nav
+*.out
+*.snm	
+*.synctex.gz	
+*.toc
+*.vrb
+*.bcf
+*.run.xml
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# OS generated files #
+###################### 
+.DS_Store
+.DS_Store?
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# Netbeans #
+############
+faces-config.NavData

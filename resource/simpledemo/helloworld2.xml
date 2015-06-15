@@ -1,0 +1,5 @@
+<bml id="bml2" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:bmla="http://www.asap-project.org/bmla" bmla:appendAfter="bml1">
+<speech id="speech1">
+<text>Hello world 2</text>
+</speech>
+</bml>

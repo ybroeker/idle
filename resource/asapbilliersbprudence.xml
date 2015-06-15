@@ -1,0 +1,99 @@
+<AsapVirtualHuman id="Billie">
+  <Loader id="realizer" loader="asap.realizerembodiments.AsapRealizerEmbodiment">
+    <BMLParser>
+      <BMLAttributeExtension class="asap.bml.ext.bmla.BMLABMLBehaviorAttributes"/>      
+    </BMLParser>
+	
+    <BMLScheduler>
+      <SchedulingHandler class="asap.realizer.scheduler.BMLASchedulingHandler" schedulingStrategy="asap.realizer.scheduler.SortedSmartBodySchedulingStrategy"/>
+    </BMLScheduler>
+  </Loader>
+
+
+  <Loader id="guiembodiment" loader="asap.realizerembodiments.JFrameEmbodiment">
+    <BmlUI demoscriptresources="bmlbillie/defaultexamples"/>
+    <FeedbackUI/>
+  </Loader>
+
+  <Loader id="rsbembodiment" loader="asap.rsbembodiments.loader.RsbEmbodimentLoader"/>
+
+  <Loader id="eyelidmorpher" loader="hmi.faceembodiments.loader.EyelidMorpherLoader">
+    <Morphs ids="KevinHead.mesh-EyeLeft,KevinHead.mesh-EyeRight"/>
+  </Loader>
+ 
+  <Loader id="bodyfaceembodiment" requiredloaders="rsbembodiment,eyelidmorpher" loader="asap.rsbembodiments.loader.RsbBodyAndFaceEmbodimentLoader">
+    <renaming morphRenamingFile="Humanoids/billie/renaming/billiemorphsrenaming.xml"/>
+  </Loader>
+  <Loader id="mixedskeletonembodiment" loader="hmi.physicsenvironment.MixedSkeletonEmbodimentLoader" requiredloaders="bodyfaceembodiment"/>
+
+
+
+  <Loader id="physicalembodiment"
+              loader="hmi.physicsenvironment.OdePhysicalEmbodiment"
+              requiredloaders="mixedskeletonembodiment">
+    <MixedSystems>
+      <!--
+      <MixedSystem name="lowerbody"
+                   resources="Humanoids/billie/mixedsystems/"
+                   filename="billie_lowerbody.xml"/>
+      
+		   <MixedSystem name="lowerbodyandleftarm"
+                   resources="Humanoids/billie/mixedsystems/"
+                   filename="billie_lowerbodyandleftarm.xml"/>		   
+      <MixedSystem name="lowerbodyandrightarm"
+                   resources="Humanoids/billie/mixedsystems/"
+                   filename="billie_lowerbodyandrightarm.xml"/>	
+      <MixedSystem name="lowerbodyandarms"
+                   resources="Humanoids/billie/mixedsystems/"
+                   filename="billie_lowerbodyarms.xml"/>		     
+		     -->	   
+    </MixedSystems>
+    <GlueFeetToFloor/>
+  </Loader>
+
+  <Loader id="animationengine"
+          loader="asap.animationengine.loader.MixedAnimationEngineLoader"
+          requiredloaders="mixedskeletonembodiment,physicalembodiment">
+    <GestureBinding basedir="" resources="Humanoids/billie/gesturebinding/" filename="gesturebinding.xml"/>
+    <StartPose resources="Humanoids/billie/restposes/" filename="relaxedarms.xml"/>
+    <Hns resources="Humanoids/billie/hns" filename="hns_billie.xml"/>
+    <HnsHandShape dir="Humanoids/billie/handshapes"/>
+    <HnsHandShape dir="customhandshapes"/>
+  </Loader>
+
+  <Loader id="faceengine" 
+          loader="asap.faceengine.loader.FaceEngineLoader"
+          requiredloaders="bodyfaceembodiment">
+    <FaceBinding basedir="" resources="Humanoids/billie/facebinding/" filename="facebinding.xml"/>
+  </Loader>
+    
+  <Loader id="facelipsync" requiredloaders="faceengine" loader="asap.faceengine.loader.TimedFaceUnitLipSynchProviderLoader">
+	<MorphVisemeBinding resources="Humanoids/billie/facebinding/" filename="ikpvisemebinding.xml"/>
+  </Loader>
+
+  <Loader id="ttsbinding" loader="asap.marytts5binding.loader.MaryTTSBindingLoader">
+    <PhonemeToVisemeMapping resources="Humanoids/shared/phoneme2viseme/" filename="sampade2ikp.xml"/>
+  </Loader>
+
+ <Loader id="speechengine" loader="asap.speechengine.loader.SpeechEngineLoader" requiredloaders="facelipsync,ttsbinding,guiembodiment">
+   <Voice factory="WAV_TTS" voicename="prudence"/>
+   <SpeechUI/>
+  </Loader>
+
+  <!-- Breathingemitter that sends small breathing animations every now and then -->
+  <Loader id="breathingengine" 
+          loader="asap.emitterengine.loader.EmitterEngineLoader">
+    <EmitterInfo class="asap.breathingemitter.BreathingEmitterInfo"/>
+  </Loader>
+
+  <!-- Blinkemitter that sens small blink animations every now and then -->
+  <Loader id="blinkengine" 
+          loader="asap.emitterengine.loader.EmitterEngineLoader">
+    <EmitterInfo class="asap.blinkemitter.BlinkEmitterInfo"/>
+  </Loader>
+  
+  <!-- Engine for playing audio files, nice for sound effects (e.g., clapping) or for prerecorded speech fragments -->
+  <Loader id="audioengine" loader="asap.audioengine.loader.AudioEngineLoader"/>
+
+  
+</AsapVirtualHuman>

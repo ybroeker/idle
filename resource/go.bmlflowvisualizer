@@ -1,0 +1,6 @@
+#!/bin/bash
+cd ..
+ant run -Drun.main.class="asap.realizerdemo.AsapBMLFlowVisualizerDemo"
+
+
+

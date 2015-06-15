@@ -1,0 +1,5 @@
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml1" xmlns:bmla="http://www.asap-project.org/bmla">  
+  <speech id="speech1"><text>This is a test for interruption of behaviors</text></speech>  
+</bml>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="interrupt" bmla:interrupt="bml1" xmlns:bmla="http://www.asap-project.org/bmla">  
+</bml>

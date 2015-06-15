@@ -1,0 +1,10 @@
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml1" xmlns:bmla="http://www.asap-project.org/bmla">  
+  <speech id="speech1" start="1"><text>This is a test for <sync id="lowloudness"/> loudness reduction.</text></speech>
+</bml>
+<bml id="pvc" xmlns="http://www.bml-initiative.org/bml/bml-1.0"  xmlns:bmla="http://www.asap-project.org/bmla">  
+   <bmla:parametervaluechange id="pvc1" target="bml1:speech1" paramId="volume" start="bml1:speech1:lowloudness"> 
+	<bmla:trajectory type="instant" targetValue="5"/>
+   </bmla:parametervaluechange>
+</bml>
+
+  

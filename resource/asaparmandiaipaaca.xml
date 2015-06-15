@@ -1,0 +1,90 @@
+<AsapVirtualHuman id="Armandia">
+  <Loader id="realizer" loader="asap.realizerembodiments.AsapRealizerEmbodiment">
+    <BMLParser>
+      <BMLAttributeExtension class="asap.bml.ext.bmla.BMLABMLBehaviorAttributes"/>      
+    </BMLParser>
+	
+    <BMLScheduler>
+      <SchedulingHandler class="asap.realizer.scheduler.BMLASchedulingHandler" schedulingStrategy="asap.realizer.scheduler.SortedSmartBodySchedulingStrategy"/>
+    </BMLScheduler>
+  </Loader>
+
+
+  <Loader id="guiembodiment" loader="asap.realizerembodiments.JFrameEmbodiment">
+    <BmlUI demoscriptresources="bml1.0/defaultexamples"/>
+    <FeedbackUI/>    
+    <!--KillButton/-->
+  </Loader>
+ <Loader id="ipaacaembodiment" loader="asap.ipaacaembodiments.loader.IpaacaEmbodimentLoader"/>
+
+
+  <Loader id="bodyfaceembodiment" requiredloaders="ipaacaembodiment" loader="asap.ipaacaembodiments.loader.IpaacaFaceAndBodyEmbodimentLoader">
+    <renaming skeletonRenamingFile="billieskeletonrenaming.xml" morphRenamingFile="billiemorphsrenaming.xml"/>
+  </Loader>
+  
+  <Loader id="mixedskeletonembodiment" loader="hmi.physicsenvironment.MixedSkeletonEmbodimentLoader" requiredloaders="bodyfaceembodiment"/>
+  
+  <Loader id="physicalembodiment" 
+              loader="hmi.physicsenvironment.OdePhysicalEmbodiment"
+              requiredloaders="mixedskeletonembodiment">
+    <MixedSystems> 
+      <MixedSystem name="lowerbody"            
+                   resources="Humanoids/armandia/mixedsystems/" 
+                   filename="armandialowerbody.xml"/> 
+      <MixedSystem name="lowerbodyandleftarm"  
+                   resources="Humanoids/armandia/mixedsystems/" 
+                   filename="armandialowerbodyandleftarm.xml"/>
+      <MixedSystem name="lowerbodyandrightarm" 
+                   resources="Humanoids/armandia/mixedsystems/" 
+                   filename="armandialowerbodyandrightarm.xml"/>
+      <MixedSystem name="lowerbodyandarms"     
+                   resources="Humanoids/armandia/mixedsystems/" 
+                   filename="armandialowerbodyarms.xml"/>
+    </MixedSystems>
+    <GlueFeetToFloor/>
+  </Loader>
+
+  
+  <Loader id="animationengine"
+          loader="asap.animationengine.loader.MixedAnimationEngineLoader"
+          requiredloaders="mixedskeletonembodiment,physicalembodiment">
+    <GestureBinding basedir="" resources="Humanoids/armandia/gesturebinding/" filename="gesturebinding.xml"/>
+    <StartPose resources="Humanoids/armandia/restposes/" filename="looselyhangingarms.xml"/>
+    <Hns resources="Humanoids/shared/hns" filename="hns.xml"/>
+  </Loader>
+  
+  <Loader id="faceengine" 
+          loader="asap.faceengine.loader.FaceEngineLoader"
+          requiredloaders="bodyfaceembodiment">
+    <FaceBinding basedir="" resources="Humanoids/armandia/facebinding/" filename="facebinding.xml"/>
+  </Loader>
+    
+  <Loader id="facelipsync" requiredloaders="faceengine" loader="asap.faceengine.loader.TimedFaceUnitLipSynchProviderLoader">
+	<MorphVisemeBinding resources="Humanoids/armandia/facebinding/" filename="ikpvisemebinding.xml"/>
+  </Loader>
+
+  <Loader id="ttsbinding" loader="asap.marytts5binding.loader.MaryTTSBindingLoader">
+    <PhonemeToVisemeMapping resources="Humanoids/shared/phoneme2viseme/" filename="sampade2ikp.xml"/>
+  </Loader>
+
+ <Loader id="speechengine" loader="asap.speechengine.loader.SpeechEngineLoader" requiredloaders="facelipsync,jawlipsync,ttsbinding">
+   <Voice factory="WAV_TTS"/>
+  </Loader>
+
+  <!-- Breathingemitter that sens small breathing animations every now and then -->
+  <Loader id="breathingengine" 
+          loader="asap.emitterengine.loader.EmitterEngineLoader">
+    <EmitterInfo class="asap.breathingemitter.BreathingEmitterInfo"/>
+  </Loader>
+
+  <!-- Blinkemitter that sens small blink animations every now and then -->
+  <Loader id="blinkengine" 
+          loader="asap.emitterengine.loader.EmitterEngineLoader">
+    <EmitterInfo class="asap.blinkemitter.BlinkEmitterInfo"/>
+  </Loader>
+  
+  <!-- Engine for playing audio files, nice for sound effects (e.g., clapping) or for prerecorded speech fragments -->
+  <Loader id="audioengine" loader="asap.audioengine.loader.AudioEngineLoader"/>
+
+  
+</AsapVirtualHuman>

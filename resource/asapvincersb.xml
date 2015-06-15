@@ -1,0 +1,83 @@
+<AsapVirtualHuman id="Vince">
+  <Loader id="realizer" loader="asap.realizerembodiments.AsapRealizerEmbodiment">
+    <BMLParser>
+      <BMLAttributeExtension class="asap.bml.ext.bmla.BMLABMLBehaviorAttributes"/>      
+    </BMLParser>
+	
+    <BMLScheduler>
+      <SchedulingHandler class="asap.realizer.scheduler.BMLASchedulingHandler" schedulingStrategy="asap.realizer.scheduler.SortedSmartBodySchedulingStrategy"/>
+    </BMLScheduler>
+  </Loader>
+
+
+  <Loader id="guiembodiment" loader="asap.realizerembodiments.JFrameEmbodiment">
+    <BmlUI demoscriptresources="bmlvince/germanexamples"/>
+    <FeedbackUI/>        
+  </Loader>
+
+  <Loader id="rsbembodiment" loader="asap.rsbembodiments.loader.RsbEmbodimentLoader"/>
+
+
+  <Loader id="bodyfaceembodiment" requiredloaders="rsbembodiment" loader="asap.rsbembodiments.loader.RsbBodyAndFaceEmbodimentLoader">
+    <renaming skeletonRenamingFile="Humanoids/vince/renaming/vinceskeletonrenaming.xml"/>
+    <renaming morphRenamingFile="Humanoids/vince/renaming/vincemorphsrenaming.xml"/>
+  </Loader>
+
+  <Loader id="mixedskeletonembodiment" loader="hmi.physicsenvironment.MixedSkeletonEmbodimentLoader" requiredloaders="bodyfaceembodiment"/>
+
+
+
+  <Loader id="physicalembodiment"
+              loader="hmi.physicsenvironment.OdePhysicalEmbodiment"
+              requiredloaders="mixedskeletonembodiment">
+    <MixedSystems>      
+    </MixedSystems>
+    <GlueFeetToFloor/>
+  </Loader>
+
+  <Loader id="animationengine"
+          loader="asap.animationengine.loader.MixedAnimationEngineLoader"
+          requiredloaders="mixedskeletonembodiment,physicalembodiment">
+    <GestureBinding basedir="" resources="Humanoids/vince/gesturebinding/" filename="gesturebinding.xml"/>
+    <StartPose resources="Humanoids/vince/restposes/" filename="relaxed_arms.xml"/>
+    <Hns resources="Humanoids/vince/hns" filename="hns_vince.xml"/>
+    <!--HnsHandShape dir="Humanoids/billie/handshapes"/-->
+    <!--HnsHandShape dir="customhandshapes"/-->
+  </Loader>
+
+  <Loader id="faceengine" 
+          loader="asap.faceengine.loader.FaceEngineLoader"
+          requiredloaders="bodyfaceembodiment">
+    <FaceBinding basedir="" resources="Humanoids/vince/facebinding/" filename="facebinding.xml"/>
+  </Loader>
+    
+  <Loader id="facelipsync" requiredloaders="faceengine" loader="asap.faceengine.loader.TimedFaceUnitLipSynchProviderLoader">
+	<MorphVisemeBinding resources="Humanoids/vince/facebinding/" filename="ikpvisemebinding.xml"/>
+  </Loader>
+
+  <Loader id="ttsbinding" loader="asap.marytts5binding.loader.MaryTTSBindingLoader">
+    <PhonemeToVisemeMapping resources="Humanoids/shared/phoneme2viseme/" filename="sampade2ikp.xml"/>
+  </Loader>
+
+ <Loader id="speechengine" loader="asap.speechengine.loader.SpeechEngineLoader" requiredloaders="facelipsync,ttsbinding,guiembodiment">
+   <Voice factory="WAV_TTS" voicename="bits1-hsmm"/>
+   <SpeechUI/>
+  </Loader>
+
+  <!-- Breathingemitter that sends small breathing animations every now and then -->
+  <Loader id="breathingengine" 
+          loader="asap.emitterengine.loader.EmitterEngineLoader">
+    <EmitterInfo class="asap.breathingemitter.BreathingEmitterInfo"/>
+  </Loader>
+
+  <!-- Blinkemitter that sens small blink animations every now and then -->
+  <Loader id="blinkengine" 
+          loader="asap.emitterengine.loader.EmitterEngineLoader">
+    <EmitterInfo class="asap.blinkemitter.BlinkEmitterInfo"/>
+  </Loader>
+  
+  <!-- Engine for playing audio files, nice for sound effects (e.g., clapping) or for prerecorded speech fragments -->
+  <Loader id="audioengine" loader="asap.audioengine.loader.AudioEngineLoader"/>
+
+  
+</AsapVirtualHuman>

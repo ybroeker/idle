@@ -1,0 +1,4 @@
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0" id="bml1">
+  <remoteHead xmlns="http://asap-project.org/livemocap" id="rhead1" input="keyboardinput" output="graphicalembodiment" start="0" end="10000"/>
+  <remoteFaceFACS xmlns="http://asap-project.org/livemocap" id="rfacs1" input="keyboardinput" output="graphicalembodiment" start="0" end="10000"/>
+</bml>

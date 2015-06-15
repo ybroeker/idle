@@ -1,0 +1,16 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:bmla="http://www.asap-project.org/bmla">
+<speech id="speech1">
+<text>Morgen um 10</text>
+</speech>
+</bml>
+<bml id="bml2" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:bmla="http://www.asap-project.org/bmla" bmla:chunkAfter="bml1">
+<speech id="speech1">
+<text>ist das treffen mit deinem Bruder</text>
+</speech>
+</bml>
+<bml id="bmlprepend" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:bmla="http://www.asap-project.org/bmla" bmla:chunkBefore="bml2" bmla:chunkAfter="bml1">
+<speech id="speech1">
+<text>ist uhm</text>
+</speech>
+</bml>
+

@@ -1,0 +1,4 @@
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml1"  >
+	<gaze id="g1" target="bluebox" influence="SHOULDER"/>  
+</bml>
+

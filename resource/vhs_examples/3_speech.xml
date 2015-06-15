@@ -1,0 +1,9 @@
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml1"  >
+	<speech id="s1"> 
+	<text>
+			Hello <sync id="tm1"/>world
+		</text>
+	</speech>
+	<gesture id="g1" ready="s1:tm1" lexeme="wave"/> 	  
+</bml>
+

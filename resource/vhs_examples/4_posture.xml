@@ -1,0 +1,7 @@
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml1"  >
+	<postureShift id="pose1">
+  <stance type="STANDING"/>
+  <pose part="ARMS" lexeme="ARMS_FORWARD"/>
+  </postureShift>	  
+</bml>
+

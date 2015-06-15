@@ -1,0 +1,41 @@
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  xmlns:bmla="http://www.asap-project.org/bmla" bmla:preplan="true" id="bml0">  
+</bml>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml1">
+  <speech start="2" id="speech1">
+  	<text>Tomorrow at 10</text>
+  </speech>
+</bml>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml2" xmlns:bmla="http://www.asap-project.org/bmla" bmla:chunkAfter="bml1">
+  <speech id="speech1">
+  	<text>is the meeting with your brother</text>
+  </speech>
+</bml>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml3" xmlns:bmla="http://www.asap-project.org/bmla" bmla:chunkAfter="bml2">
+  <speech id="speech1">
+  	<text>and at two o clock</text>
+  </speech>
+</bml>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml4" xmlns:bmla="http://www.asap-project.org/bmla" bmla:chunkAfter="bml3">
+  <speech id="speech1">
+  	<text>you will go shopping</text>
+  </speech>
+</bml>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml5" xmlns:bmla="http://www.asap-project.org/bmla" bmla:chunkAfter="bml4">
+  <speech id="speech1">
+  	<text>and at eight</text>
+  </speech>
+</bml>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml6" xmlns:bmla="http://www.asap-project.org/bmla" bmla:chunkAfter="bml5">
+  <speech id="speech1">
+  	<text>is the gettogether</text>
+  </speech>
+</bml>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml7" xmlns:bmla="http://www.asap-project.org/bmla" bmla:chunkAfter="bml6">
+  <speech id="speech1">
+  	<text>in the bar</text>
+  </speech>
+</bml>
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  xmlns:bmla="http://www.asap-project.org/bmla" bmla:chunkAfter="bml3" id="bmlnod">  
+  <head lexeme="NOD" amount="0.5" id="nod1"/>
+</bml>
+<bml id="interrupt" xmlns="http://www.bml-initiative.org/bml/bml-1.0" xmlns:bmla="http://www.asap-project.org/bmla" bmla:interrupt="bml7,bml6,bml1"/>

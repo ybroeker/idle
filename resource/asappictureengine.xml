@@ -1,0 +1,19 @@
+<AsapVirtualHuman>
+    <Loader id="realizer" loader="asap.realizerembodiments.AsapRealizerEmbodiment">
+    </Loader> 
+
+    <Loader id="guiembodiment" loader="asap.realizerembodiments.JFrameEmbodiment">
+        <BmlUI demoscriptresources="pictureengine/example/bmlexamples2"/>
+        <FeedbackUI/>        
+    </Loader>
+    
+    <Loader id="panelembodiment" loader="hmi.jcomponentenvironment.loader.JComponentEmbodimentLoader">
+        <JComponent id="panel1"/>             
+    </Loader>
+
+    <Loader id="pictureembodiment" loader="asap.picture.swing.JComponentPictureEmbodiment" requiredloaders="panelembodiment"/>
+  
+    <Loader id="pictureengine" loader="asap.picture.loader.PictureEngineLoader" requiredloaders="pictureembodiment">
+        <PictureBinding basedir="" resources="pictureengine/example/" filename="picturebinding.xml"/>
+    </Loader>
+</AsapVirtualHuman>

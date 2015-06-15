@@ -1,0 +1,3 @@
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"  id="bml1"  >
+	<faceLexeme id="f1" lexeme="evil" amount="0.8"/>  
+</bml>
