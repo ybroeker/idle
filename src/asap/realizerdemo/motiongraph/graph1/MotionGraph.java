@@ -12,6 +12,7 @@ import java.util.List;
 public class MotionGraph extends AbstractMotionGraph {
 
     private List<Edge> edges = new LinkedList<Edge>();
+    private List<Node> nodes = new LinkedList<Node>();
 
     public MotionGraph(List<SkeletonInterpolator> motions) {
         super(motions);
@@ -22,9 +23,13 @@ public class MotionGraph extends AbstractMotionGraph {
             Edge newEdge = new Edge(sp);
             Node startNode = new Node(null, newEdge);
             Node endNode = new Node(newEdge, null);
+
+            nodes.add(startNode);
+            nodes.add(endNode);
             edges.add(newEdge);
 
-            System.out.println("Motion Nr. " + i  + " Ist so lang: " + newEdge.toString() );
+            System.out.println("Motion Nr. " + i  + " Ist so lang: " + newEdge.toString());
+            System.out.println("Node Nr: " + i + "hat " + nodes.get(i).getIncomingEdges().size() + "Eingehende und " + nodes.get(i).getOutgoingEdges().size() + "ausgehende Edges.");
             i++;
         }
 

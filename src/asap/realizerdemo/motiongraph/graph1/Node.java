@@ -8,8 +8,11 @@ import java.util.List;
  */
 public class Node {
 
+    public static int nodeId = 0;
+    private int id;
     private List<Edge> incomingEdges = new LinkedList<Edge>();
     private List<Edge> outgoingEdges = new LinkedList<Edge>();
+
 
     /**
      *
@@ -17,6 +20,7 @@ public class Node {
      * @param outgoingEdge
      */
     public Node(Edge incomingEdge, Edge outgoingEdge) {
+        this.id = nodeId++;
 
         if (incomingEdge != null) {
             this.incomingEdges.add(incomingEdge);
@@ -46,5 +50,13 @@ public class Node {
 
     public void setOutgoingEdges(List<Edge> outgoingEdges) {
         this.outgoingEdges = outgoingEdges;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

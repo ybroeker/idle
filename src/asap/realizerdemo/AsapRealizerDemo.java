@@ -268,7 +268,7 @@ public class AsapRealizerDemo {
         demo.test();
 
         List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
-                "idle_0_10.xml"
+                "idle_0_10.xml", "idle_10_20.xml", "idle_30_40.xml"
 
         });
 

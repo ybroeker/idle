@@ -9,6 +9,9 @@ public class Edge {
 
     private Node startNode;
     private Node endNode;
+    public static int edgeId = 0;
+    private int id;
+
     /**
      * specifies if motion is an original or a blended motion.
      */
@@ -22,6 +25,7 @@ public class Edge {
      * @param motion motion that is represented by this edge
      */
     public Edge(Node startNode, Node endNode, SkeletonInterpolator motion) {
+        this.id = edgeId++;
         this.startNode = startNode;
         this.endNode = endNode;
         this.isBlend = false;
@@ -77,4 +81,15 @@ public class Edge {
         return duration;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setIsBlend(boolean isBlend) {
+        this.isBlend = isBlend;
+    }
 }
