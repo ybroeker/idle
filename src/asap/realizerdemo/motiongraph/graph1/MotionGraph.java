@@ -28,10 +28,14 @@ public class MotionGraph extends AbstractMotionGraph {
             nodes.add(endNode);
             edges.add(newEdge);
 
-            System.out.println("Motion Nr. " + i  + " Ist so lang: " + newEdge.toString());
-            System.out.println("Node Nr: " + i + "hat " + nodes.get(i).getIncomingEdges().size() + "Eingehende und " + nodes.get(i).getOutgoingEdges().size() + "ausgehende Edges.");
+            System.out.println(newEdge.toString());
             i++;
         }
+
+/*        for (Node n : nodes) {
+            System.out.println("Node Nr: " + n.getId() + " hat " + n.getIncomingEdges().size() + " Eingehende und " + n.getOutgoingEdges().size() + " ausgehende Edges.");
+
+        }*/
 
     }
 

@@ -25,7 +25,6 @@ public class LoadMotion {
         for (String file : files) {
 
             SkeletonInterpolator skeletonInterpolator = SkeletonInterpolator.read("idle", file);
-            motions.add(skeletonInterpolator);
 
             LoadMotion.fixRootTransformation(skeletonInterpolator);
             System.out.println(file + " rootTransform fixed");
@@ -67,7 +66,7 @@ public class LoadMotion {
     }
 
     public static void fixJoints(SkeletonInterpolator motion) {
-        Set<String> joints = new java.util.HashSet<>();
+        Set<String> joints = new java.util.HashSet<String>();
         for (String partId : motion.getPartIds()) {
             joints.add(partId);
         }

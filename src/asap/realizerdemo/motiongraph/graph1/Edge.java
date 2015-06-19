@@ -38,6 +38,7 @@ public class Edge {
      * @param motion motion that is represented by this motion
      */
     public Edge(SkeletonInterpolator motion) {
+        this.id = edgeId++;
         this.motion = motion;
         this.isBlend = false;
     }
@@ -76,9 +77,11 @@ public class Edge {
 
     public String toString() {
         double durationInt = motion.getEndTime() - motion.getStartTime();
-        String duration = new String(Double.toString(durationInt));
 
-        return duration;
+        String toString = new String("Edge Id: " + this.id + ", Duration: " + durationInt +
+        ", StartId: " + startNode.getId() + ", EndId: " + endNode.getId());
+
+        return toString;
     }
 
     public int getId() {
