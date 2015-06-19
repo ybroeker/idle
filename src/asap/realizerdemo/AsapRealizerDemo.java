@@ -155,11 +155,11 @@ public class AsapRealizerDemo {
             //"y_headmove_Ses03F_impro02_F016.xml",
             // "y_headmove_Ses05M_script01_1_M027.xml",
             //"idle_0_0.99.xml",
-            "idle_0_10.xml"
+            "idle_0_10.xml","idle_10_20.xml","idle_20_30.xml","idle_30_40.xml","idle_40_50.xml","idle_50_60.xml","idle_60_70.xml"
 
         });
 
-        System.out.println("loaded");
+        System.out.println("motions loaded");
 
         final SkeletonInterpolator motion = motions.get(0);
 

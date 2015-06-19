@@ -23,11 +23,23 @@ public class LoadMotion {
         List<SkeletonInterpolator> motions = new LinkedList<SkeletonInterpolator>();
 
         for (String file : files) {
-            System.out.println(file);
+
             SkeletonInterpolator skeletonInterpolator = SkeletonInterpolator.read("idle", file);
             motions.add(skeletonInterpolator);
 
+            LoadMotion.fixRootTransformation(skeletonInterpolator);
+            System.out.println(file + " rootTransform fixed");
+
+            LoadMotion.fixJoints(skeletonInterpolator);
+            System.out.println(file + " Joints fixed");
+            
+            motions.add(skeletonInterpolator);
+            System.out.println(file + " loaded");
+
         }
+        
+        System.out.println("motions loaded");
+        
         return motions;
     }
 
