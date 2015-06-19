@@ -64,7 +64,7 @@ public class MotionGraph extends AbstractMotionGraph {
         Edge currentEdge;
 
         Random r = new Random();
-        int bound = nodes.size();
+        int bound = edges.size();
 
         Node currentNode = edges.get(r.nextInt(bound)).getStartNode();
         System.out.println("Der Weg beginnt bei: " + currentNode.getId());
