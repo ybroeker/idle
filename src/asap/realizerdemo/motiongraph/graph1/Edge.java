@@ -49,6 +49,7 @@ public class Edge {
 
     public void setStartNode(Node startNode) {
         this.startNode = startNode;
+        startNode.addOutgoingEdge(this);
     }
 
     public Node getEndNode() {
@@ -57,6 +58,7 @@ public class Edge {
 
     public void setEndNode(Node endNode) {
         this.endNode = endNode;
+        endNode.addIncomingEdge(this);
     }
 
     public boolean isBlend() {

@@ -1,6 +1,7 @@
 package asap.realizerdemo.motiongraph.graph1;
 
 import asap.realizerdemo.motiongraph.AbstractMotionGraph;
+import asap.realizerdemo.motiongraph.IEquals;
 import hmi.animation.Skeleton;
 import hmi.animation.SkeletonInterpolator;
 
@@ -30,27 +31,40 @@ public class MotionGraph extends AbstractMotionGraph {
             nodes.add(endNode);
             edges.add(newEdge);
 
+            // Mirror every motion
+           SkeletonInterpolator newSp = new SkeletonInterpolator(sp);
+           newSp.mirror();
+
+            Edge mirroredEdge = new Edge(sp);
+            Node mirroredStartNode = new Node(null, newEdge);
+            Node mirroredEndNode = new Node(newEdge, null);
+
+            nodes.add(mirroredEndNode);
+            nodes.add(mirroredStartNode);
+            edges.add(mirroredEdge);
+
             System.out.println(newEdge.toString());
             i++;
         }
 
-/*        for (Node n : nodes) {
-            System.out.println("Node Nr: " + n.getId() + " hat " + n.getIncomingEdges().size() + " Eingehende und " + n.getOutgoingEdges().size() + " ausgehende Edges.");
-
-        }*/
+        this.connectMotions();
 
     }
 
+    /**
+     * Randomly chooses a path through the motion graph until it reaches an end.
+     * @return List of Skeletoninterpolators in chronological order
+     */
     @Override
     public List<SkeletonInterpolator> randomWalk() {
-       List<SkeletonInterpolator> result = new LinkedList<SkeletonInterpolator>();
+        List<SkeletonInterpolator> result = new LinkedList<SkeletonInterpolator>();
         int outgoingEdgesBound;
         Edge currentEdge;
 
         Random r = new Random();
         int bound = nodes.size();
 
-        Node currentNode = nodes.get(r.nextInt(bound));
+        Node currentNode = edges.get(r.nextInt(bound)).getStartNode();
         System.out.println("Der Weg beginnt bei: " + currentNode.getId());
 
         do {
@@ -63,17 +77,34 @@ public class MotionGraph extends AbstractMotionGraph {
 
             System.out.println(currentEdge.getId());
 
-        } while (currentNode.getOutgoingEdges().size()!=0);
-
+        } while (currentNode.getOutgoingEdges().size() != 0);
 
 
         return result;
     }
 
+    /**
+     * Randomly chooses a path through the motion graph with given number of frames.
+     * @param length length for the random-walk
+     * @return List of Skeletoninterpolators in chronological order
+     */
     @Override
-    public List<SkeletonInterpolator> randomWalk(int lenght) {
-throw new UnsupportedOperationException("Not Supported yet!");
+    public List<SkeletonInterpolator> randomWalk(int length) {
+        throw new UnsupportedOperationException("Not Supported yet!");
     }
 
+    public void connectMotions() {
+        IEquals equals = new Equals();
 
+        for (Edge start : edges) {
+            for (Edge end : edges) {
+                if (equals.startEndEquals(start.getMotion(), end.getMotion())) {
+                    Node deletedNode = end.getStartNode();
+                    nodes.remove(deletedNode);
+                    end.setStartNode(start.getEndNode());
+
+                }
+            }
+        }
+    }
 }

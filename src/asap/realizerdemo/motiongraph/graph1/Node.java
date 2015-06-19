@@ -36,6 +36,17 @@ public class Node {
 
     }
 
+    public void addIncomingEdge(Edge incoming){
+        if (!this.getIncomingEdges().contains(incoming)) {
+            this.incomingEdges.add(incoming);
+        }
+    }
+
+    public void addOutgoingEdge(Edge outgoing){
+        if (!this.getOutgoingEdges().contains(outgoing)) {
+            this.outgoingEdges.add(outgoing);
+        }
+    }
 
     public List<Edge> getIncomingEdges() {
         return incomingEdges;

@@ -33,4 +33,5 @@ public abstract class AbstractMotionGraph {
      * @return random-walk through the Graph
      */
     public abstract List<SkeletonInterpolator> randomWalk(int lenght);
+
 }
