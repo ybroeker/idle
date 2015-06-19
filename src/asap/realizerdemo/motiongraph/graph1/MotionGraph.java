@@ -31,19 +31,21 @@ public class MotionGraph extends AbstractMotionGraph {
             nodes.add(endNode);
             edges.add(newEdge);
 
+            System.out.println(newEdge.toString());
+
             // Mirror every motion
            SkeletonInterpolator newSp = new SkeletonInterpolator(sp);
            newSp.mirror();
 
             Edge mirroredEdge = new Edge(sp);
-            Node mirroredStartNode = new Node(null, newEdge);
-            Node mirroredEndNode = new Node(newEdge, null);
+            Node mirroredStartNode = new Node(null, mirroredEdge);
+            Node mirroredEndNode = new Node(mirroredEdge, null);
 
             nodes.add(mirroredEndNode);
             nodes.add(mirroredStartNode);
             edges.add(mirroredEdge);
 
-            System.out.println(newEdge.toString());
+            System.out.println(mirroredEdge.toString());
             i++;
         }
 
@@ -100,7 +102,7 @@ public class MotionGraph extends AbstractMotionGraph {
             for (Edge end : edges) {
                 if (equals.startEndEquals(start.getMotion(), end.getMotion())) {
                     Node deletedNode = end.getStartNode();
-                    nodes.remove(deletedNode);
+                    nodes.remove(deletedNode);deletedNode.getOutgoingEdges().remove(end);
                     end.setStartNode(start.getEndNode());
 
                 }
