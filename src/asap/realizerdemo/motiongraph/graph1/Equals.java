@@ -1,7 +1,14 @@
 package asap.realizerdemo.motiongraph.graph1;
 
 import asap.realizerdemo.motiongraph.IEquals;
+import asap.realizerdemo.motiongraph.Util;
+import static asap.realizerdemo.motiongraph.Util.X;
+import static asap.realizerdemo.motiongraph.Util.Y;
+import static asap.realizerdemo.motiongraph.Util.Z;
 import hmi.animation.SkeletonInterpolator;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -19,8 +26,10 @@ public class Equals implements IEquals {
     @Override
     public boolean startEndEquals(SkeletonInterpolator start, SkeletonInterpolator end) {
         float[] endConfig = end.getConfig(0);
-
+        Map<String, float[]> endConfigMap = new HashMap<String, float[]>();
+        
         float[] startConfig = start.getConfig(start.getConfigList().size() - 1);
+        Map<String, float[]> startConfigMap = new HashMap<String, float[]>();
 
         if (!start.getConfigType().equals(end.getConfigType())) {
             return false;//erstmal nur genau gleiche, besser transform ignorieren
@@ -30,13 +39,33 @@ public class Equals implements IEquals {
             return false;//erstmal nur genau gleiche, besser transform ignorieren
         }
 
-        //transform ignorieren, reihenfolge der Joints bisher ignoriert
-        for (int i = 3; i < startConfig.length; i++) {
-            if (startConfig[i] != endConfig[i]) {
-                return false;
+
+        int i = 0;
+        int part=0;
+        if (start.getConfigType().contains(Util.ROOT_TRANSFORM)) {
+            startConfigMap.put("Util.ROOT_TRANSFORM", new float[]{startConfig[X],startConfig[Y],startConfig[Z]});
+            endConfigMap.put("Util.ROOT_TRANSFORM", new float[]{endConfig[X],endConfig[Y],endConfig[Z]});
+            i+=3;
+        }
+        
+        
+        for (part = 0; part < end.getPartIds().length; part++) {
+            endConfigMap.put(end.getPartIds()[part], new float[]{endConfig[i+part*3],endConfig[i+1+part*3],endConfig[i+2+part*3],endConfig[i+3+part*3]});
+            startConfigMap.put(start.getPartIds()[part], new float[]{startConfig[i+part*3],startConfig[i+1+part*3],startConfig[i+2+part*3],startConfig[i+3+part*3]});
+        }
+        
+        for (Map.Entry<String, float[]> entrySet : startConfigMap.entrySet()) {
+            String startKey = entrySet.getKey();
+            float[] startValue = entrySet.getValue();
+
+            float[] endValue = endConfigMap.get(startKey);
+            for (int j = 0; j < startValue.length; j++) {
+                if (startValue[j] != endValue[j]) {
+                    return false;
+                }
             }
         }
-
+        
         return true;
 
     }

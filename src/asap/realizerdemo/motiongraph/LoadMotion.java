@@ -1,5 +1,8 @@
 package asap.realizerdemo.motiongraph;
 
+import static asap.realizerdemo.motiongraph.Util.X;
+import static asap.realizerdemo.motiongraph.Util.Y;
+import static asap.realizerdemo.motiongraph.Util.Z;
 import hmi.animation.ConfigList;
 import hmi.animation.SkeletonInterpolator;
 import java.io.IOException;
@@ -13,10 +16,7 @@ import java.util.Set;
  */
 public class LoadMotion {
 
-    /**
-     * Index of X,Y,Z-RootTransform in ConfigList.
-     */
-    public static final int Z = 2, Y = 1, X = 0;
+    
 
     public static List<SkeletonInterpolator> loadMotion(String[] files) throws IOException {
 
@@ -56,8 +56,8 @@ public class LoadMotion {
             double time = motion.getTime(i);
 
             config[Y] = 1;
-            config[X] = config[X] - x;
-            config[Z] = config[Z] - z;
+            //config[X] = config[X] - x;
+            //config[Z] = config[Z] - z;
 
             newConfig.addConfig(time, config);
         }
