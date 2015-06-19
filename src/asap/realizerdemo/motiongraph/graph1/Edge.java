@@ -80,7 +80,8 @@ public class Edge {
     public String toString() {
         double durationInt = motion.getEndTime() - motion.getStartTime();
 
-        String toString = new String("Edge Id: " + this.id + ", Duration: " + durationInt +
+        String toString = new String("Edge Id: " + this.id +
+        ", StartTime: " + motion.getStartTime() + ", Duration: " + durationInt +
         ", StartId: " + startNode.getId() + ", EndId: " + endNode.getId());
 
         return toString;
