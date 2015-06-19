@@ -3,7 +3,9 @@ package asap.realizerdemo;
 import asap.bml.ext.bmlt.BMLTInfo;
 import asap.environment.AsapEnvironment;
 import asap.environment.AsapVirtualHuman;
+import asap.realizerdemo.motiongraph.IEquals;
 import asap.realizerdemo.motiongraph.LoadMotion;
+import asap.realizerdemo.motiongraph.graph1.Equals;
 import asap.realizerdemo.motiongraph.graph1.MotionGraph;
 import asap.realizerdemo.motiongraph.movementdetection.IMovementDetector;
 import asap.realizerdemo.motiongraph.movementdetection.MovementDetector;
@@ -44,6 +46,7 @@ import saiba.bml.BMLInfo;
 import saiba.bml.core.FaceLexemeBehaviour;
 import saiba.bml.core.HeadBehaviour;
 import saiba.bml.core.PostureShiftBehaviour;
+import sun.security.x509.AVA;
 
 /**
  * Simple demo for the AsapRealizer+environment
@@ -143,10 +146,13 @@ public class AsapRealizerDemo {
         mainJFrame.setVisible(true);
 
     }
-
-    private void test() throws IOException {
-
-        final RealizerPort realizerPort = avh.getRealizerPort();
+    
+    public AsapRealizerDemo() {
+        hre = null;
+        ope = null;
+    }
+    
+    private void test(final RealizerPort realizerPort) throws IOException {
 
         IMovementDetector movementDetector = new MovementDetector();
 
@@ -160,15 +166,9 @@ public class AsapRealizerDemo {
 
         });
 
-        System.out.println("motions loaded");
-
-        final SkeletonInterpolator motion = motions.get(0);
-
-        LoadMotion.fixRootTransformation(motion);
-        System.out.println("rootTransform fixed");
-
-        LoadMotion.fixJoints(motion);
-        System.out.println("Joints fixed");
+        IEquals equals = new Equals();
+        
+        System.out.println("0+1:"+equals.startEndEquals(motions.get(0), motions.get(1))); 
 
         /*
          int[] stops = movementDetector.getStops(motion);
@@ -192,6 +192,9 @@ public class AsapRealizerDemo {
 
          final SkeletonInterpolator skeletonInterpolator = motion.subSkeletonInterpolator(stops[i], stops[i + 1]);
          */
+        
+        if (realizerPort != null) {
+            final SkeletonInterpolator motion =motions.get(0);
         /*
          realizerPort.addListeners(new BMLFeedbackListener[]{new BMLFeedbackListener() {
 
@@ -206,6 +209,9 @@ public class AsapRealizerDemo {
          }
          }});
          */
+        
+            
+        
         JFrame frame = new JFrame();
         JButton button = new JButton();
         button.addActionListener(new ActionListener() {
@@ -223,7 +229,7 @@ public class AsapRealizerDemo {
         frame.pack();
         frame.add(button);
         frame.setVisible(true);
-
+}
         //realizerPort.addListener(...);
     }
 
@@ -263,9 +269,13 @@ public class AsapRealizerDemo {
         if (args.length == 1) {
             spec = args[0];
         }
-        AsapRealizerDemo demo = new AsapRealizerDemo(new JFrame("AsapRealizer demo 1"), spec);
-        demo.startClocks();
-        demo.test();
+        //AsapRealizerDemo demo = new AsapRealizerDemo(new JFrame("AsapRealizer demo 1"), spec);
+        //demo.startClocks();
+        //demo.test(demo.avh.getRealizerPort());
+        
+        
+        AsapRealizerDemo demo = new AsapRealizerDemo();
+        //demo.test(null);        
 
         List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
                 "idle_0_10.xml", "idle_10_20.xml", "idle_20_30.xml", "idle_30_40.xml", "idle_40_50.xml",
@@ -274,6 +284,6 @@ public class AsapRealizerDemo {
         });
 
         MotionGraph test = new MotionGraph(motions);
-
+        motions = test.randomWalk();
     }
 }
