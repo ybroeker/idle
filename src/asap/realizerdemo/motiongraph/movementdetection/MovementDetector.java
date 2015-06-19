@@ -16,7 +16,7 @@ public class MovementDetector implements IMovementDetector {
      */
     public static final int FRAMES = 30;
 
-    public static final double THRESHOLD = 0.001;
+    public static final double THRESHOLD = 0.01;
 
     @Override
     public boolean isStopped(SkeletonInterpolator motion, int frame) {
@@ -30,12 +30,14 @@ public class MovementDetector implements IMovementDetector {
             tmp += Util.euclidDistance(motion.getConfig(frame - FRAMES/2 +i), motion.getConfig(frame - FRAMES/2 + i+1));
         }
         
+        //System.out.println(tmp);
+        tmp=tmp/(motion.getPartIds().length);
+        //System.out.println(tmp);
         return (tmp<THRESHOLD);
     }
 
     @Override
     public int[] getStops(SkeletonInterpolator motion) {
-        System.out.println("");
         List<Integer> stops = new LinkedList<Integer>();
         for (int i = 0; i < motion.size(); i++) {
             if (isStopped(motion, i)) {
