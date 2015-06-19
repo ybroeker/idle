@@ -14,6 +14,7 @@ public class Node {
     private List<Edge> outgoingEdges = new LinkedList<Edge>();
 
 
+
     /**
      *
      * @param incomingEdge
@@ -59,4 +60,6 @@ public class Node {
     public void setId(int id) {
         this.id = id;
     }
+
+
 }

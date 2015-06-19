@@ -1,10 +1,12 @@
 package asap.realizerdemo.motiongraph.graph1;
 
 import asap.realizerdemo.motiongraph.AbstractMotionGraph;
+import hmi.animation.Skeleton;
 import hmi.animation.SkeletonInterpolator;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Zukie on 15/06/15.
@@ -40,13 +42,37 @@ public class MotionGraph extends AbstractMotionGraph {
     }
 
     @Override
-    public SkeletonInterpolator randomWalk() {
-        return null;
+    public List<SkeletonInterpolator> randomWalk() {
+       List<SkeletonInterpolator> result = new LinkedList<SkeletonInterpolator>();
+        int outgoingEdgesBound;
+        Edge currentEdge;
+
+        Random r = new Random();
+        int bound = nodes.size();
+
+        Node currentNode = nodes.get(r.nextInt(bound));
+        System.out.println("Der Weg beginnt bei: " + currentNode.getId());
+
+        do {
+            outgoingEdgesBound = currentNode.getOutgoingEdges().size();
+            currentEdge = currentNode.getOutgoingEdges().get(r.nextInt(outgoingEdgesBound));
+            //choose random outgoing motion from current Node
+
+            result.add(currentEdge.getMotion()); //add motion
+            currentNode = currentEdge.getEndNode();
+
+            System.out.println(currentEdge.getId());
+
+        } while (currentNode.getOutgoingEdges().size()!=0);
+
+
+
+        return result;
     }
 
     @Override
-    public SkeletonInterpolator randomWalk(int lenght) {
-        return null;
+    public List<SkeletonInterpolator> randomWalk(int lenght) {
+throw new UnsupportedOperationException("Not Supported yet!");
     }
 
 

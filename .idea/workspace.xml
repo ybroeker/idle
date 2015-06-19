@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4be22b75-6b15-44ac-b31c-6399082a6d09" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/LoadMotion.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/LoadMotion.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="idle.iws" />
@@ -32,19 +31,32 @@
         <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <caret line="53" column="72" selection-start-line="53" selection-start-column="72" selection-end-line="53" selection-end-column="72" />
               <folding>
-                <element signature="e#399#405#0" expanded="true" />
+                <element signature="e#455#461#0" expanded="true" />
+                <element signature="e#1298#1320#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AsapRealizerDemo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java">
+      <file leaf-file-name="AbstractMotionGraph.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="269" column="50" selection-start-line="269" selection-start-column="50" selection-end-line="269" selection-end-column="50" />
+              <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+              <folding>
+                <element signature="docComment;method#randomWalk#1;class#AbstractMotionGraph#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AsapRealizerDemo.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6487119">
+              <caret line="275" column="52" selection-start-line="275" selection-start-column="52" selection-end-line="275" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -74,11 +86,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Node.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52693206">
-              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="false" />
                 <element signature="docComment;method#Node#0;class#Node#0" expanded="true" />
@@ -100,11 +112,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java" />
-        <option value="$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java" />
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/LoadMotion.java" />
-        <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java" />
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java" />
+        <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java" />
+        <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java" />
+        <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java" />
+        <option value="$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java" />
       </list>
     </option>
   </component>
@@ -582,29 +595,29 @@
       <workItem from="1434717338066" duration="257000" />
       <workItem from="1434717629542" duration="169000" />
       <workItem from="1434717900153" duration="980000" />
-      <workItem from="1434719145846" duration="3184000" />
+      <workItem from="1434719145846" duration="5205000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4590000" />
+    <option name="totallyTimeSpent" value="6611000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3298969" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3298969" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -639,7 +652,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#399#405#0" expanded="true" />
+            <element signature="e#455#461#0" expanded="true" />
+            <element signature="e#1298#1320#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -678,7 +692,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <element signature="e#399#405#0" expanded="true" />
+            <element signature="e#455#461#0" expanded="true" />
+            <element signature="e#1298#1320#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -698,24 +713,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#399#405#0" expanded="true" />
+            <element signature="e#455#461#0" expanded="true" />
+            <element signature="e#1298#1320#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21077283">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="269" column="50" selection-start-line="269" selection-start-column="50" selection-end-line="269" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -725,16 +725,6 @@
           <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding>
             <element signature="e#1915#1923#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="e#399#405#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -751,12 +741,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52693206">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="false" />
             <element signature="docComment;method#Node#0;class#Node#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="72" selection-start-line="53" selection-start-column="72" selection-end-line="53" selection-end-column="72" />
+          <folding>
+            <element signature="e#455#461#0" expanded="true" />
+            <element signature="e#1298#1320#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+          <folding>
+            <element signature="docComment;method#randomWalk#1;class#AbstractMotionGraph#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6487119">
+          <caret line="275" column="52" selection-start-line="275" selection-start-column="52" selection-end-line="275" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
