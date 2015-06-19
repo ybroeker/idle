@@ -3,6 +3,7 @@ package asap.realizerdemo;
 import asap.bml.ext.bmlt.BMLTInfo;
 import asap.environment.AsapEnvironment;
 import asap.environment.AsapVirtualHuman;
+import asap.realizerdemo.motiongraph.LoadMotion;
 import asap.realizerdemo.motiongraph.movementdetection.IMovementDetector;
 import asap.realizerdemo.motiongraph.movementdetection.MovementDetector;
 import asap.realizerport.BMLFeedbackListener;
@@ -32,10 +33,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import org.hsqldb.lib.HashSet;
 import saiba.bml.BMLInfo;
 import saiba.bml.core.FaceLexemeBehaviour;
 import saiba.bml.core.HeadBehaviour;
@@ -121,7 +124,7 @@ public class AsapRealizerDemo {
 
         // set camera position
         // hre.setNavigationEnabled(false);
-        hre.setViewPoint(new float[]{0, 1.7f, 2});
+        hre.setViewPoint(new float[]{0, 1, 2});
         avh = ee.loadVirtualHuman("", spec, "AsapRealizer demo 2");
 
         j.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -140,49 +143,68 @@ public class AsapRealizerDemo {
 
     }
 
-    private AsapRealizerDemo() throws IOException {
-        loadMotion();
-        hre = null;
-        ope = null;
-    }
-
     private void test() throws IOException {
-        IMovementDetector movementDetector = new MovementDetector();
-        List<SkeletonInterpolator> motions = loadMotion();
-        SkeletonInterpolator motion = motions.get(0);
-
-        int[] stops = movementDetector.getStops(motion);
-
-        int i = 0;
-        int max = 0;
-        for (int j = 1; j < stops.length; j++) {
-            if (stops[j]-stops[j-1] > max) {
-                max=stops[j]-stops[j-1];
-                i=j-1;
-            }
-        }
-        System.out.println(stops[i] + "-" + stops[i + 1]);
-
-        final SkeletonInterpolator skeletonInterpolator = motion.subSkeletonInterpolator(stops[i], stops[i + 1]);
-        System.out.println(skeletonInterpolator.toXMLString());
 
         final RealizerPort realizerPort = avh.getRealizerPort();
 
-        realizerPort.addListeners(new BMLFeedbackListener[]{new BMLFeedbackListener() {
+        IMovementDetector movementDetector = new MovementDetector();
 
-            @Override
-            public void feedback(String feedback) {
-                if (feedback.contains("bml1:end")) {
-                    realizerPort.performBML("<bml id=\"bml1\" composition=\"MERGE\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\">   \n"
-                            + "   <keyframe id=\"bml1:headmotion\" xmlns=\"http://hmi.ewi.utwente.nl/bmlt\">"
-                            + skeletonInterpolator.toXMLString()
-                            + "</keyframe>   \n</bml>");
-                }
-            }
-        }});
+        List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
+            //"y_headmove_Ses01F_impro01_F011.xml",
+            //"y_headmove_Ses01M_impro05_M031.xml", 
+            //"y_headmove_Ses03F_impro02_F016.xml",
+            // "y_headmove_Ses05M_script01_1_M027.xml",
+            //"idle_0_0.99.xml",
+            "idle_0_10.xml"
+
+        });
+
+        System.out.println("loaded");
+
+        final SkeletonInterpolator motion = motions.get(0);
+
+        LoadMotion.fixRootTransformation(motion);
+        System.out.println("rootTransform fixed");
+
+        LoadMotion.fixJoints(motion);
+        System.out.println("Joints fixed");
+
+        /*
+         int[] stops = movementDetector.getStops(motion);
 
         
+         int i = 0;
+         int max = 0;
+         for (int j = 1; j < stops.length; j++) {
+             System.out.println(stops[j]);
+         if (stops[j]-stops[j-1] > max) {
+         max=stops[j]-stops[j-1];
+         i=j-1;
+         }
+         }
         
+         System.out.println("stops.lenght="+stops.length+" i="+i);
+        if (stops.length>i+1) {
+                 System.out.println(stops[i] + "-" + stops[i + 1]);
+        }
+         
+
+         final SkeletonInterpolator skeletonInterpolator = motion.subSkeletonInterpolator(stops[i], stops[i + 1]);
+         */
+        /*
+         realizerPort.addListeners(new BMLFeedbackListener[]{new BMLFeedbackListener() {
+
+         @Override
+         public void feedback(String feedback) {
+         if (feedback.contains("bml1:end")) {
+         realizerPort.performBML("<bml id=\"bml1\" composition=\"MERGE\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\">   \n"
+         + "   <keyframe id=\"bml1:headmotion\" xmlns=\"http://hmi.ewi.utwente.nl/bmlt\">"
+         + skeletonInterpolator.toXMLString()
+         + "</keyframe>   \n</bml>");
+         }
+         }
+         }});
+         */
         JFrame frame = new JFrame();
         JButton button = new JButton();
         button.addActionListener(new ActionListener() {
@@ -190,36 +212,18 @@ public class AsapRealizerDemo {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                realizerPort.performBML("<bml id=\"bml1\" composition=\"MERGE\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\">   \n"
-                        + "   <keyframe id=\"bml1:headmotion\" xmlns=\"http://hmi.ewi.utwente.nl/bmlt\">"
-                        + skeletonInterpolator.toXMLString()
-                        + "</keyframe>   \n</bml>");
+                realizerPort.performBML("<bml xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"  id=\"bml1\" xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">   \n"
+                        + "   <bmlt:keyframe id=\"kf1\">"
+                        + motion.toXMLString()
+                        + "</bmlt:keyframe>   \n</bml>");
             }
         });
 
+        frame.pack();
         frame.add(button);
         frame.setVisible(true);
 
         //realizerPort.addListener(...);
-    }
-
-    private List<SkeletonInterpolator> loadMotion() throws IOException {
-
-        String[] files = {//"y_headmove_Ses01F_impro01_F011.xml",
-            //"y_headmove_Ses01M_impro05_M031.xml", 
-//"y_headmove_Ses03F_impro02_F016.xml",
-        "y_headmove_Ses05M_script01_1_M027.xml"
-        };
-
-        List<SkeletonInterpolator> motions = new LinkedList<SkeletonInterpolator>();
-
-        for (String file : files) {
-
-            SkeletonInterpolator skeletonInterpolator = SkeletonInterpolator.read("idle", file);
-            motions.add(skeletonInterpolator);
-
-        }
-        return motions;
     }
 
     private JComponentEnvironment setupJComponentEnvironment() {
