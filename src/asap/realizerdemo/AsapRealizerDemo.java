@@ -4,6 +4,7 @@ import asap.bml.ext.bmlt.BMLTInfo;
 import asap.environment.AsapEnvironment;
 import asap.environment.AsapVirtualHuman;
 import asap.realizerdemo.motiongraph.LoadMotion;
+import asap.realizerdemo.motiongraph.graph1.MotionGraph;
 import asap.realizerdemo.motiongraph.movementdetection.IMovementDetector;
 import asap.realizerdemo.motiongraph.movementdetection.MovementDetector;
 import asap.realizerport.BMLFeedbackListener;
@@ -265,6 +266,13 @@ public class AsapRealizerDemo {
         AsapRealizerDemo demo = new AsapRealizerDemo(new JFrame("AsapRealizer demo 1"), spec);
         demo.startClocks();
         demo.test();
+
+        List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
+                "idle_0_10.xml"
+
+        });
+
+        MotionGraph test = new MotionGraph(motions);
 
     }
 }

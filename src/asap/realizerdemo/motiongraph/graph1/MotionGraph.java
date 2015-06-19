@@ -24,8 +24,8 @@ public class MotionGraph extends AbstractMotionGraph {
             Node endNode = new Node(newEdge, null);
             edges.add(newEdge);
 
-            System.out.println("Motion Nr." + i + newEdge.toString() );
-            i++; 
+            System.out.println("Motion Nr. " + i  + " Ist so lang: " + newEdge.toString() );
+            i++;
         }
 
     }
