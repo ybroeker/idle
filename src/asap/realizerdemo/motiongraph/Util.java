@@ -8,6 +8,7 @@ public class Util {
     
     public static final String ROOT_TRANSFORM = "T1";
     public static final String ROTATION = "R";
+    public static final String TRANSLATION = "T";
     /**
      * Index of X,Y,Z-RootTransform in ConfigList.
      */

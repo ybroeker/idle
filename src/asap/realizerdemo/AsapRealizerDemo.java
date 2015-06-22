@@ -5,6 +5,9 @@ import asap.environment.AsapEnvironment;
 import asap.environment.AsapVirtualHuman;
 import asap.realizerdemo.motiongraph.IEquals;
 import asap.realizerdemo.motiongraph.LoadMotion;
+import static asap.realizerdemo.motiongraph.Util.X;
+import static asap.realizerdemo.motiongraph.Util.Y;
+import static asap.realizerdemo.motiongraph.Util.Z;
 import asap.realizerdemo.motiongraph.graph1.Equals;
 import asap.realizerdemo.motiongraph.graph1.MotionGraph;
 import asap.realizerdemo.motiongraph.movementdetection.IMovementDetector;
@@ -190,38 +193,7 @@ public class AsapRealizerDemo {
          */
         if (realizerPort != null) {
             final SkeletonInterpolator motion = motions.get(0);
-            /*
-             realizerPort.addListeners(new BMLFeedbackListener[]{new BMLFeedbackListener() {
-
-             @Override
-             public void feedback(String feedback) {
-             if (feedback.contains("bml1:end")) {
-             realizerPort.performBML("<bml id=\"bml1\" composition=\"MERGE\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\">   \n"
-             + "   <keyframe id=\"bml1:headmotion\" xmlns=\"http://hmi.ewi.utwente.nl/bmlt\">"
-             + skeletonInterpolator.toXMLString()
-             + "</keyframe>   \n</bml>");
-             }
-             }
-             }});
-             */
-
-            JFrame frame = new JFrame();
-            JButton button = new JButton();
-            button.addActionListener(new ActionListener() {
-
-                @Override
-                public void actionPerformed(ActionEvent e) {
-
-                    realizerPort.performBML("<bml xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"  id=\"bml1\" xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">   \n"
-                            + "   <bmlt:keyframe id=\"kf1\">"
-                            + motion.toXMLString()
-                            + "</bmlt:keyframe>   \n</bml>");
-                }
-            });
-
-            frame.pack();
-            frame.add(button);
-            frame.setVisible(true);
+            play(motion, realizerPort);
         }
         //realizerPort.addListener(...);
     }
@@ -262,11 +234,11 @@ public class AsapRealizerDemo {
         if (args.length == 1) {
             spec = args[0];
         }
-        AsapRealizerDemo demo = new AsapRealizerDemo(new JFrame("AsapRealizer demo 1"), spec);
-        demo.startClocks();
+        //AsapRealizerDemo demo = new AsapRealizerDemo(new JFrame("AsapRealizer demo 1"), spec);
+        //demo.startClocks();
         //demo.test(demo.avh.getRealizerPort());
 
-        //AsapRealizerDemo demo = new AsapRealizerDemo();
+        AsapRealizerDemo demo = new AsapRealizerDemo();
         //demo.test(null);        
         List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
             "idle_0_10.xml", "idle_10_20.xml", "idle_20_30.xml", "idle_30_40.xml", "idle_40_50.xml",
@@ -274,13 +246,13 @@ public class AsapRealizerDemo {
 
         });
 
-        //MotionGraph test = new MotionGraph(motions);
-        //motions = test.randomWalk();
+        MotionGraph test = new MotionGraph(motions);
+        motions = test.randomWalk();
         //demo.testStopping(motions);
         
+        //demo.play(demo.defaultPose(motions.get(0)), demo.avh.getRealizerPort());
         
-        
-        demo.play(demo.concatMotions(demo.testStopping(motions)), demo.avh.getRealizerPort());
+        //demo.play(demo.concatMotions(demo.testStopping(motions)), demo.avh.getRealizerPort());
         ///demo.play(demo.concatMotions(motions), demo.avh.getRealizerPort());
 
         //SkeletonInterpolator skeletonInterpolator = motions.get(3);
@@ -289,6 +261,30 @@ public class AsapRealizerDemo {
         //System.out.println("e: "+equals.startEndEquals(skeletonInterpolator, motions.get(4)));
     }
 
+    public SkeletonInterpolator defaultPose(SkeletonInterpolator skeleton){
+        ConfigList configList = new ConfigList(skeleton.getConfigSize());
+        String type = skeleton.getConfigType();
+        String[] partIds = skeleton.getPartIds();
+        
+        float[] config = new float[skeleton.getConfigSize()];
+        for (int i = 0; i < skeleton.getConfigSize(); i++) {
+            config[i] = 0;
+        }
+        config[X] = skeleton.getConfig(0)[X];
+        config[Y] = skeleton.getConfig(0)[Y];
+        config[Z] = skeleton.getConfig(0)[Z];
+        
+        configList.addConfig(0, config);
+        
+        return new SkeletonInterpolator(partIds, configList, type);
+    }
+    
+    /**
+     * Verknüpft eine Liste von Motions zu einer einzelnen.
+     * TODO: Transform anpassen.
+     * @param motions
+     * @return 
+     */
     public SkeletonInterpolator concatMotions(List<SkeletonInterpolator> motions) {
         double globTime = 0;
 
@@ -321,11 +317,11 @@ public class AsapRealizerDemo {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                id++;
-                realizerPort.performBML("<bml xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"  id=\"bml"+id+"\" xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">   \n"
-                        + "   <bmlt:keyframe id=\"kf"+id+"\">"
-                        + skeletonInterpolator.toXMLString()
-                        + "</bmlt:keyframe>   \n</bml>");
+            id++;
+            realizerPort.performBML("<bml xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"  id=\"bml"+id+"\" xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">   \n"
+                    + "   <bmlt:keyframe id=\"kf"+id+"\">"
+                    + skeletonInterpolator.toXMLString()
+                    + "</bmlt:keyframe>   \n</bml>");
             }
         });
 
@@ -340,21 +336,33 @@ public class AsapRealizerDemo {
         List<SkeletonInterpolator> stopMotions = new LinkedList<>();
         
         for (SkeletonInterpolator motion : motions) {
-
+System.out.println("motion:");
             movementDetector.getStops(motion);
 
             int[] stops = movementDetector.getStops(motion);
 
             int i = 0;
+            int y=0;
             int max = 0;
             for (int j = 1; j < stops.length; j++) {
                 if (stops[j] - stops[j - 1] > max) {
                     max = stops[j] - stops[j - 1];
                     i = j - 1;
                 }
+                
+                if (stops[j] - stops[j - 1] == 1) {
+                    
+                } else {
+                    if (j-y>10) {
+                        stopMotions.add(motion.subSkeletonInterpolator(y,j-1));
+                        //System.out.println("y:"+y+",j="+j);
+                        y=j;
+                    }
+                }
+                
             }
-            stopMotions.add(motion.subSkeletonInterpolator(i,i+max));
-            System.out.println("motion:");
+            //stopMotions.add(motion.subSkeletonInterpolator(i,i+max));
+            
             System.out.println("stops.lenght=" + stops.length + "; frame=" + i + "; length=" + max);
 
         }

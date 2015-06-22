@@ -73,4 +73,9 @@ public class Node {
     }
 
 
+    @Override
+    public String toString() {
+        return "NodeId: "+this.getId()+"; In: "+this.getIncomingEdges()+"; Out: "+this.getOutgoingEdges();
+    }
+    
 }
