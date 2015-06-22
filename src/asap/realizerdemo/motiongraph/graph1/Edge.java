@@ -34,7 +34,8 @@ public class Edge {
     }
 
     /**
-     * Constructor that is to be used in case you generate the motion before adding start and end points.
+     * Constructor that is to be used in case you generate the motion
+     * before adding start and end points.
      * @param motion motion that is represented by this motion
      */
     public Edge(SkeletonInterpolator motion) {
@@ -43,6 +44,17 @@ public class Edge {
         this.isBlend = false;
     }
 
+    public String toString() {
+        double durationInt = motion.getEndTime() - motion.getStartTime();
+
+        String toString = new String("Edge Id: " + this.id +
+                ", StartTime: " + motion.getStartTime() + ", Duration: " + durationInt +
+                ", StartId: " + startNode.getId() + ", EndId: " + endNode.getId());
+
+        return toString;
+    }
+
+    //<editor-fold desc="Getter and Setter">
     public Node getStartNode() {
         return startNode;
     }
@@ -77,15 +89,6 @@ public class Edge {
         this.motion = motion;
     }
 
-    public String toString() {
-        double durationInt = motion.getEndTime() - motion.getStartTime();
-
-        String toString = new String("Edge Id: " + this.id +
-        ", StartTime: " + motion.getStartTime() + ", Duration: " + durationInt +
-        ", StartId: " + startNode.getId() + ", EndId: " + endNode.getId());
-
-        return toString;
-    }
 
     public int getId() {
         return id;
@@ -98,4 +101,5 @@ public class Edge {
     public void setIsBlend(boolean isBlend) {
         this.isBlend = isBlend;
     }
+    //</editor-fold>
 }

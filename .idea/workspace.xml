@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4be22b75-6b15-44ac-b31c-6399082a6d09" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java" />
     </list>
     <ignored path="idle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,17 +25,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MotionGraph.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MotionGraph.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6112412">
+            <state vertical-scroll-proportion="0.0">
               <caret line="105" column="57" selection-start-line="105" selection-start-column="57" selection-end-line="105" selection-end-column="57" />
-              <folding>
-                <element signature="e#501#507#0" expanded="true" />
-                <element signature="docComment;method#randomWalk#0;class#MotionGraph#0" expanded="true" />
-                <element signature="e#1814#1836#0" expanded="true" />
-                <element signature="docComment;method#randomWalk#1;class#MotionGraph#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -74,7 +69,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Equals.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Equals.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Equals.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
@@ -84,25 +79,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoadMotion.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/LoadMotion.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-              <folding>
-                <element signature="e#1964#1972#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Edge.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
+              <caret line="37" column="7" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
               <folding>
                 <element signature="docComment;field#isBlend#0;class#Edge#0" expanded="true" />
+                <element signature="docComment;method#Edge#0;class#Edge#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,10 +96,13 @@
         <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+              <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="false" />
-                <element signature="docComment;method#Node#0;class#Node#0" expanded="true" />
+                <element signature="docComment;method#addIncomingEdge#0;class#Node#0" expanded="true" />
+                <element signature="docComment;method#addOutgoingEdge#0;class#Node#0" expanded="true" />
+                <element signature="docComment;method#hasNext#0;class#Node#0" expanded="true" />
+                <element signature="docComment;method#toString#0;class#Node#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -135,11 +122,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/LoadMotion.java" />
-        <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java" />
-        <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java" />
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java" />
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java" />
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java" />
+        <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java" />
+        <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java" />
       </list>
     </option>
   </component>
@@ -185,8 +172,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -271,41 +257,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="idle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="idle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="idle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="idle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="idle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -618,11 +573,12 @@
       <workItem from="1434717629542" duration="169000" />
       <workItem from="1434717900153" duration="980000" />
       <workItem from="1434719145846" duration="11102000" />
+      <workItem from="1434970091684" duration="817000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12508000" />
+    <option name="totallyTimeSpent" value="13325000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -635,32 +591,32 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3298969" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3298969" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -668,7 +624,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -676,6 +632,113 @@
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
     <buildFile url="file://$PROJECT_DIR$/build.xml">
+      <targetFilters>
+        <filter targetName="tu" isVisible="false" />
+        <filter targetName="createmanifest" isVisible="true" />
+        <filter targetName="jar" isVisible="true" />
+        <filter targetName="main" isVisible="true" />
+        <filter targetName="helphelp" isVisible="false" />
+        <filter targetName="help" isVisible="true" />
+        <filter targetName="-help" isVisible="true" />
+        <filter targetName="build" isVisible="true" />
+        <filter targetName="clean" isVisible="true" />
+        <filter targetName="delombok" isVisible="false" />
+        <filter targetName="-compilegenerated" isVisible="true" />
+        <filter targetName="-pre-compilation" isVisible="false" />
+        <filter targetName="compile" isVisible="true" />
+        <filter targetName="run" isVisible="true" />
+        <filter targetName="-findmain" isVisible="false" />
+        <filter targetName="-pre-doc" isVisible="false" />
+        <filter targetName="doc" isVisible="true" />
+        <filter targetName="-createmanifest" isVisible="true" />
+        <filter targetName="-jar" isVisible="true" />
+        <filter targetName="compile-tests" isVisible="false" />
+        <filter targetName="-junit" isVisible="false" />
+        <filter targetName="junit" isVisible="true" />
+        <filter targetName="junitnofail" isVisible="true" />
+        <filter targetName="junitreport" isVisible="true" />
+        <filter targetName="alternate" isVisible="true" />
+        <filter targetName="-init.dirs" isVisible="false" />
+        <filter targetName="-init.build.properties" isVisible="false" />
+        <filter targetName="checkVersion" isVisible="false" />
+        <filter targetName="init" isVisible="false" />
+        <filter targetName="-init.main.class.file" isVisible="false" />
+        <filter targetName="dist" isVisible="true" />
+        <filter targetName="freeze" isVisible="true" />
+        <filter targetName="testdir" isVisible="true" />
+        <filter targetName="test" isVisible="true" />
+        <filter targetName="testClass" isVisible="false" />
+        <filter targetName="-testClass" isVisible="false" />
+        <filter targetName="-decomposefilename" isVisible="false" />
+        <filter targetName="addtest" isVisible="false" />
+        <filter targetName="checkstyle" isVisible="true" />
+        <filter targetName="cpd" isVisible="false" />
+        <filter targetName="cpdreport" isVisible="false" />
+        <filter targetName="checkstylexml" isVisible="true" />
+        <filter targetName="findbugsreport" isVisible="true" />
+        <filter targetName="findbugsxml" isVisible="true" />
+        <filter targetName="findbugs" isVisible="true" />
+        <filter targetName="javancss" isVisible="true" />
+        <filter targetName="initemma" isVisible="false" />
+        <filter targetName="emmajunit" isVisible="true" />
+        <filter targetName="versioned.jar" isVisible="false" />
+        <filter targetName="versionedtest.jar" isVisible="false" />
+        <filter targetName="-ivy.manifest" isVisible="false" />
+        <filter targetName="test.jar" isVisible="true" />
+        <filter targetName="mf" isVisible="false" />
+        <filter targetName="-checkversionnumber" isVisible="false" />
+        <filter targetName="-newmanifest" isVisible="false" />
+        <filter targetName="ueSetmain" isVisible="false" />
+        <filter targetName="switchTest" isVisible="false" />
+        <filter targetName="run-nocompile" isVisible="true" />
+        <filter targetName="showmain" isVisible="true" />
+        <filter targetName="eclipseproject" isVisible="true" />
+        <filter targetName="eclipsesourceproject" isVisible="true" />
+        <filter targetName="eclipsesourceprojectlist" isVisible="true" />
+        <filter targetName="alpha" isVisible="true" />
+        <filter targetName="-gba" isVisible="false" />
+        <filter targetName="ca" isVisible="true" />
+        <filter targetName="getalphas" isVisible="true" />
+        <filter targetName="compilerebuildlist" isVisible="true" />
+        <filter targetName="compilelist" isVisible="true" />
+        <filter targetName="-resolve" isVisible="false" />
+        <filter targetName="resolve" isVisible="true" />
+        <filter targetName="resolvelib" isVisible="true" />
+        <filter targetName="resolvetestlib" isVisible="true" />
+        <filter targetName="resolveresource" isVisible="true" />
+        <filter targetName="ivyclean" isVisible="true" />
+        <filter targetName="-ivyreport" isVisible="true" />
+        <filter targetName="-ivyxmlreport" isVisible="true" />
+        <filter targetName="ivyreport" isVisible="true" />
+        <filter targetName="ivyxmlreport" isVisible="true" />
+        <filter targetName="ivyinfo" isVisible="false" />
+        <filter targetName="getmanifestversion" isVisible="false" />
+        <filter targetName="-pub" isVisible="false" />
+        <filter targetName="releaseresourcelist" isVisible="true" />
+        <filter targetName="releaselist" isVisible="true" />
+        <filter targetName="testreleaselist" isVisible="true" />
+        <filter targetName="devrelease" isVisible="true" />
+        <filter targetName="-devrelease" isVisible="false" />
+        <filter targetName="release" isVisible="true" />
+        <filter targetName="minorrelease" isVisible="true" />
+        <filter targetName="-minorrelease" isVisible="false" />
+        <filter targetName="majorrelease" isVisible="true" />
+        <filter targetName="-majorrelease" isVisible="false" />
+        <filter targetName="maintenancerelease" isVisible="true" />
+        <filter targetName="-maintenancerelease" isVisible="false" />
+        <filter targetName="showlatest" isVisible="true" />
+        <filter targetName="ivylist" isVisible="true" />
+        <filter targetName="-init.rebuild.list" isVisible="false" />
+        <filter targetName="-init.resolve.list" isVisible="false" />
+        <filter targetName="resolvelist" isVisible="true" />
+        <filter targetName="-init.resolverelease.status.file" isVisible="false" />
+        <filter targetName="resolvestatus" isVisible="true" />
+        <filter targetName="releasestatus" isVisible="true" />
+        <filter targetName="demo" isVisible="true" />
+        <filter targetName="-demo-name" isVisible="false" />
+        <filter targetName="-add-lib" isVisible="false" />
+        <filter targetName="-add-resource" isVisible="false" />
+      </targetFilters>
       <expanded value="true" />
     </buildFile>
   </component>
@@ -684,12 +747,88 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/HmiAnimation-0.24-dev1085.jar!/hmi/animation/SkeletonInterpolator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="697" column="22" selection-start-line="697" selection-start-column="16" selection-end-line="697" selection-end-column="22" />
           <folding>
-            <element signature="e#501#507#0" expanded="true" />
-            <element signature="docComment;method#randomWalk#0;class#MotionGraph#0" expanded="true" />
-            <element signature="e#1814#1836#0" expanded="true" />
-            <element signature="docComment;method#randomWalk#1;class#MotionGraph#0" expanded="true" />
+            <element signature="method#initTime#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#time#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#setTargetParts#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#interpolateTargetParts#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#getInterpolationConfigs#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#sampleTargetParts#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#mirrorParts#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#mirror#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#appendAttributeString#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#decodeAttributes#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#appendContent#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#decodeContent#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#decodeContent#1;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#convertFromAxisAngles#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#reverseQuats#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#subSkeletonInterpolator#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#subSkeletonInterpolator#1;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#read#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#read#1;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#read#2;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#xmlTag#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#getXMLTag#0;class#SkeletonInterpolator#0" expanded="false" />
+            <element signature="method#getTargetParts#0;class#SkeletonInterpolator#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Equals.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/LoadMotion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
+          <folding>
+            <element signature="docComment;field#isBlend#0;class#Edge#0" expanded="true" />
+            <element signature="docComment;method#Edge#0;class#Edge#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="docComment;method#addIncomingEdge#0;class#Node#0" expanded="true" />
+            <element signature="docComment;method#addOutgoingEdge#0;class#Node#0" expanded="true" />
+            <element signature="docComment;method#hasNext#0;class#Node#0" expanded="true" />
+            <element signature="docComment;method#toString#0;class#Node#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -697,7 +836,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-          <folding />
+          <folding>
+            <element signature="docComment;method#randomWalk#1;class#AbstractMotionGraph#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -707,6 +848,7 @@
           <caret line="76" column="24" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="24" />
           <folding>
             <element signature="docComment;field#isBlend#0;class#Edge#0" expanded="true" />
+            <element signature="docComment;method#Edge#0;class#Edge#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -717,7 +859,10 @@
           <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="docComment;method#Node#0;class#Node#0" expanded="true" />
+            <element signature="docComment;method#addIncomingEdge#0;class#Node#0" expanded="true" />
+            <element signature="docComment;method#addOutgoingEdge#0;class#Node#0" expanded="true" />
+            <element signature="docComment;method#hasNext#0;class#Node#0" expanded="true" />
+            <element signature="docComment;method#toString#0;class#Node#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -726,12 +871,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#501#507#0" expanded="true" />
-            <element signature="docComment;method#randomWalk#0;class#MotionGraph#0" expanded="true" />
-            <element signature="e#1814#1836#0" expanded="true" />
-            <element signature="docComment;method#randomWalk#1;class#MotionGraph#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -741,6 +881,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="docComment;field#isBlend#0;class#Edge#0" expanded="true" />
+            <element signature="docComment;method#Edge#0;class#Edge#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -749,22 +890,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#501#507#0" expanded="true" />
-            <element signature="docComment;method#randomWalk#0;class#MotionGraph#0" expanded="true" />
-            <element signature="e#1814#1836#0" expanded="true" />
-            <element signature="docComment;method#randomWalk#1;class#MotionGraph#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/LoadMotion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding>
-            <element signature="e#1964#1972#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -778,35 +904,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Equals.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
-          <folding>
-            <element signature="docComment;field#isBlend#0;class#Edge#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;method#Node#0;class#Node#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.8266978">
@@ -814,15 +911,6 @@
           <folding>
             <element signature="docComment;class#AsapRealizerDemo#0" expanded="true" />
             <element signature="docComment;field#avh#0;class#AsapRealizerDemo#0" expanded="true" />
-            <element signature="e#3044#3503#0" expanded="true" />
-            <element signature="e#3502#3503#0" expanded="true" />
-            <element signature="e#4096#4109#0" expanded="true" />
-            <element signature="e#5072#5310#0" expanded="true" />
-            <element signature="e#5309#5310#0" expanded="true" />
-            <element signature="e#7871#8325#0" expanded="true" />
-            <element signature="e#8324#8325#0" expanded="true" />
-            <element signature="e#8651#9132#0" expanded="true" />
-            <element signature="e#9131#9132#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -861,14 +949,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6112412">
+        <state vertical-scroll-proportion="0.0">
           <caret line="105" column="57" selection-start-line="105" selection-start-column="57" selection-end-line="105" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
           <folding>
-            <element signature="e#501#507#0" expanded="true" />
-            <element signature="docComment;method#randomWalk#0;class#MotionGraph#0" expanded="true" />
-            <element signature="e#1814#1836#0" expanded="true" />
-            <element signature="docComment;method#randomWalk#1;class#MotionGraph#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="docComment;method#addIncomingEdge#0;class#Node#0" expanded="true" />
+            <element signature="docComment;method#addOutgoingEdge#0;class#Node#0" expanded="true" />
+            <element signature="docComment;method#hasNext#0;class#Node#0" expanded="true" />
+            <element signature="docComment;method#toString#0;class#Node#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="7" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
+          <folding>
+            <element signature="docComment;field#isBlend#0;class#Edge#0" expanded="true" />
+            <element signature="docComment;method#Edge#0;class#Edge#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/LoadMotion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7917305">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Equals.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
