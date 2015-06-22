@@ -16,7 +16,7 @@ public class Node {
 
 
     /**
-     * Constructor, creates new NOde with given incoming and outgoing edges.
+     * Constructor, creates new Node with given incoming and outgoing edges.
      * Both can be Null if not yet created.
      *
      * @param incomingEdge

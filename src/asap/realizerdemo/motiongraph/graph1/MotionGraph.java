@@ -16,6 +16,10 @@ public class MotionGraph extends AbstractMotionGraph {
 
     private List<Edge> edges = new LinkedList<Edge>();
     private List<Node> nodes = new LinkedList<Node>();
+    /**
+     * How many times is the motionGraph to be splitted.
+     */
+    public static final int SPLIT_NUMBER = 20;
 
     public MotionGraph(List<SkeletonInterpolator> motions) {
         super(motions);
@@ -52,6 +56,51 @@ public class MotionGraph extends AbstractMotionGraph {
             System.out.println(edge);
         }
 
+    }
+
+    /**
+     * Randomly splits Motions in the graph.
+     */
+    public void split() {
+        Random r = new Random();
+        int bound = this.edges.size();
+
+       for (int i = 0; i < SPLIT_NUMBER; i++) {
+
+           Edge splittingEdge = this.edges.get(r.nextInt(bound)); //Randomly choose Edge to be splitted
+           int splittingBound = splittingEdge.getMotion().size(); //Get boundary for splitting
+           int splittingPoint = r.nextInt(splittingBound); //Randomly choose splitting point
+           Edge firstEdge = new Edge(splittingEdge.getMotion().subSkeletonInterpolator(0, splittingPoint));
+           //fist half of splitted motion
+           Edge secondEdge = new Edge(splittingEdge.getMotion().subSkeletonInterpolator(splittingPoint));
+           //second half of splitted motion
+
+           Node startNode = splittingEdge.getStartNode();
+           Node endNode = splittingEdge.getEndNode();
+
+           firstEdge.setStartNode(startNode);
+           secondEdge.setEndNode(endNode);
+
+           Node newNode = new Node(firstEdge, secondEdge);
+
+           removeEdge(splittingEdge);
+
+       }
+
+
+    }
+
+    /**
+     * Remove Edge from MotionGraph and it's nodes.
+     * @param edge
+     */
+    public void removeEdge(Edge edge) {
+        this.edges.remove(edge);
+        edge.getStartNode().getIncomingEdges().remove(edge);
+        edge.getStartNode().getOutgoingEdges().remove(edge);
+
+        edge.getEndNode().getIncomingEdges().remove(edge);
+        edge.getEndNode().getOutgoingEdges().remove(edge);
     }
 
     /**
