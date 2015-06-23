@@ -247,7 +247,10 @@ public class AsapRealizerDemo {
         });
 
         MotionGraph test = new MotionGraph(motions);
-        motions = test.randomWalk();
+        test.split();
+        System.out.println(test);
+
+       // motions = test.randomWalk();
         //demo.testStopping(motions);
         
         //demo.play(demo.defaultPose(motions.get(0)), demo.avh.getRealizerPort());

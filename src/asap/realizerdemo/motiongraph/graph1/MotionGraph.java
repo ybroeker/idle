@@ -65,33 +65,40 @@ public class MotionGraph extends AbstractMotionGraph {
         Random r = new Random();
         int bound = this.edges.size();
 
-       for (int i = 0; i < SPLIT_NUMBER; i++) {
+        for (int i = 0; i < SPLIT_NUMBER; i++) {
+            Edge splittingEdge = this.edges.get(r.nextInt(bound)); //Randomly choose Edge to be splitted
+            int splittingBound = splittingEdge.getMotion().size(); //Get boundary for splitting
+            int splittingPoint = r.nextInt(splittingBound); //Randomly choose splitting point
+            Edge firstEdge = new Edge(splittingEdge.getMotion().subSkeletonInterpolator(0, splittingPoint));
+            //fist half of splitted motion
+            Edge secondEdge = new Edge(splittingEdge.getMotion().subSkeletonInterpolator(splittingPoint));
+            //second half of splitted motion
 
-           Edge splittingEdge = this.edges.get(r.nextInt(bound)); //Randomly choose Edge to be splitted
-           int splittingBound = splittingEdge.getMotion().size(); //Get boundary for splitting
-           int splittingPoint = r.nextInt(splittingBound); //Randomly choose splitting point
-           Edge firstEdge = new Edge(splittingEdge.getMotion().subSkeletonInterpolator(0, splittingPoint));
-           //fist half of splitted motion
-           Edge secondEdge = new Edge(splittingEdge.getMotion().subSkeletonInterpolator(splittingPoint));
-           //second half of splitted motion
+            Node startNode = splittingEdge.getStartNode();
+            Node endNode = splittingEdge.getEndNode();
 
-           Node startNode = splittingEdge.getStartNode();
-           Node endNode = splittingEdge.getEndNode();
+            firstEdge.setStartNode(startNode);
+            secondEdge.setEndNode(endNode);
 
-           firstEdge.setStartNode(startNode);
-           secondEdge.setEndNode(endNode);
+            this.edges.add(firstEdge);
+            this.edges.add(secondEdge);
 
-           Node newNode = new Node(firstEdge, secondEdge);
+            Node newNode = new Node(firstEdge, secondEdge);
 
-           removeEdge(splittingEdge);
 
-       }
+            this.nodes.add(newNode);
+
+            removeEdge(splittingEdge);
+
+
+        }
 
 
     }
 
     /**
      * Remove Edge from MotionGraph and it's nodes.
+     *
      * @param edge
      */
     public void removeEdge(Edge edge) {
@@ -160,5 +167,15 @@ public class MotionGraph extends AbstractMotionGraph {
                 }
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        String ret = "Edges: "+edges.size()+"\n";
+        for (Edge edge : edges) {
+            ret += edge+"\n";
+        }
+        return ret;
+
     }
 }
