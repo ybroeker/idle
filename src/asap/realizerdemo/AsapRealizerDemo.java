@@ -3,6 +3,7 @@ package asap.realizerdemo;
 import asap.bml.ext.bmlt.BMLTInfo;
 import asap.environment.AsapEnvironment;
 import asap.environment.AsapVirtualHuman;
+import asap.realizerdemo.motiongraph.IDistance;
 import asap.realizerdemo.motiongraph.IEquals;
 import asap.realizerdemo.motiongraph.LoadMotion;
 import static asap.realizerdemo.motiongraph.Util.X;
@@ -10,6 +11,7 @@ import static asap.realizerdemo.motiongraph.Util.Y;
 import static asap.realizerdemo.motiongraph.Util.Z;
 import asap.realizerdemo.motiongraph.graph1.Equals;
 import asap.realizerdemo.motiongraph.graph1.MotionGraph;
+import asap.realizerdemo.motiongraph.metrics.JointAngles;
 import asap.realizerdemo.motiongraph.movementdetection.IMovementDetector;
 import asap.realizerdemo.motiongraph.movementdetection.MovementDetector;
 import asap.realizerport.RealizerPort;
@@ -36,6 +38,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -248,8 +251,11 @@ public class AsapRealizerDemo {
 
         MotionGraph test = new MotionGraph(motions);
         test.split();
-        System.out.println(test);
+        //System.out.println(test);
 
+        demo.testDistance(new JointAngles(), motions.get(0));
+        
+        
        // motions = test.randomWalk();
         //demo.testStopping(motions);
         
@@ -280,6 +286,24 @@ public class AsapRealizerDemo {
         configList.addConfig(0, config);
         
         return new SkeletonInterpolator(partIds, configList, type);
+    }
+
+    public void testDistance(IDistance distanceMetric, SkeletonInterpolator skeletonInterpolator) {
+        System.out.println(skeletonInterpolator.size());
+        int bound = skeletonInterpolator.size()/4;
+        int splitPoint = new Random().nextInt(skeletonInterpolator.size()-bound*2)+bound;
+        System.out.println(splitPoint);
+        SkeletonInterpolator start = skeletonInterpolator.subSkeletonInterpolator(0,splitPoint);
+        SkeletonInterpolator end = skeletonInterpolator.subSkeletonInterpolator(splitPoint-bound/2);
+
+        for ( int i = 0; i < bound; i++) {
+            System.out.printf("i: %3d; d: %.7f\n",i,distanceMetric.distance(start, end, i,i));    
+        }
+        
+        for (int i = 0; i < bound/2; i++) {
+            System.out.printf("i: %3d; d: %.7f\n",i,distanceMetric.distance(start, end, bound/2-i-1,i));    
+        }
+        
     }
     
     /**
