@@ -10,15 +10,26 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- *
+ * Implementation of {@code IDistance} which compares Joint Angles.
+ * <p>
+ * TODO: Its based on frames, so both SkeletonInterpolators needs to habe the same, constant frameRate. Better frame at
+ * time t to compare both as frame i.
+ * <p>
+ * TODO: Align compared frames, yet SkeletonInterpolator isn't like the same but translated or rotated
+ * SkeletonInterpolator.
+ * <p>
  * @author yannick-broeker
  */
 public class JointAngles implements IDistance {
 
     /**
+     * Default number of frames to be compared.
+     */
+    public static final int DEFAULT_COMPARED_FRAMES = 10;
+    /**
      * Weights for Joints
      */
-    private Map<String, Float> weights;
+    private final Map<String, Float> weights;
 
     public JointAngles() {
         weights = WeightMap.getDefaultInstance();
@@ -26,19 +37,25 @@ public class JointAngles implements IDistance {
 
     @Override
     public double distance(SkeletonInterpolator start, SkeletonInterpolator end) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return distance(start, end, DEFAULT_COMPARED_FRAMES);
     }
 
     @Override
     public double distance(SkeletonInterpolator start, SkeletonInterpolator end, int frames) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        float totalDist = 0;
+        for (int i = 0; i < frames; i++) {
+            totalDist += distance(start, end, frames - i, i);
+        }
+
+        return totalDist;
     }
 
     @Override
     public double distance(SkeletonInterpolator start, SkeletonInterpolator end, int startFrame, int endFrame) {
 
         //TODO
-        return dist(start.getConfig(start.size() - 1 - startFrame), end.getConfig(endFrame),
+        return dist(start.getConfig(start.size() - startFrame), end.getConfig(endFrame),
                 start.getConfigType(), end.getConfigType(),
                 start.getPartIds(), end.getPartIds());
     }
