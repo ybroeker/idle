@@ -1,6 +1,7 @@
 package asap.realizerdemo.motiongraph.metrics;
 
-import asap.realizerdemo.motiongraph.IDistance;
+import asap.realizerdemo.motiongraph.AbstractDistance;
+import asap.realizerdemo.motiongraph.Alignment;
 import asap.realizerdemo.motiongraph.Util;
 import hmi.animation.SkeletonInterpolator;
 import hmi.math.Quat4f;
@@ -20,7 +21,7 @@ import java.util.Set;
  * <p>
  * @author yannick-broeker
  */
-public class JointAngles implements IDistance {
+public class JointAngles extends AbstractDistance {
 
     /**
      * Default number of frames to be compared.
@@ -33,13 +34,24 @@ public class JointAngles implements IDistance {
 
     public JointAngles() {
         weights = WeightMap.getDefaultInstance();
+        aligment = new Alignment();
     }
 
+    /**
+     * {@inheritDoc} This implementation calls
+     * {@link #distance(SkeletonInterpolator start, SkeletonInterpolator end, int startFrame, int endFrame)} with
+     * {@code frames =}{@link #DEFAULT_COMPARED_FRAMES}.
+     */
     @Override
     public double distance(SkeletonInterpolator start, SkeletonInterpolator end) {
         return distance(start, end, DEFAULT_COMPARED_FRAMES);
     }
 
+    /**
+     * {@inheritDoc} This implementation calls
+     * {@link #distance(SkeletonInterpolator start, SkeletonInterpolator end, int startFrame, int endFrame)} for each
+     * pair of frames und sums the distances up.
+     */
     @Override
     public double distance(SkeletonInterpolator start, SkeletonInterpolator end, int frames) {
 
@@ -51,13 +63,18 @@ public class JointAngles implements IDistance {
         return totalDist;
     }
 
+    /**
+     * {@inheritDoc} This implementation calls
+     */
     @Override
     public double distance(SkeletonInterpolator start, SkeletonInterpolator end, int startFrame, int endFrame) {
 
+        SkeletonInterpolator endAligned = aligment.align(start, end, start.size() - startFrame);
+        
         //TODO
-        return dist(start.getConfig(start.size() - startFrame), end.getConfig(endFrame),
-                start.getConfigType(), end.getConfigType(),
-                start.getPartIds(), end.getPartIds());
+        return dist(start.getConfig(start.size() - startFrame), endAligned.getConfig(endFrame),
+                start.getConfigType(), endAligned.getConfigType(),
+                start.getPartIds(), endAligned.getPartIds());
     }
 
     private double dist(float[] config1, float[] config2, String configType1, String configType2, String[] partIds1, String[] partIds2) {
@@ -140,7 +157,9 @@ public class JointAngles implements IDistance {
 
         //float dot = Vec3f.dot(v1, v2);
         //Math.log(dot);
-        return Math.pow((v1[0] - v2[0]), 2) + Math.pow((v1[1] - v2[1]), 2) + Math.pow((v1[2] - v2[2]), 2);
+        return (v1[0] - v2[0]) * (v1[0] - v2[0])
+                + (v1[1] - v2[1]) * (v1[1] - v2[1])
+                + (v1[2] - v2[2]) * (v1[2] - v2[2]);
 
     }
 

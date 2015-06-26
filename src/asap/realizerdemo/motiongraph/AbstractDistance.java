@@ -3,24 +3,26 @@ package asap.realizerdemo.motiongraph;
 import hmi.animation.SkeletonInterpolator;
 
 /**
- * Distance-Metric-Interface.
+ * Abstract class Distance-Metric.
  * <p>
  * @author yannick-broeker
  */
-public interface IDistance {
+public abstract class AbstractDistance {
 
+    protected IAlignment aligment;
+    
     /**
      * Computes the distance between {@code start} and {@code end}.
      * <p>
      * The number of frames used for comparing depends on implementation.
-     * <p>     *
+     * <p>     
      * @param start First Motion
      * @param end Second Motion
      * @return calculated distance
      * @deprecated Used for testing purposes, better use
      * {@link #distance(SkeletonInterpolator start, SkeletonInterpolator end, int frames)}.
      */
-    double distance(SkeletonInterpolator start, SkeletonInterpolator end);
+    public abstract double distance(SkeletonInterpolator start, SkeletonInterpolator end);
 
     /**
      * Computes the distance between {@code start} and {@code end} at the {@code startFrame}-last Frame of {@code start}
@@ -34,7 +36,7 @@ public interface IDistance {
      * @param endFrame frame of {@code end}
      * @return calculated distance
      */
-    double distance(SkeletonInterpolator start, SkeletonInterpolator end, int startFrame, int endFrame);
+    public abstract double distance(SkeletonInterpolator start, SkeletonInterpolator end, int startFrame, int endFrame);
 
     /**
      * Computes the distance between the last {@code frames} Frames of {@code start} and the first {@code frames} Frames
@@ -45,6 +47,6 @@ public interface IDistance {
      * @param frames Number of Frames to use to compare the Motions
      * @return calculated distance
      */
-    double distance(SkeletonInterpolator start, SkeletonInterpolator end, int frames);
+    public abstract double distance(SkeletonInterpolator start, SkeletonInterpolator end, int frames);
 
 }

@@ -14,12 +14,15 @@ public class Util {
             VL3 = "vl3",
             VT9 = "vt9",
             VC7 = "vc7",
+            VT10 = "vt10", VT6 = "vt6", VT1 = "vt1",
             SKULLBASE = "skullbase",
             L_ACROMIOCLAVICULAR = "l_acromioclavicular",
+            L_STERNOCLAVICULAR = "l_sternoclavicular",
             L_SHOULDER = "l_shoulder",
             L_ELBOW = "l_elbow",
             L_WRIST = "l_wrist",
             R_ACROMIOCLAVICULAR = "r_acromioclavicular",
+            R_STERNOCLAVICULAR = "r_sternoclavicular",
             R_SHOULDER = "r_shoulder",
             R_ELBOW = "r_elbow",
             R_WRIST = "r_wrist",
@@ -30,18 +33,15 @@ public class Util {
             R_KNEE = "r_knee",
             R_ANKLE = "r_ankle";
 
-    
-    public static final String 
-            ACROMIOCLAVICULAR = "acromioclavicular",
+    public static final String ACROMIOCLAVICULAR = "acromioclavicular",
+            STERNOCLAVICULAR = "sternoclavicular",
             SHOULDER = "shoulder",
             ELBOW = "elbow",
             WRIST = "wrist",
-            
             HIP = "hip",
             KNEE = "knee",
             ANKLE = "ankle";
-            
-    
+
     /**
      * Index of X,Y,Z-RootTransform in ConfigList.
      */

@@ -8,21 +8,21 @@ import java.util.Set;
 
 /**
  * Map for Joint-Weigths, where L_[joint] = R_[joint] = [joint].
- *
+ * <p>
  * @author yannick-broeker
  */
 class WeightMap implements Map<String, Float> {
 
     /**
      * Returns a default WeightMap, where each contined joint has weight 1.
-     *
+     * <p>
      * The contained Joints are HUMANOID_ROOT, VC7, VL3, VT9, SKULLBASE, ACROMIOCLAVICULAR, ANKLE, ELBOW, HIP, KNEE,
      * SHOULDER and WRIST.
-     *
+     * <p>
      * @return default WeightMap
      */
     public static WeightMap getDefaultInstance() {
-        WeightMap weightMap = new WeightMap(12);
+        WeightMap weightMap = new WeightMap(16);
 
         weightMap.weights.put(Util.HUMANOID_ROOT, 1f);
         weightMap.weights.put(Util.VC7, 1f);
@@ -36,6 +36,11 @@ class WeightMap implements Map<String, Float> {
         weightMap.weights.put(Util.KNEE, 1f);
         weightMap.weights.put(Util.SHOULDER, 1f);
         weightMap.weights.put(Util.WRIST, 1f);
+
+        weightMap.weights.put(Util.VT10, 1f);
+        weightMap.weights.put(Util.VT6, 1f);
+        weightMap.weights.put(Util.VT1, 1f);
+        weightMap.weights.put(Util.STERNOCLAVICULAR, 1f);
 
         return weightMap;
     }
