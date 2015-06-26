@@ -10,8 +10,8 @@ public class Alignment implements IAlignment {
 
     /**
      * Align motion's root positions before blending.
-     *
-     * @param first  First motion
+     * <p>
+     * @param first First motion
      * @param second motion to be blended in.
      */
     public SkeletonInterpolator align(SkeletonInterpolator first, SkeletonInterpolator second, int frames) {
@@ -19,7 +19,7 @@ public class Alignment implements IAlignment {
         float[] config;
         ConfigList configList = new ConfigList(second.getConfigSize());
         String configType = second.getConfigType();
-        String[] partIds = new String[second.getPartIds().length];
+        String[] partIds = second.getPartIds().clone();
 
         for (int i = 0; i < partIds.length; i++) {
             partIds[i] = second.getPartIds()[i];
@@ -29,7 +29,8 @@ public class Alignment implements IAlignment {
         float[] firstConfig = first.getConfig(first.size() - frames); // Frame where blending starts
 
         SkeletonInterpolator newSecond = new SkeletonInterpolator();
-
+        newSecond.setConfigType(configType);
+        newSecond.setPartIds(partIds);
         for (int i = 0; i < second.getConfigList().size(); i++) {
             config = second.getConfig(i).clone();
 
@@ -40,16 +41,12 @@ public class Alignment implements IAlignment {
 
             newSecond.getConfigList().addConfig(second.getTime(i), config); //Set new config for new SkeletonInterplator
 
-
         }
 
-
-
-
         /*
-        (Translation:[0]-[2];Rotation:[3]-[6])
-TODO Rotation anpassen.
-        */
+         (Translation:[0]-[2];Rotation:[3]-[6])
+         TODO Rotation anpassen.
+         */
         return newSecond;
     }
 }
