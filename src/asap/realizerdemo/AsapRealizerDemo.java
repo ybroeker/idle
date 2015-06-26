@@ -246,6 +246,7 @@ public class AsapRealizerDemo {
         demo.startClocks();
         //demo.test(demo.avh.getRealizerPort());
 
+
         //AsapRealizerDemo demo = new AsapRealizerDemo();
         //demo.test(null);        
         demo.play(demo.concatMotions(motions),demo.avh.getRealizerPort());

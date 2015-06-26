@@ -1,6 +1,8 @@
 package asap.realizerdemo.motiongraph.graph1;
 
 import asap.realizerdemo.motiongraph.AbstractMotionGraph;
+import asap.realizerdemo.motiongraph.Alignment;
+import asap.realizerdemo.motiongraph.IAlignment;
 import asap.realizerdemo.motiongraph.IEquals;
 import hmi.animation.Skeleton;
 import hmi.animation.SkeletonInterpolator;
@@ -16,13 +18,22 @@ public class MotionGraph extends AbstractMotionGraph {
 
     private List<Edge> edges = new LinkedList<Edge>();
     private List<Node> nodes = new LinkedList<Node>();
+    private IAlignment align;
+
     /**
      * How many times is the motionGraph to be splitted.
      */
     public static final int SPLIT_NUMBER = 20;
 
+
     public MotionGraph(List<SkeletonInterpolator> motions) {
+        this(motions, new Alignment());
+
+    }
+
+    public MotionGraph(List<SkeletonInterpolator> motions, Alignment align) {
         super(motions);
+        this.align = align;
 
         int i = 0;
 
@@ -55,8 +66,8 @@ public class MotionGraph extends AbstractMotionGraph {
         for (Edge edge : edges) {
             System.out.println(edge);
         }
-
     }
+
 
     /**
      * Randomly splits Motions in the graph.
@@ -171,9 +182,9 @@ public class MotionGraph extends AbstractMotionGraph {
 
     @Override
     public String toString() {
-        String ret = "Edges: "+edges.size()+"\n";
+        String ret = "Edges: " + edges.size() + "\n";
         for (Edge edge : edges) {
-            ret += edge+"\n";
+            ret += edge + "\n";
         }
         return ret;
 

@@ -38,7 +38,7 @@ public class Alignment implements IAlignment {
             config[Util.Y] = config[Util.Y] - second.getConfig(0)[Util.Y] + firstConfig[Util.Y];
             config[Util.Z] = config[Util.Z] - second.getConfig(0)[Util.Z] + firstConfig[Util.Z];
 
-            newSecond.getConfigList().addConfig(second.getTime(i), config); //Set new config for new SkeletonInterplator 
+            newSecond.getConfigList().addConfig(second.getTime(i), config); //Set new config for new SkeletonInterplator
 
 
         }
