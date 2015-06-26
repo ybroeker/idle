@@ -8,10 +8,19 @@ import java.util.Set;
 
 /**
  * Map for Joint-Weigths, where L_[joint] = R_[joint] = [joint].
+ *
  * @author yannick-broeker
  */
-public class WeightMap implements Map<String, Float> {
+class WeightMap implements Map<String, Float> {
 
+    /**
+     * Returns a default WeightMap, where each contined joint has weight 1.
+     *
+     * The contained Joints are HUMANOID_ROOT, VC7, VL3, VT9, SKULLBASE, ACROMIOCLAVICULAR, ANKLE, ELBOW, HIP, KNEE,
+     * SHOULDER and WRIST.
+     *
+     * @return default WeightMap
+     */
     public static WeightMap getDefaultInstance() {
         WeightMap weightMap = new WeightMap(12);
 
@@ -31,12 +40,21 @@ public class WeightMap implements Map<String, Float> {
         return weightMap;
     }
 
+    /**
+     * Map for storing weights.
+     */
     private final Map<String, Float> weights;
 
+    /**
+     * Creates a new Weightmap.
+     */
     public WeightMap() {
         weights = new HashMap<>();
     }
 
+    /**
+     * Creates a new Weightmap with initialCapacity {@code initialCapacity}.
+     */
     public WeightMap(int initialCapacity) {
         weights = new HashMap<>(initialCapacity);
     }
@@ -110,9 +128,9 @@ public class WeightMap implements Map<String, Float> {
     @Override
     public Float put(String key, Float value) {
         if (key.startsWith("L_") || key.startsWith("R_")) {
-            return weights.put(key.substring(2),value);
+            return weights.put(key.substring(2), value);
         } else {
-            return weights.put(key,value);
+            return weights.put(key, value);
         }
     }
 
@@ -125,6 +143,5 @@ public class WeightMap implements Map<String, Float> {
             return weights.remove(key);
         }
     }
-
 
 }

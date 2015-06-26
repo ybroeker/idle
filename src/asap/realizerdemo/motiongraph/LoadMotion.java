@@ -46,34 +46,28 @@ public class LoadMotion {
     }
 
     public static void fixRootTransformation(SkeletonInterpolator motion) {
-
-        float x = 0, z = 0;
-
         ConfigList newConfig = new ConfigList(motion.getConfigSize());
 
-        x = motion.getConfig(0)[X];
-        z = motion.getConfig(0)[Z];
+        //float zRot = 0;
 
         for (int i = 0; i < motion.getConfigList().size(); i++) {
             float[] config = motion.getConfig(i);
             double time = motion.getTime(i);
 
             config[Y] = 0.975211761f;
-            //config[X] = config[X] - x;
-            //config[Z] = config[Z] - z;
 
-            newConfig.addConfig(time, config);
-            
             float[] quat = {config[3],config[4],config[5],config[6]};
             
             float[] rollPitchYaw = new float[3];
             Quat4f.getRollPitchYaw(quat, rollPitchYaw);
-            //rollPitchYaw[1]=0;
+            //zRot = rollPitchYaw[1]=0;
             Quat4f.setFromRollPitchYaw(quat, rollPitchYaw[0], rollPitchYaw[1], rollPitchYaw[2]);
             config[3]=quat[0];
             config[4]=quat[1];
             config[5]=quat[2];
             config[6]=quat[3];
+            
+            newConfig.addConfig(time, config);
         }
 
         
