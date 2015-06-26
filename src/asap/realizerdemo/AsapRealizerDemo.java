@@ -249,6 +249,7 @@ public class AsapRealizerDemo {
 
         });
 
+        
         MotionGraph test = new MotionGraph(motions);
         test.split();
         //System.out.println(test);

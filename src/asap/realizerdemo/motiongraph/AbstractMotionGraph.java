@@ -9,7 +9,6 @@ import java.util.List;
  * @author yannick-broeker
  */
 public abstract class AbstractMotionGraph {
-
     /**
      * Constructs a new MotionGraph.
      *
@@ -18,6 +17,13 @@ public abstract class AbstractMotionGraph {
     public AbstractMotionGraph(List<SkeletonInterpolator> motions) {
 
     }
+
+    /**
+     * Constructor for using different aligning methods.
+     * @param motions
+     * @param align
+     */
+    public AbstractMotionGraph(List<SkeletonInterpolator> motions, IAlignment align){}
 
     /**
      * returns a random-Walk through the Graph.
@@ -33,5 +39,7 @@ public abstract class AbstractMotionGraph {
      * @return random-walk through the Graph
      */
     public abstract List<SkeletonInterpolator> randomWalk(int lenght);
+
+
 
 }
