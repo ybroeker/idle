@@ -3,13 +3,13 @@ package asap.realizerdemo;
 import asap.bml.ext.bmlt.BMLTInfo;
 import asap.environment.AsapEnvironment;
 import asap.environment.AsapVirtualHuman;
-import asap.realizerdemo.motiongraph.IDistance;
-import asap.realizerdemo.motiongraph.IEquals;
-import asap.realizerdemo.motiongraph.LoadMotion;
+import asap.realizerdemo.motiongraph.*;
+
 import static asap.realizerdemo.motiongraph.Util.X;
 import static asap.realizerdemo.motiongraph.Util.Y;
 import static asap.realizerdemo.motiongraph.Util.Z;
 import asap.realizerdemo.motiongraph.graph1.Equals;
+import asap.realizerdemo.motiongraph.graph1.MotionGraph;
 import asap.realizerdemo.motiongraph.metrics.JointAngles;
 import asap.realizerdemo.motiongraph.movementdetection.IMovementDetector;
 import asap.realizerdemo.motiongraph.movementdetection.MovementDetector;
@@ -41,6 +41,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+
 import saiba.bml.BMLInfo;
 import saiba.bml.core.FaceLexemeBehaviour;
 import saiba.bml.core.HeadBehaviour;
@@ -238,7 +239,7 @@ public class AsapRealizerDemo {
         
         List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
             "idle_0_10.xml", //"idle_10_20.xml", "idle_20_30.xml", "idle_30_40.xml", "idle_40_50.xml",
-            "idle_50_60.xml", "idle_60_70.xml"
+            "idle_50_60.xml",// "idle_60_70.xml"
         });
         
         
@@ -248,8 +249,16 @@ public class AsapRealizerDemo {
 
 
         //AsapRealizerDemo demo = new AsapRealizerDemo();
-        //demo.test(null);        
-        demo.play(demo.concatMotions(motions),demo.avh.getRealizerPort());
+        //demo.test(null);
+        //MotionGraph test = new MotionGraph(motions);
+        //SkeletonInterpolator newS =  test.getAlign().align(motions.get(0), motions.get(1), motions.get(0).size()-1);
+        //motions.remove(1);
+        //motions.add(newS);
+
+//        demo.play(motions.get(1),demo.avh.getRealizerPort());
+
+        demo.play(demo.testBlending(motions.get(0),motions.get(1), new Blend(), new Alignment()),demo.avh.getRealizerPort());
+        //demo.play(demo.concatMotions(motions),demo.avh.getRealizerPort());
 
         //MotionGraph test = new MotionGraph(motions);
         //test.split();
@@ -290,7 +299,7 @@ public class AsapRealizerDemo {
         return new SkeletonInterpolator(partIds, configList, type);
     }
 
-    public void testDistance(IDistance distanceMetric, SkeletonInterpolator skeletonInterpolator) {
+    public void testDistance(AbstractDistance distanceMetric, SkeletonInterpolator skeletonInterpolator) {
 
         int bound = skeletonInterpolator.size() / 4;
         int splitPoint = new Random().nextInt(skeletonInterpolator.size() - bound * 2) + bound;
@@ -394,5 +403,17 @@ public class AsapRealizerDemo {
 
         return stopMotions;
 
+    }
+
+    public SkeletonInterpolator testBlending(SkeletonInterpolator first, SkeletonInterpolator second, AbstractBlend blend, IAlignment align){
+        SkeletonInterpolator newSecond;
+        SkeletonInterpolator blended;
+
+        newSecond = align.align(first, second, first.size());
+        blended = blend.blend(first, newSecond, first.size());
+
+
+
+        return blended;
     }
 }

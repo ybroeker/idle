@@ -29,6 +29,7 @@ public class Alignment implements IAlignment {
         float[] firstConfig = first.getConfig(first.size() - frames); // Frame where blending starts
 
         SkeletonInterpolator newSecond = new SkeletonInterpolator();
+        newSecond.setConfigList(configList);
         newSecond.setConfigType(configType);
         newSecond.setPartIds(partIds);
         for (int i = 0; i < second.getConfigList().size(); i++) {

@@ -189,4 +189,8 @@ public class MotionGraph extends AbstractMotionGraph {
         return ret;
 
     }
+
+    public IAlignment getAlign() {
+        return align;
+    }
 }
