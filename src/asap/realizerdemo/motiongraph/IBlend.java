@@ -7,7 +7,7 @@ import hmi.animation.SkeletonInterpolator;
  * 
  * @author yannick-broeker
  */
-public interface IBlending {
+public interface IBlend {
     
     /**
      * Returns the Blending of {@code frames} between the two Motions.
@@ -16,5 +16,5 @@ public interface IBlending {
      * @param frames number of Frames to use
      * @return Blending of the two Motions 
      */
-    SkeletonInterpolator blend(SkeletonInterpolator start, SkeletonInterpolator end, int frames);
+    SkeletonInterpolator blend(SkeletonInterpolator first, SkeletonInterpolator second, int frames);
 }
