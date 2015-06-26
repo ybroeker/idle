@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4be22b75-6b15-44ac-b31c-6399082a6d09" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/Alignment.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/Alignment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/LoadMotion.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/LoadMotion.java" />
     </list>
     <ignored path="idle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -102,12 +100,12 @@
       <file leaf-file-name="AsapRealizerDemo.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9540582">
-              <caret line="251" column="8" selection-start-line="251" selection-start-column="8" selection-end-line="251" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.47166923">
+              <caret line="255" column="0" selection-start-line="255" selection-start-column="0" selection-end-line="255" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#AsapRealizerDemo#0" expanded="true" />
                 <element signature="docComment;field#avh#0;class#AsapRealizerDemo#0" expanded="true" />
-                <element signature="e#4195#4208#0" expanded="true" />
+                <element signature="e#4092#4105#0" expanded="true" />
                 <element signature="docComment;method#concatMotions#0;class#AsapRealizerDemo#0" expanded="true" />
               </folding>
             </state>
@@ -660,12 +658,12 @@
       <workItem from="1434717629542" duration="169000" />
       <workItem from="1434717900153" duration="980000" />
       <workItem from="1434719145846" duration="11102000" />
-      <workItem from="1434970091684" duration="13012000" />
+      <workItem from="1434970091684" duration="13154000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25520000" />
+    <option name="totallyTimeSpent" value="25662000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1186,12 +1184,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9540582">
-          <caret line="251" column="8" selection-start-line="251" selection-start-column="8" selection-end-line="251" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.47166923">
+          <caret line="255" column="0" selection-start-line="255" selection-start-column="0" selection-end-line="255" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#AsapRealizerDemo#0" expanded="true" />
             <element signature="docComment;field#avh#0;class#AsapRealizerDemo#0" expanded="true" />
-            <element signature="e#4195#4208#0" expanded="true" />
+            <element signature="e#4092#4105#0" expanded="true" />
             <element signature="docComment;method#concatMotions#0;class#AsapRealizerDemo#0" expanded="true" />
           </folding>
         </state>

@@ -10,12 +10,10 @@ import static asap.realizerdemo.motiongraph.Util.X;
 import static asap.realizerdemo.motiongraph.Util.Y;
 import static asap.realizerdemo.motiongraph.Util.Z;
 import asap.realizerdemo.motiongraph.graph1.Equals;
-import asap.realizerdemo.motiongraph.graph1.MotionGraph;
 import asap.realizerdemo.motiongraph.metrics.JointAngles;
 import asap.realizerdemo.motiongraph.movementdetection.IMovementDetector;
 import asap.realizerdemo.motiongraph.movementdetection.MovementDetector;
 import asap.realizerport.RealizerPort;
-import com.google.common.collect.Iterables;
 import hmi.animation.ConfigList;
 import hmi.animation.SkeletonInterpolator;
 import hmi.animation.VJoint;
@@ -62,8 +60,8 @@ public class AsapRealizerDemo {
     private VJoint sphereJoint;
     protected JFrame mainJFrame = null;
 
-    private static int id=0;
-    
+    private static int id = 0;
+
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(AsapRealizerDemo.class);
 
     /**
@@ -237,27 +235,30 @@ public class AsapRealizerDemo {
         if (args.length == 1) {
             spec = args[0];
         }
-        //AsapRealizerDemo demo = new AsapRealizerDemo(new JFrame("AsapRealizer demo 1"), spec);
-        //demo.startClocks();
+        
+        List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
+            "idle_0_10.xml", //"idle_10_20.xml", "idle_20_30.xml", "idle_30_40.xml", "idle_40_50.xml",
+            "idle_50_60.xml", "idle_60_70.xml"
+        });
+        
+        
+        AsapRealizerDemo demo = new AsapRealizerDemo(new JFrame("AsapRealizer demo 1"), spec);
+        demo.startClocks();
         //demo.test(demo.avh.getRealizerPort());
 
-        AsapRealizerDemo demo = new AsapRealizerDemo();
+
+        //AsapRealizerDemo demo = new AsapRealizerDemo();
         //demo.test(null);        
-        List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
-            "idle_0_10.xml", "idle_10_20.xml", "idle_20_30.xml", "idle_30_40.xml", "idle_40_50.xml",
-            "idle_50_60.xml", "idle_60_70.xml"
+        demo.play(demo.concatMotions(motions),demo.avh.getRealizerPort());
 
-        });
-
-        
-        MotionGraph test = new MotionGraph(motions);
-        test.split();
+        //MotionGraph test = new MotionGraph(motions);
+        //test.split();
         //System.out.println(test);
+        //demo.play(demo.concatMotions(test.randomWalk()), demo.avh.getRealizerPort());
+        //demo.testDistance(new JointAngles(), motions.get(0));
 
-        demo.testDistance(new JointAngles(), motions.get(0));
         
-        
-       // motions = test.randomWalk();
+        // motions = test.randomWalk();
         //demo.testStopping(motions);
         
         //demo.play(demo.defaultPose(motions.get(0)), demo.avh.getRealizerPort());
@@ -271,11 +272,11 @@ public class AsapRealizerDemo {
         //System.out.println("e: "+equals.startEndEquals(skeletonInterpolator, motions.get(4)));
     }
 
-    public SkeletonInterpolator defaultPose(SkeletonInterpolator skeleton){
+    public SkeletonInterpolator defaultPose(SkeletonInterpolator skeleton) {
         ConfigList configList = new ConfigList(skeleton.getConfigSize());
         String type = skeleton.getConfigType();
         String[] partIds = skeleton.getPartIds();
-        
+
         float[] config = new float[skeleton.getConfigSize()];
         for (int i = 0; i < skeleton.getConfigSize(); i++) {
             config[i] = 0;
@@ -283,35 +284,33 @@ public class AsapRealizerDemo {
         config[X] = skeleton.getConfig(0)[X];
         config[Y] = skeleton.getConfig(0)[Y];
         config[Z] = skeleton.getConfig(0)[Z];
-        
+
         configList.addConfig(0, config);
-        
+
         return new SkeletonInterpolator(partIds, configList, type);
     }
 
     public void testDistance(IDistance distanceMetric, SkeletonInterpolator skeletonInterpolator) {
-        System.out.println(skeletonInterpolator.size());
-        int bound = skeletonInterpolator.size()/4;
-        int splitPoint = new Random().nextInt(skeletonInterpolator.size()-bound*2)+bound;
-        System.out.println(splitPoint);
-        SkeletonInterpolator start = skeletonInterpolator.subSkeletonInterpolator(0,splitPoint);
-        SkeletonInterpolator end = skeletonInterpolator.subSkeletonInterpolator(splitPoint-bound/2);
 
-        for ( int i = 0; i < bound; i++) {
-            System.out.printf("i: %3d; d: %.7f\n",i,distanceMetric.distance(start, end, i,i));    
-        }
+        int bound = skeletonInterpolator.size() / 4;
+        int splitPoint = new Random().nextInt(skeletonInterpolator.size() - bound * 2) + bound;
+
+        SkeletonInterpolator start = skeletonInterpolator.subSkeletonInterpolator(0, splitPoint);
+        SkeletonInterpolator end = skeletonInterpolator.subSkeletonInterpolator(splitPoint - bound / 2);
+
+        System.out.printf("frames: %3d\n",bound / 2);
         
-        for (int i = 0; i < bound/2; i++) {
-            System.out.printf("i: %3d; d: %.7f\n",i,distanceMetric.distance(start, end, bound/2-i-1,i));    
+        for (int i = 0; i <= bound / 2; i++) {
+            System.out.printf("i: %3d d: %.7f\n",i, distanceMetric.distance(start, end, i));
         }
-        
+
     }
-    
+
     /**
-     * Verknüpft eine Liste von Motions zu einer einzelnen.
-     * TODO: Transform anpassen.
+     * Verknüpft eine Liste von Motions zu einer einzelnen. TODO: Transform anpassen.
+     *
      * @param motions
-     * @return 
+     * @return
      */
     public SkeletonInterpolator concatMotions(List<SkeletonInterpolator> motions) {
         double globTime = 0;
@@ -321,16 +320,14 @@ public class AsapRealizerDemo {
         String[] partIds = motions.get(0).getPartIds();
 
         for (SkeletonInterpolator motion : motions) {
-            
-              
-            
+
             double startTime = motion.getStartTime();
             for (int i = 0; i < motion.size(); i++) {
                 config.addConfig(motion.getTime(i) - startTime + globTime, motion.getConfig(i));
             }
-            System.out.println("t:"+startTime);
+            System.out.println("t:" + startTime);
             globTime = motion.getEndTime() - startTime + globTime;
-            System.out.println("gt:"+globTime);  
+            System.out.println("gt:" + globTime);
 
         }
 
@@ -345,11 +342,11 @@ public class AsapRealizerDemo {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-            id++;
-            realizerPort.performBML("<bml xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"  id=\"bml"+id+"\" xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">   \n"
-                    + "   <bmlt:keyframe id=\"kf"+id+"\">"
-                    + skeletonInterpolator.toXMLString()
-                    + "</bmlt:keyframe>   \n</bml>");
+                id++;
+                realizerPort.performBML("<bml xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\"  id=\"bml" + id + "\" xmlns:bmlt=\"http://hmi.ewi.utwente.nl/bmlt\">   \n"
+                        + "   <bmlt:keyframe id=\"kf" + id + "\">"
+                        + skeletonInterpolator.toXMLString()
+                        + "</bmlt:keyframe>   \n</bml>");
             }
         });
 
@@ -360,42 +357,42 @@ public class AsapRealizerDemo {
 
     public List<SkeletonInterpolator> testStopping(List<SkeletonInterpolator> motions) {
         IMovementDetector movementDetector = new MovementDetector();
-        
+
         List<SkeletonInterpolator> stopMotions = new LinkedList<>();
-        
+
         for (SkeletonInterpolator motion : motions) {
-System.out.println("motion:");
+            System.out.println("motion:");
             movementDetector.getStops(motion);
 
             int[] stops = movementDetector.getStops(motion);
 
             int i = 0;
-            int y=0;
+            int y = 0;
             int max = 0;
             for (int j = 1; j < stops.length; j++) {
                 if (stops[j] - stops[j - 1] > max) {
                     max = stops[j] - stops[j - 1];
                     i = j - 1;
                 }
-                
+
                 if (stops[j] - stops[j - 1] == 1) {
-                    
+
                 } else {
-                    if (j-y>10) {
-                        stopMotions.add(motion.subSkeletonInterpolator(y,j-1));
+                    if (j - y > 10) {
+                        stopMotions.add(motion.subSkeletonInterpolator(y, j - 1));
                         //System.out.println("y:"+y+",j="+j);
-                        y=j;
+                        y = j;
                     }
                 }
-                
+
             }
             //stopMotions.add(motion.subSkeletonInterpolator(i,i+max));
-            
+
             System.out.println("stops.lenght=" + stops.length + "; frame=" + i + "; length=" + max);
 
         }
-        
+
         return stopMotions;
-        
+
     }
 }
