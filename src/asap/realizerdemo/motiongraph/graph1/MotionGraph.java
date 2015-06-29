@@ -17,6 +17,7 @@ public class MotionGraph extends AbstractMotionGraph {
 
     private List<Edge> edges = new LinkedList<Edge>();
     private List<Node> nodes = new LinkedList<Node>();
+    //private List<Edge> blends = new LinkedList<Edge>();
     private IAlignment align;
     private AbstractBlend blending;
     private AbstractDistance metric;
@@ -27,7 +28,7 @@ public class MotionGraph extends AbstractMotionGraph {
     /**
      * Max distance suitable for blending.
      */
-    public static double THRESHOLD = 0.5;
+    public static double THRESHOLD = 20;
     /**
      * Min number of frames needed when spliiting a motion.
      */
@@ -76,9 +77,9 @@ public class MotionGraph extends AbstractMotionGraph {
 
         this.connectMotions();
 
-        for (Edge edge : edges) {
+/*        for (Edge edge : edges) {
             System.out.println(edge);
-        }
+        }*/
     }
 
 
@@ -119,7 +120,9 @@ public class MotionGraph extends AbstractMotionGraph {
 
 
         }
-
+/*
+        System.out.println("Splitting Executed");
+*/
 
     }
 
@@ -152,20 +155,25 @@ public class MotionGraph extends AbstractMotionGraph {
         int bound = edges.size();
 
         Node currentNode = edges.get(r.nextInt(bound)).getStartNode();
+/*
         System.out.println("Der Weg beginnt bei Node: " + currentNode.getId());
+*/
 
         do {
             outgoingEdgesBound = currentNode.getOutgoingEdges().size();
             currentEdge = currentNode.getOutgoingEdges().get(r.nextInt(outgoingEdgesBound));
             //choose random outgoing motion from current Node
 
+            System.out.println("isBlend: "+currentEdge.isBlend());
+
             result.add(currentEdge.getMotion()); //add motion
             currentNode = currentEdge.getEndNode();
 
-            System.out.println(currentEdge);
+            // System.out.println(currentEdge);
 
         } while (currentNode.hasNext());
 
+//        System.out.println("RandomWalk executed");
         return result;
     }
 
@@ -200,30 +208,37 @@ public class MotionGraph extends AbstractMotionGraph {
      * Connect all Motions that are similar enough with blends.
      */
     public void createBlends() {
+
+        List<Edge> oldEdges = new LinkedList<>(edges);
+
+//        System.out.println("Blending started");
+        this.blending = new Blend(this.align);
         this.metric = new JointAngles();
+
         SkeletonInterpolator blendedMotion;
         SkeletonInterpolator blendStart;
         SkeletonInterpolator blendEnd;
 
-        for (Edge e : edges) {
+        for (Edge e : oldEdges) {
+            if (e == null) continue;
+            for (Edge g : oldEdges) {
+                if (g == null) continue;
+                if (e==g) continue;//TODO vllt doch?
 
-            for (int i = 0; i < edges.size(); i++) {
-                Edge g = edges.get(i);
-                
                 if (metric.distance(e.getMotion(), g.getMotion(), BLENDING_FRAMES) <= THRESHOLD) {
 
                     blendedMotion = blending.blend(e.getMotion(), g.getMotion(), BLENDING_FRAMES);
 
                     blendStart = e.getMotion().subSkeletonInterpolator(e.getMotion().size() - BLENDING_FRAMES);
                     //Frames of the first motion to be blended
-                    blendEnd = g.getMotion().subSkeletonInterpolator(BLENDING_FRAMES);
+                    blendEnd = g.getMotion().subSkeletonInterpolator(0,BLENDING_FRAMES);
                     //Frames of the second motion to be blended
 
 
                     SkeletonInterpolator split1 = e.getMotion().subSkeletonInterpolator(0, e.getMotion().size() - BLENDING_FRAMES);
                     //Calculate incoming edge for new Node
 
-                    SkeletonInterpolator split2 = g.getMotion().subSkeletonInterpolator(0, BLENDING_FRAMES);
+                    SkeletonInterpolator split2 = g.getMotion().subSkeletonInterpolator(BLENDING_FRAMES);
                     //Calculate outgoing Edge for new Node
 
                     // Edges for splittet motions
@@ -246,22 +261,24 @@ public class MotionGraph extends AbstractMotionGraph {
                     Node newEnd = new Node(secondMotionPart1, secondMotionPart2);
                     newEnd.addIncomingEdge(blending);
 
-                    edges.add(blending);
-                    edges.add(firstMotionPart1);
-                    edges.add(firstMotionPart2);
-                    edges.add(secondMotionPart1);
-                    edges.add(secondMotionPart2);
+                        edges.add(blending);
+                        edges.add(firstMotionPart1);
+                        edges.add(firstMotionPart2);
+                        edges.add(secondMotionPart1);
+                        edges.add(secondMotionPart2);
 
-                    blending.setBlend(true);
+                        blending.setBlend(true);
+                       // System.out.println("blend created");
+                        this.removeEdge(e);
+                        this.removeEdge(g);
 
-                    this.removeEdge(e);
-                    this.removeEdge(g);
 
                 }
             }
 
         }
-
+       // System.out.println("blending executed. New Graph as follows: ");
+       // System.out.println(this.toString());
     }
 
     @Override
@@ -277,4 +294,5 @@ public class MotionGraph extends AbstractMotionGraph {
     public IAlignment getAlign() {
         return align;
     }
+
 }

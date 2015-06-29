@@ -13,11 +13,18 @@ import java.util.Map;
  */
 public class Blend extends AbstractBlend {
 
+    IAlignment align;
+
+    public Blend(IAlignment align) {
+        this.align = align;
+    }
 
     @Override
     public SkeletonInterpolator blend(SkeletonInterpolator first, SkeletonInterpolator second, int frames) {
         SkeletonInterpolator blendedMotion = new SkeletonInterpolator();
         String[] partIds = null;
+
+        second = align.align(first, second, frames);
 
         ConfigList configList = new ConfigList(second.getConfigSize());
         blendedMotion.setConfigType(second.getConfigType());
