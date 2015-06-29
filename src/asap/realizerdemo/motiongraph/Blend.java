@@ -1,11 +1,12 @@
 package asap.realizerdemo.motiongraph;
 
-import asap.realizerdemo.motiongraph.graph1.Edge;
 import hmi.animation.ConfigList;
 import hmi.animation.SkeletonInterpolator;
 import hmi.math.Quat4f;
-
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Zukie on 24/06/15.
@@ -24,10 +25,9 @@ public class Blend extends AbstractBlend {
         blendedMotion.setConfigList(configList);
 
         for (int frame = 0; frame < frames; frame++) {
-            System.out.println(blendWeights(frame, frames));
 
-            Map<String, float[]> configMap1 = new HashMap<String, float[]>();
-            Map<String, float[]> configMap2 = new HashMap<String, float[]>();
+            Map<String, float[]> configMap1 = new HashMap<>(first.getPartIds().length);
+            Map<String, float[]> configMap2 = new HashMap<>(second.getPartIds().length);
             List<String> keys = new LinkedList<>();
             //create the new config
             float[] newConf = second.getConfig(frame).clone();
@@ -92,7 +92,8 @@ public class Blend extends AbstractBlend {
 
 
                 //blend the two frames
-                Quat4f.interpolate(rotation1, rotation2, (float) blendWeights(frame, frames));
+                //Quat4f.interpolate.alpha = 1-alpha;
+                Quat4f.interpolate(rotation1, rotation2, 1f - (float) blendWeights(frame, frames));
 
 
                 //adjust new configs
@@ -106,9 +107,6 @@ public class Blend extends AbstractBlend {
 
             blendedMotion.getConfigList().addConfig(second.getTime(frame), newConf);
         }
-
-
-        System.out.println(Arrays.toString(partIds));
 
         return blendedMotion;
     }
