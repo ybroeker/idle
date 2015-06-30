@@ -1,8 +1,7 @@
 package asap.realizerdemo.motiongraph.metrics;
 
-import asap.realizerdemo.motiongraph.AbstractDistance;
-import asap.realizerdemo.motiongraph.Alignment;
 import asap.realizerdemo.motiongraph.Util;
+import asap.realizerdemo.motiongraph.alignment.IAlignment;
 import hmi.animation.SkeletonInterpolator;
 import hmi.math.Quat4f;
 import java.util.HashMap;
@@ -21,7 +20,7 @@ import java.util.Set;
  * <p>
  * @author yannick-broeker
  */
-public class JointAngles extends AbstractDistance {
+public final class JointAngles implements IDistance {
 
     /**
      * Default number of frames to be compared.
@@ -30,16 +29,24 @@ public class JointAngles extends AbstractDistance {
     /**
      * Weights for Joints
      */
-    private final Map<String, Float> weights;
+    private final Map<String, Float> weights = WeightMap.getDefaultInstance();
+    /**
+     * Aligment used to align motions. 
+     */
+    private final IAlignment align;
 
-    public JointAngles() {
-        weights = WeightMap.getDefaultInstance();
-        aligment = new Alignment();
+    /**
+     * Creates a new DistanceMetric based on comparing JointAngles.
+     * 
+     * @param align Aligment used to align motions.
+     */
+    public JointAngles(IAlignment align) {
+        this.align = align;
     }
 
     /**
      * {@inheritDoc} This implementation calls
-     * {@link #distance(SkeletonInterpolator start, SkeletonInterpolator end, int startFrame, int endFrame)} with
+     * {@link #distance(SkeletonInterpolator, SkeletonInterpolator, int)} with
      * {@code frames =}{@link #DEFAULT_COMPARED_FRAMES}.
      */
     @Override
@@ -49,7 +56,7 @@ public class JointAngles extends AbstractDistance {
 
     /**
      * {@inheritDoc} This implementation calls
-     * {@link #distance(SkeletonInterpolator start, SkeletonInterpolator end, int startFrame, int endFrame)} for each
+     * {@link #distance(SkeletonInterpolator, SkeletonInterpolator, int, int)} for each
      * pair of frames und sums the distances up.
      */
     @Override
@@ -64,13 +71,13 @@ public class JointAngles extends AbstractDistance {
     }
 
     /**
-     * {@inheritDoc} This implementation calls
+     * {@inheritDoc}
      */
     @Override
     public double distance(SkeletonInterpolator start, SkeletonInterpolator end, int startFrame, int endFrame) {
 
-        SkeletonInterpolator endAligned = aligment.align(start, end, start.size() - startFrame);
-        
+        SkeletonInterpolator endAligned = align.align(start, end, start.size() - startFrame);
+
         //TODO
         return dist(start.getConfig(start.size() - startFrame), endAligned.getConfig(endFrame),
                 start.getConfigType(), endAligned.getConfigType(),

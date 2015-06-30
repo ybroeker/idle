@@ -1,5 +1,10 @@
 package asap.realizerdemo;
 
+import asap.realizerdemo.motiongraph.alignment.IAlignment;
+import asap.realizerdemo.motiongraph.alignment.Alignment;
+import asap.realizerdemo.motiongraph.metrics.IEquals;
+import asap.realizerdemo.motiongraph.blending.IBlend;
+import asap.realizerdemo.motiongraph.metrics.IDistance;
 import asap.bml.ext.bmlt.BMLTInfo;
 import asap.environment.AsapEnvironment;
 import asap.environment.AsapVirtualHuman;
@@ -8,7 +13,7 @@ import asap.realizerdemo.motiongraph.*;
 import static asap.realizerdemo.motiongraph.Util.X;
 import static asap.realizerdemo.motiongraph.Util.Y;
 import static asap.realizerdemo.motiongraph.Util.Z;
-import asap.realizerdemo.motiongraph.graph1.Equals;
+import asap.realizerdemo.motiongraph.metrics.Equals;
 import asap.realizerdemo.motiongraph.graph1.MotionGraph;
 import asap.realizerdemo.motiongraph.metrics.JointAngles;
 import asap.realizerdemo.motiongraph.movementdetection.IMovementDetector;
@@ -50,9 +55,9 @@ import saiba.bml.core.PostureShiftBehaviour;
 
 /**
  * Simple demo for the AsapRealizer+environment
- *
+ * <p>
  * @author hvanwelbergen
- *
+ * <p>
  */
 public class AsapRealizerDemo {
 
@@ -237,48 +242,42 @@ public class AsapRealizerDemo {
         if (args.length == 1) {
             spec = args[0];
         }
-        
-        List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
-            /*"idle_0_10.xml",*/ "idle_10_20.xml", "idle_20_30.xml", "idle_30_40.xml", "idle_40_50.xml",
-            "idle_50_60.xml", "idle_60_70.xml"
-        });
-        
-        
+
         AsapRealizerDemo demo = new AsapRealizerDemo(new JFrame("AsapRealizer demo 1"), spec);
         demo.startClocks();
         //demo.test(demo.avh.getRealizerPort());
 
+        List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
+            /*"idle_0_10.xml",*/"idle_10_20.xml", "idle_20_30.xml", "idle_30_40.xml", "idle_40_50.xml",
+            "idle_50_60.xml", "idle_60_70.xml"
+        });
 
         //AsapRealizerDemo demo = new AsapRealizerDemo();
         //demo.test(null);
+        MotionGraph test2 = new MotionGraph.Builder(motions).align(new Alignment()).getInstance();
+
         MotionGraph test = new MotionGraph(motions);
         test.split();
         test.createBlends();
-        demo.play(test,demo.avh.getRealizerPort());
+        demo.play(test, demo.avh.getRealizerPort());
         //SkeletonInterpolator newS =  test.getAlign().align(motions.get(0), motions.get(1), motions.get(0).size()-1);
         //motions.remove(1);
         //motions.add(newS);
 
 //        demo.play(motions.get(1),demo.avh.getRealizerPort());
-
         //demo.play(demo.testBlending(motions.get(0),motions.get(1), new Blend(), new Alignment()),demo.avh.getRealizerPort());
         //demo.play(demo.concatMotions(motions),demo.avh.getRealizerPort());
-
         //MotionGraph test = new MotionGraph(motions);
         //test.split();
         //System.out.println(test);
         //demo.play(demo.concatMotions(test.randomWalk()), demo.avh.getRealizerPort());
-        //demo.testDistance(new JointAngles(), motions.get(0));
+        demo.testDistance(new JointAngles(new Alignment()), motions.get(0));
 
-        
         // motions = test.randomWalk();
         //demo.testStopping(motions);
-        
         //demo.play(demo.defaultPose(motions.get(0)), demo.avh.getRealizerPort());
-        
         //demo.play(demo.concatMotions(demo.testStopping(motions)), demo.avh.getRealizerPort());
         ///demo.play(demo.concatMotions(motions), demo.avh.getRealizerPort());
-
         //SkeletonInterpolator skeletonInterpolator = motions.get(3);
         //skeletonInterpolator.mirror();
         //IEquals equals = new Equals();
@@ -303,7 +302,7 @@ public class AsapRealizerDemo {
         return new SkeletonInterpolator(partIds, configList, type);
     }
 
-    public void testDistance(AbstractDistance distanceMetric, SkeletonInterpolator skeletonInterpolator) {
+    public void testDistance(IDistance distanceMetric, SkeletonInterpolator skeletonInterpolator) {
 
         int bound = skeletonInterpolator.size() / 4;
         int splitPoint = new Random().nextInt(skeletonInterpolator.size() - bound * 2) + bound;
@@ -313,15 +312,14 @@ public class AsapRealizerDemo {
 
 //        System.out.printf("frames: %3d\n",bound / 2);
 /*
-        for (int i = 0; i <= bound / 2; i++) {
-            System.out.printf("i: %3d d: %.7f\n",i, distanceMetric.distance(start, end, i));
-        }*/
-
+         for (int i = 0; i <= bound / 2; i++) {
+         System.out.printf("i: %3d d: %.7f\n",i, distanceMetric.distance(start, end, i));
+         }*/
     }
 
     /**
      * Verknüpft eine Liste von Motions zu einer einzelnen. TODO: Transform anpassen.
-     *
+     * <p>
      * @param motions
      * @return
      */
@@ -330,8 +328,8 @@ public class AsapRealizerDemo {
 
         List<SkeletonInterpolator> newMotions = new LinkedList<>();
         newMotions.add(motions.get(0));
-        for (int i = 1; i<motions.size();i++) {
-            newMotions.add(align.align(motions.get(i-1),motions.get(i),1));
+        for (int i = 1; i < motions.size(); i++) {
+            newMotions.add(align.align(motions.get(i - 1), motions.get(i), 1));
         }
 
         ConfigList config = new ConfigList(newMotions.get(0).getConfigSize());
@@ -369,7 +367,7 @@ public class AsapRealizerDemo {
             }
         });
 
-       // frame.pack();
+        // frame.pack();
         frame.add(button);
         frame.setVisible(true);
 
@@ -392,7 +390,7 @@ public class AsapRealizerDemo {
         });
 
         // frame.pack();
-        frame.setSize(50,50);
+        frame.setSize(50, 50);
         frame.add(button);
         frame.setVisible(true);
 
@@ -432,21 +430,18 @@ public class AsapRealizerDemo {
             //stopMotions.add(motion.subSkeletonInterpolator(i,i+max));
 
 //            System.out.println("stops.lenght=" + stops.length + "; frame=" + i + "; length=" + max);
-
         }
 
         return stopMotions;
 
     }
 
-    public SkeletonInterpolator testBlending(SkeletonInterpolator first, SkeletonInterpolator second, AbstractBlend blend, IAlignment align){
+    public SkeletonInterpolator testBlending(SkeletonInterpolator first, SkeletonInterpolator second, IBlend blend, IAlignment align) {
         SkeletonInterpolator newSecond;
         SkeletonInterpolator blended;
 
         newSecond = align.align(first, second, first.size());
         blended = blend.blend(first, newSecond, first.size());
-
-
 
         return blended;
     }

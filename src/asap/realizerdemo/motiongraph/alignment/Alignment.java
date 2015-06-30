@@ -1,10 +1,12 @@
-package asap.realizerdemo.motiongraph;
+package asap.realizerdemo.motiongraph.alignment;
 
+import asap.realizerdemo.motiongraph.Util;
 import hmi.animation.ConfigList;
 import hmi.animation.SkeletonInterpolator;
 
 /**
  * Created by Zukie on 26/06/15.
+ * @author Zukie
  */
 public class Alignment implements IAlignment {
 

@@ -1,4 +1,4 @@
-package asap.realizerdemo.motiongraph;
+package asap.realizerdemo.motiongraph.metrics;
 
 import hmi.animation.SkeletonInterpolator;
 

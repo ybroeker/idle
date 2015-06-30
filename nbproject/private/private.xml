@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+        <file>
+            <url>src/asap/realizerdemo/AsapRealizerDemo.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>372</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/yannick-broeker/Documents/Studium/1515/MMI/casem_software/AsapDemo/AsapTest2/src/asap/realizerdemo/newanimations/HeadSpinMU.java</file>
-            <file>file:/Users/yannick-broeker/Documents/Studium/1515/MMI/casem_software/AsapDemo/AsapTest2/src/asap/realizerdemo/AsapRealizerDemo.java</file>
+            <file>file:/Users/yannick-broeker/Documents/Studium/1515/MMI/casem_software/AsapDemo/idle/src/asap/realizerdemo/AsapRealizerDemo.java</file>
+            <file>file:/Users/yannick-broeker/Documents/Studium/1515/MMI/casem_software/AsapDemo/idle/src/asap/realizerdemo/motiongraph/AbstractDistance.java</file>
+            <file>file:/Users/yannick-broeker/Documents/Studium/1515/MMI/casem_software/AsapDemo/idle/src/asap/realizerdemo/motiongraph/Blend.java</file>
+            <file>jar:file:/Users/yannick-broeker/Documents/Studium/1515/MMI/casem_software/AsapDemo/idle/lib/HmiAnimation-0.24-dev1084.jar!/hmi/animation/ConfigList.java</file>
+            <file>file:/Users/yannick-broeker/Documents/Studium/1515/MMI/casem_software/AsapDemo/idle/src/asap/realizerdemo/motiongraph/Alignment.java</file>
+            <file>file:/Users/yannick-broeker/Documents/Studium/1515/MMI/casem_software/AsapDemo/idle/src/asap/realizerdemo/motiongraph/LoadMotion.java</file>
+            <file>file:/Users/yannick-broeker/Documents/Studium/1515/MMI/casem_software/AsapDemo/idle/src/asap/realizerdemo/motiongraph/Util.java</file>
+            <file>file:/Users/yannick-broeker/Documents/Studium/1515/MMI/casem_software/AsapDemo/idle/src/asap/realizerdemo/motiongraph/metrics/JointAngles.java</file>
         </group>
     </open-files>
 </project-private>

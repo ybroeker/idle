@@ -1,20 +1,21 @@
-package asap.realizerdemo.motiongraph;
+package asap.realizerdemo.motiongraph.blending;
 
 import hmi.animation.SkeletonInterpolator;
 
 /**
  * Interface for Blendings.
- * 
+ * <p>
  * @author yannick-broeker
  */
-public abstract class AbstractBlend {
-    
+public interface IBlend {
+
     /**
      * Returns the Blending of {@code frames} between the two Motions.
+     * <p>
      * @param first first Motion
      * @param second second Motion
      * @param frames number of Frames to use
-     * @return Blending of the two Motions 
+     * @return Blending of the two Motions
      */
-    public abstract SkeletonInterpolator blend(SkeletonInterpolator first, SkeletonInterpolator second, int frames);
+    SkeletonInterpolator blend(SkeletonInterpolator first, SkeletonInterpolator second, int frames);
 }

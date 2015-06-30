@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author yannick-broeker
  */
-public class LoadMotion {
+public final class LoadMotion {
 
     public static final float Y_DEFAULT = 0.975211761f;
 
@@ -49,16 +49,16 @@ public class LoadMotion {
 
             config[Y] = Y_DEFAULT;
 
-            float[] quat = {config[3], config[4], config[5], config[6]};
+            float[] quat = {config[Quat4f.S+3], config[Quat4f.X+3], config[Quat4f.Y+3], config[Quat4f.Z+3]};
 
             float[] rollPitchYaw = new float[3];
             Quat4f.getRollPitchYaw(quat, rollPitchYaw);
             //zRot = rollPitchYaw[1]=0;
             Quat4f.setFromRollPitchYaw(quat, rollPitchYaw[0], rollPitchYaw[1], rollPitchYaw[2]);
-            config[3] = quat[0];
-            config[4] = quat[1];
-            config[5] = quat[2];
-            config[6] = quat[3];
+            config[Quat4f.S+3] = quat[Quat4f.S];
+            config[Quat4f.X+3] = quat[Quat4f.X];
+            config[Quat4f.Y+3] = quat[Quat4f.Y];
+            config[Quat4f.Z+3] = quat[Quat4f.Z];
 
             newConfig.addConfig(time, config);
         }

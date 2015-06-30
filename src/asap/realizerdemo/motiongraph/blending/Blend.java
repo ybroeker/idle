@@ -1,5 +1,6 @@
-package asap.realizerdemo.motiongraph;
+package asap.realizerdemo.motiongraph.blending;
 
+import asap.realizerdemo.motiongraph.alignment.IAlignment;
 import hmi.animation.ConfigList;
 import hmi.animation.SkeletonInterpolator;
 import hmi.math.Quat4f;
@@ -10,8 +11,9 @@ import java.util.Map;
 
 /**
  * Created by Zukie on 24/06/15.
+ * @author Zukie
  */
-public class Blend extends AbstractBlend {
+public class Blend implements IBlend {
 
     IAlignment align;
 
