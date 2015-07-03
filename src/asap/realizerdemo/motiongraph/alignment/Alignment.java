@@ -10,12 +10,12 @@ import hmi.animation.SkeletonInterpolator;
  */
 public class Alignment implements IAlignment {
 
+
     /**
-     * Align motion's root positions before blending.
-     * <p>
-     * @param first First motion
-     * @param second motion to be blended in.
+     *{@inheritDoc}
+     *
      */
+    @Override
     public SkeletonInterpolator align(SkeletonInterpolator first, SkeletonInterpolator second, int frames) {
 
         float[] config;

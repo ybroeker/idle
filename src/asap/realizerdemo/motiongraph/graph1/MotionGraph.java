@@ -87,6 +87,10 @@ public final class MotionGraph extends AbstractMotionGraph {
         this.init(motions);
     }
 
+    /**
+     * Initialise MotionGraph. Creates Edges vor every Motion and mirrors them.
+     * @param motions
+     */
     private void init(List<SkeletonInterpolator> motions) {
         int i = 0;
 
@@ -223,6 +227,10 @@ public final class MotionGraph extends AbstractMotionGraph {
         throw new UnsupportedOperationException("Not Supported yet!");
     }
 
+    /**
+     * Reconnect all Motions that have been cut in xml-format.
+     * Will not be needed in final implementation
+     */
     public void connectMotions() {
         IEquals equals = new Equals();
 
