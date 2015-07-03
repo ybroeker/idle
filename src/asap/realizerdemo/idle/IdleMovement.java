@@ -94,12 +94,12 @@ public class IdleMovement implements RestPose {
         test.split();
         test.createBlends();
 
-        motion = concatMotions(test.randomWalk(), new Alignment());
+        motion = concatMotions(test.randomWalk(), new Alignment(),0);
         System.out.println("MotionsLoaded");
     }
 
-    public SkeletonInterpolator concatMotions(List<SkeletonInterpolator> motions, IAlignment align) {
-        double globTime = 0;
+    public SkeletonInterpolator concatMotions(List<SkeletonInterpolator> motions, IAlignment align, double globStartTime) {
+        double globTime = globStartTime;
 
         List<SkeletonInterpolator> newMotions = new LinkedList<>();
         newMotions.add(motions.get(0));
@@ -141,6 +141,11 @@ public class IdleMovement implements RestPose {
          vj.setRotation(q);
          }
          */
+        //TODO!
+        if (time>motion.getEndTime()) {
+            motion = concatMotions(test.randomWalk(), new Alignment(),time);
+        }
+        
         motion.setTarget(aniPlayer.getVNext());
         motion.time(time);
         /*VJoint vj = aniPlayer.getVNext().getPart("");
