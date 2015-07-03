@@ -2,6 +2,7 @@ package asap.realizerdemo;
 
 import asap.realizerdemo.motiongraph.alignment.IAlignment;
 import asap.realizerdemo.motiongraph.alignment.Alignment;
+import asap.realizerdemo.motiongraph.alignment.NopAlignment;
 import asap.realizerdemo.motiongraph.metrics.IEquals;
 import asap.realizerdemo.motiongraph.blending.IBlend;
 import asap.realizerdemo.motiongraph.metrics.IDistance;
@@ -254,11 +255,11 @@ public class AsapRealizerDemo {
 
         //AsapRealizerDemo demo = new AsapRealizerDemo();
         //demo.test(null);
-        MotionGraph test2 = new MotionGraph.Builder(motions).align(new Alignment()).getInstance();
+       // MotionGraph test = new MotionGraph.Builder(motions).align(new Alignment()).getInstance();
 
         MotionGraph test = new MotionGraph(motions);
         test.split();
-        test.createBlends();
+        //test.createBlends();
         demo.play(test, demo.avh.getRealizerPort());
         //SkeletonInterpolator newS =  test.getAlign().align(motions.get(0), motions.get(1), motions.get(0).size()-1);
         //motions.remove(1);
@@ -271,7 +272,8 @@ public class AsapRealizerDemo {
         //test.split();
         //System.out.println(test);
         //demo.play(demo.concatMotions(test.randomWalk()), demo.avh.getRealizerPort());
-        demo.testDistance(new JointAngles(new Alignment()), motions.get(0));
+
+       /// demo.testDistance(new JointAngles(new NopAlignment()), motions.get(0));
 
         // motions = test.randomWalk();
         //demo.testStopping(motions);
