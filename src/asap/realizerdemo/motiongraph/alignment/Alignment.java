@@ -6,6 +6,7 @@ import hmi.animation.SkeletonInterpolator;
 
 /**
  * Created by Zukie on 26/06/15.
+ * TODO: Align y-rotation
  * @author Zukie
  */
 public class Alignment implements IAlignment {
