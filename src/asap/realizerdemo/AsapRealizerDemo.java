@@ -30,6 +30,7 @@ import hmi.mixedanimationenvironment.MixedAnimationEnvironment;
 import hmi.physicsenvironment.OdePhysicsEnvironment;
 import hmi.renderenvironment.HmiRenderEnvironment;
 import hmi.util.Console;
+import hmi.worldobjectenvironment.VJointWorldObject;
 import hmi.worldobjectenvironment.WorldObjectEnvironment;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -133,6 +134,12 @@ public class AsapRealizerDemo {
         hre.loadCheckerBoardGround("ground", 0.5f, 0f);
         hre.setBackground(0.2f, 0.2f, 0.2f);
 
+        hre.loadBox("bluebox", new float[] { 0.05f, 0.05f, 0.05f }, HmiRenderEnvironment.RenderStyle.FILL, new float[] { 0.2f, 0.2f, 1, 1 }, new float[] { 0.2f,
+                0.2f, 1, 1 }, new float[] { 0.2f, 0.2f, 1, 0 }, new float[] { 0.2f, 0.2f, 1, 1 });
+        VJoint boxJoint = hre.getObjectRootJoint("bluebox");
+        boxJoint.setTranslation(0.1f, 1.5f, 0.4f);
+        we.getWorldObjectManager().addWorldObject("bluebox", new VJointWorldObject(boxJoint));
+        
         // set camera position
         // hre.setNavigationEnabled(false);
         hre.setViewPoint(new float[]{0, 1, 2});
@@ -238,7 +245,7 @@ public class AsapRealizerDemo {
     public static void main(String[] args) throws IOException {
         // examples for conversational animation seminar:
         // String spec = "asaparmandia_motionsamples.xml";
-        String spec = "asaparmandia_y_test.xml";
+        String spec = "asaparmandia_motionsamples.xml";//"asaparmandia_y_test.xml";
         if (args.length == 1) {
             spec = args[0];
         }
@@ -247,11 +254,11 @@ public class AsapRealizerDemo {
         demo.startClocks();
         //demo.test(demo.avh.getRealizerPort());
 
-        List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
-            /*"idle_0_10.xml",*/"idle_10_20.xml", "idle_20_30.xml", "idle_30_40.xml", "idle_40_50.xml",
-            "idle_50_60.xml", "idle_60_70.xml"
-        });
-
+       // List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
+       //     /*"idle_0_10.xml",*/"idle_10_20.xml", "idle_20_30.xml", "idle_30_40.xml", "idle_40_50.xml",
+       //     "idle_50_60.xml", "idle_60_70.xml"
+       // });
+/*
         //AsapRealizerDemo demo = new AsapRealizerDemo();
         //demo.test(null);
         MotionGraph test2 = new MotionGraph.Builder(motions).align(new Alignment()).getInstance();
@@ -259,7 +266,7 @@ public class AsapRealizerDemo {
         MotionGraph test = new MotionGraph(motions);
         test.split();
         test.createBlends();
-        demo.play(test, demo.avh.getRealizerPort());
+        demo.play(test, demo.avh.getRealizerPort());*/
         //SkeletonInterpolator newS =  test.getAlign().align(motions.get(0), motions.get(1), motions.get(0).size()-1);
         //motions.remove(1);
         //motions.add(newS);
@@ -271,7 +278,7 @@ public class AsapRealizerDemo {
         //test.split();
         //System.out.println(test);
         //demo.play(demo.concatMotions(test.randomWalk()), demo.avh.getRealizerPort());
-        demo.testDistance(new JointAngles(new Alignment()), motions.get(0));
+        //demo.testDistance(new JointAngles(new Alignment()), motions.get(0));
 
         // motions = test.randomWalk();
         //demo.testStopping(motions);

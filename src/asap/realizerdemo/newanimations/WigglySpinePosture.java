@@ -63,6 +63,7 @@ public class WigglySpinePosture implements RestPose
     @Override
     public void play(double time, Set<String> kinematicJoints, Set<String> physicalJoints)
     {
+        System.out.println("####\n"+time+"\n####");
         if (kinematicJoints.contains(wigglyJointId))
         {
             double t = time - startTime;

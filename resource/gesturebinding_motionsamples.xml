@@ -25,7 +25,7 @@
 		  <parameterdefaults>
 			<parameterdefault name="amount" value="2"/>	
 		  </parameterdefaults>
-          <RestPose type="class" class="asap.realizerdemo.newanimations.WigglySpinePosture"/>
+          <RestPose type="class" class="asap.realizerdemo.idle.IdleMovement"/>
 	</RestPoseSpec>
 
 	<MotionUnitSpec type="head">
