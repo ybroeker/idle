@@ -87,15 +87,12 @@ public class IdleMovement implements RestPose {
             "idle_50_60.xml", "idle_60_70.xml"
         });
 
-        //AsapRealizerDemo demo = new AsapRealizerDemo();
-        //demo.test(null);
-        test = new MotionGraph.Builder(motions).align(new Alignment()).getInstance();
+        test = new MotionGraph.Builder(motions).getInstance();
 
         test.split();
         test.createBlends();
 
-        motion = concatMotions(test.randomWalk(), new Alignment(),0);
-        System.out.println("MotionsLoaded");
+        motion = concatMotions(test.randomWalk(), test.getAlign(),0);
     }
 
     public SkeletonInterpolator concatMotions(List<SkeletonInterpolator> motions, IAlignment align, double globStartTime) {
@@ -130,7 +127,7 @@ public class IdleMovement implements RestPose {
     @Override
     public void play(double time, Set<String> kinematicJoints, Set<String> physicalJoints) {
 
-        System.out.println("#####\n"+time+"\n#####");
+        
         /*
          if (kinematicJoints.contains(wigglyJointId))
          {
