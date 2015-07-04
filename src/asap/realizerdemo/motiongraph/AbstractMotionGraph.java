@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Abstract class for Motiongraphs.
- *
+ *TODO: Edge next() statt randomwalk
  * @author yannick-broeker
  */
 public abstract class AbstractMotionGraph {
@@ -20,6 +20,7 @@ public abstract class AbstractMotionGraph {
     }
 
     /**
+     * //TODO: remove
      * Constructor for using different aligning methods.
      * @param motions
      * @param align
