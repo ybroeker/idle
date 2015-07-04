@@ -1,0 +1,6 @@
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0">
+    <postureShift id="pose1" start="0">
+        <stance type="STANDING"/>
+        <pose part="BODY" lexeme="IDLE"/>
+    </postureShift>
+</bml>

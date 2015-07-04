@@ -1,5 +1,17 @@
 <gesturebinding>
-	
+
+
+
+    <RestPoseSpec>
+        <constraints>
+            <constraint name="stance" value="STANDING"/>
+            <constraint name="BODY" value="IDLE"/>
+        </constraints>
+        <RestPose type="class" class="asap.realizerdemo.idle.IdleMovement"/>
+    </RestPoseSpec>
+
+
+
 
   <RestGazeSpec>
       <constraints>                    
@@ -25,7 +37,7 @@
 		  <parameterdefaults>
 			<parameterdefault name="amount" value="2"/>	
 		  </parameterdefaults>
-          <RestPose type="class" class="asap.realizerdemo.idle.IdleMovement"/>
+          <RestPose type="class" class="asap.realizerdemo.newanimations.WigglySpinePosture"/>
 	</RestPoseSpec>
 
 	<MotionUnitSpec type="head">
