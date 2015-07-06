@@ -249,10 +249,13 @@ public final class MotionGraph extends AbstractMotionGraph {
      */
     public void createBlends() {
 
+        
         List<Edge> oldEdges = new LinkedList<>(edges);
 
         System.out.println("Blending started");
 
+        
+        //TODO: doppelte Blendes, für g=m1,e=m2 && g=m2,e=m1, abfangen mit 2 listen? äußere Edges in innere for überspringen? 
         for (Edge e : oldEdges) {
             if (e == null) {
                 continue;
