@@ -10,6 +10,7 @@ import asap.realizerdemo.motiongraph.metrics.Equals;
 import asap.realizerdemo.motiongraph.metrics.IDistance;
 import asap.realizerdemo.motiongraph.metrics.IEquals;
 import asap.realizerdemo.motiongraph.metrics.JointAngles;
+import hmi.animation.Skeleton;
 import hmi.animation.SkeletonInterpolator;
 
 import java.util.LinkedList;
@@ -46,6 +47,10 @@ public final class MotionGraph extends AbstractMotionGraph {
     private final IAlignment align;
     private final IBlend blending;
     private final IDistance metric;
+
+    private Node currendNode;
+    private Random r = new Random();
+
 
 /*    public MotionGraph(List<SkeletonInterpolator> motions) {
         super(motions);
@@ -176,53 +181,33 @@ public final class MotionGraph extends AbstractMotionGraph {
     }
 
     /**
-     * Randomly chooses a path through the motion graph until it reaches an end.
-     * <p/>
-     *
-     * @return List of Skeletoninterpolators in chronological order
+     * Returns next motion to be displayed.
+     * @return Skeletoninterpolator next.
      */
-    @Override
-    public List<SkeletonInterpolator> randomWalk() {
-        List<SkeletonInterpolator> result = new LinkedList<SkeletonInterpolator>();
-        int outgoingEdgesBound;
-        Edge currentEdge;
+    public SkeletonInterpolator next() {
+        if (currendNode == null) {
+            this.currendNode = edges.get(r.nextInt(edges.size())).getStartNode();
+        }
 
-        Random r = new Random();
-        int bound = edges.size();
+        Edge currentEdge = currendNode.getOutgoingEdges().get(r.nextInt(currendNode.getOutgoingEdges().size()));
+        SkeletonInterpolator next = currentEdge.getMotion();
 
-        Node currentNode = edges.get(r.nextInt(bound)).getStartNode();
-        /*
-         System.out.println("Der Weg beginnt bei Node: " + currentNode.getId());
-         */
 
-        do {
-            outgoingEdgesBound = currentNode.getOutgoingEdges().size();
-            currentEdge = currentNode.getOutgoingEdges().get(r.nextInt(outgoingEdgesBound));
-            //choose random outgoing motion from current Node
+        if (currentEdge.getEndNode().hasNext()) {
+            currendNode = currentEdge.getEndNode();
+            return next;
 
-            System.out.println("isBlend: " + currentEdge.isBlend());
+        } else {
+            this.currendNode = null;
+            next();
+        }
 
-            result.add(currentEdge.getMotion()); //add motion
-            currentNode = currentEdge.getEndNode();
+        return null;
 
-            // System.out.println(currentEdge);
-        } while (currentNode.hasNext());
-
-//        System.out.println("RandomWalk executed");
-        return result;
     }
 
-    /**
-     * Randomly chooses a path through the motion graph with given number of frames.
-     * <p/>
-     *
-     * @param length length for the random-walk
-     * @return List of Skeletoninterpolators in chronological order
-     */
-    @Override
-    public List<SkeletonInterpolator> randomWalk(int length) {
-        throw new UnsupportedOperationException("Not Supported yet!");
-    }
+
+
 
     /**
      * Reconnect all Motions that have been cut in xml-format.
@@ -249,12 +234,12 @@ public final class MotionGraph extends AbstractMotionGraph {
      */
     public void createBlends() {
 
-        
+
         List<Edge> oldEdges = new LinkedList<>(edges);
 
         System.out.println("Blending started");
 
-        
+
         //TODO: doppelte Blendes, für g=m1,e=m2 && g=m2,e=m1, abfangen mit 2 listen? äußere Edges in innere for überspringen? 
         for (Edge e : oldEdges) {
             if (e == null) {

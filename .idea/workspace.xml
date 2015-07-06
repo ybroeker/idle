@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4be22b75-6b15-44ac-b31c-6399082a6d09" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="idle.iws" />
@@ -25,18 +27,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MotionGraph.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MotionGraph.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.161342">
-              <caret line="108" column="36" selection-start-line="99" selection-start-column="0" selection-end-line="108" selection-end-column="36" />
+            <state vertical-scroll-proportion="-7.703704">
+              <caret line="196" column="50" selection-start-line="196" selection-start-column="50" selection-end-line="196" selection-end-column="50" />
               <folding>
+                <element signature="method#MotionGraph#0;class#MotionGraph#0" expanded="false" />
                 <element signature="docComment;method#init#0;class#MotionGraph#0" expanded="true" />
+                <element signature="method#init#0;class#MotionGraph#0" expanded="false" />
+                <element signature="method#split#0;class#MotionGraph#0" expanded="false" />
                 <element signature="method#removeEdge#0;class#MotionGraph#0" expanded="false" />
-                <element signature="method#randomWalk#0;class#MotionGraph#0" expanded="false" />
+                <element signature="docComment;method#next#0;class#MotionGraph#0" expanded="true" />
                 <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
-                <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
                 <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
+                <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
                 <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
                 <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
                 <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
@@ -68,15 +73,63 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AsapRealizerDemo.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AbstractMotionGraph.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+              <folding>
+                <element signature="docComment;method#AbstractMotionGraph#0;class#AbstractMotionGraph#0" expanded="true" />
+                <element signature="method#AbstractMotionGraph#0;class#AbstractMotionGraph#0" expanded="false" />
+                <element signature="docComment;method#next#0;class#AbstractMotionGraph#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AsapRealizerDemo.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.44444445">
-              <caret line="265" column="10" selection-start-line="265" selection-start-column="10" selection-end-line="265" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.82848394">
+              <caret line="397" column="13" selection-start-line="397" selection-start-column="13" selection-end-line="397" selection-end-column="13" />
               <folding>
                 <element signature="docComment;class#AsapRealizerDemo#0" expanded="true" />
                 <element signature="docComment;field#avh#0;class#AsapRealizerDemo#0" expanded="true" />
                 <element signature="docComment;method#concatMotions#0;class#AsapRealizerDemo#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Edge.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;field#isBlend#0;class#Edge#0" expanded="true" />
+                <element signature="docComment;method#Edge#0;class#Edge#0" expanded="true" />
+                <element signature="method#Edge#0;class#Edge#0" expanded="false" />
+                <element signature="docComment;method#Edge#1;class#Edge#0" expanded="true" />
+                <element signature="method#Edge#1;class#Edge#0" expanded="false" />
+                <element signature="method#toString#0;class#Edge#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;method#Node#0;class#Node#0" expanded="true" />
+                <element signature="method#Node#0;class#Node#0" expanded="false" />
+                <element signature="method#addOutgoingEdge#0;class#Node#0" expanded="false" />
+                <element signature="method#hasNext#0;class#Node#0" expanded="false" />
+                <element signature="method#toString#0;class#Node#0" expanded="false" />
+                <element signature="docComment;method#getNext#0;class#Node#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,10 +157,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/LoadMotion.java" />
-        <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java" />
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/IBlending.java" />
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/IAlignment.java" />
-        <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java" />
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/IBlend.java" />
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractBlend.java" />
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/Alignment.java" />
@@ -115,8 +166,10 @@
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java" />
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/alignment/NopAlignment.java" />
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/alignment/Alignment.java" />
-        <option value="$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java" />
+        <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java" />
+        <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java" />
         <option value="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java" />
+        <option value="$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java" />
       </list>
     </option>
   </component>
@@ -162,8 +215,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -328,7 +379,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -650,11 +703,12 @@
       <workItem from="1435917725643" duration="1963000" />
       <workItem from="1435932558900" duration="152000" />
       <workItem from="1435945471706" duration="9116000" />
+      <workItem from="1436193094813" duration="2307000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58827000" />
+    <option name="totallyTimeSpent" value="61134000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -674,25 +728,25 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32892805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32892805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32892805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32892805" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32892805" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32892805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32892805" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -712,13 +766,13 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32892805" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32892805" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -741,8 +795,14 @@
           <properties class="asap.realizerdemo.motiongraph.graph1.Edge" method="toString" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java</url>
+          <line>100</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -864,14 +924,17 @@
     <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="186" column="7" selection-start-line="186" selection-start-column="7" selection-end-line="186" selection-end-column="7" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="method#MotionGraph#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#init#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#init#0;class#MotionGraph#0" expanded="false" />
+            <element signature="method#split#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#removeEdge#0;class#MotionGraph#0" expanded="false" />
-            <element signature="method#randomWalk#0;class#MotionGraph#0" expanded="false" />
+            <element signature="docComment;method#next#0;class#MotionGraph#0" expanded="true" />
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
@@ -879,10 +942,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/blending/Blend.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/alignment/Alignment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+          <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
           <folding>
             <element signature="docComment;class#Alignment#0" expanded="true" />
             <element signature="docComment;method#align#0;class#Alignment#0" expanded="true" />
@@ -890,137 +961,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/metrics/JointAngles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#JointAngles#0" expanded="true" />
-            <element signature="docComment;method#distance#0;class#JointAngles#0" expanded="true" />
-            <element signature="docComment;method#distance#1;class#JointAngles#0" expanded="true" />
-            <element signature="docComment;method#distance#2;class#JointAngles#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;method#AbstractMotionGraph#0;class#AbstractMotionGraph#0" expanded="true" />
-            <element signature="method#AbstractMotionGraph#0;class#AbstractMotionGraph#0" expanded="false" />
-            <element signature="docComment;method#randomWalk#0;class#AbstractMotionGraph#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home/src.zip!/java/util/LinkedList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="105" column="11" selection-start-line="105" selection-start-column="11" selection-end-line="105" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#39347#0" expanded="false" />
-            <element signature="docComment;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;field#first#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;field#last#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#LinkedList#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#LinkedList#1;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#linkFirst#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#linkLast#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#linkBefore#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#unlinkFirst#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#unlinkLast#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#unlink#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#getFirst#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#getLast#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#removeFirst#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#removeLast#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#addFirst#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#addLast#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#contains#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#size#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#add#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#remove#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#addAll#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#addAll#1;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#clear#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#get#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#set#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#add#1;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#remove#1;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#isElementIndex#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#isPositionIndex#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#outOfBoundsMsg#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#node#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#indexOf#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#lastIndexOf#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#peek#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#element#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#poll#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#remove#2;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#offer#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#offerFirst#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#offerLast#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#peekFirst#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#peekLast#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#pollFirst#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#pollLast#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#push#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#pop#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#removeFirstOccurrence#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#removeLastOccurrence#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#listIterator#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#descendingIterator#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;class#DescendingIterator#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#clone#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#toArray#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#toArray#1;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#writeObject#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#readObject#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;method#spliterator#0;class#LinkedList#0" expanded="false" />
-            <element signature="docComment;class#LLSpliterator#0;class#LinkedList#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="265" column="10" selection-start-line="265" selection-start-column="10" selection-end-line="265" selection-end-column="10" />
           <folding>
             <element signature="docComment;class#AsapRealizerDemo#0" expanded="true" />
             <element signature="docComment;field#avh#0;class#AsapRealizerDemo#0" expanded="true" />
             <element signature="docComment;method#concatMotions#0;class#AsapRealizerDemo#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;field#isBlend#0;class#Edge#0" expanded="true" />
-            <element signature="docComment;method#Edge#0;class#Edge#0" expanded="true" />
-            <element signature="method#Edge#0;class#Edge#0" expanded="false" />
-            <element signature="docComment;method#Edge#1;class#Edge#0" expanded="true" />
-            <element signature="method#Edge#1;class#Edge#0" expanded="false" />
-            <element signature="method#toString#0;class#Edge#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;method#Node#0;class#Node#0" expanded="true" />
-            <element signature="method#Node#0;class#Node#0" expanded="false" />
-            <element signature="method#addOutgoingEdge#0;class#Node#0" expanded="false" />
-            <element signature="method#hasNext#0;class#Node#0" expanded="false" />
-            <element signature="method#toString#0;class#Node#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1030,12 +978,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="186" column="7" selection-start-line="186" selection-start-column="7" selection-end-line="186" selection-end-column="7" />
           <folding>
+            <element signature="method#MotionGraph#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#init#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#init#0;class#MotionGraph#0" expanded="false" />
+            <element signature="method#split#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#removeEdge#0;class#MotionGraph#0" expanded="false" />
-            <element signature="method#randomWalk#0;class#MotionGraph#0" expanded="false" />
+            <element signature="docComment;method#next#0;class#MotionGraph#0" expanded="true" />
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
@@ -1074,7 +1025,7 @@
           <folding>
             <element signature="docComment;method#AbstractMotionGraph#0;class#AbstractMotionGraph#0" expanded="true" />
             <element signature="method#AbstractMotionGraph#0;class#AbstractMotionGraph#0" expanded="false" />
-            <element signature="docComment;method#randomWalk#0;class#AbstractMotionGraph#0" expanded="true" />
+            <element signature="docComment;method#next#0;class#AbstractMotionGraph#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1185,6 +1136,175 @@
             <element signature="method#addOutgoingEdge#0;class#Node#0" expanded="false" />
             <element signature="method#hasNext#0;class#Node#0" expanded="false" />
             <element signature="method#toString#0;class#Node#0" expanded="false" />
+            <element signature="docComment;method#getNext#0;class#Node#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="186" column="7" selection-start-line="186" selection-start-column="7" selection-end-line="186" selection-end-column="7" />
+          <folding>
+            <element signature="method#MotionGraph#0;class#MotionGraph#0" expanded="false" />
+            <element signature="docComment;method#init#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#init#0;class#MotionGraph#0" expanded="false" />
+            <element signature="method#split#0;class#MotionGraph#0" expanded="false" />
+            <element signature="method#removeEdge#0;class#MotionGraph#0" expanded="false" />
+            <element signature="docComment;method#next#0;class#MotionGraph#0" expanded="true" />
+            <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
+            <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
+            <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
+            <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
+            <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/alignment/Alignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+          <folding>
+            <element signature="docComment;class#Alignment#0" expanded="true" />
+            <element signature="docComment;method#align#0;class#Alignment#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/metrics/JointAngles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#JointAngles#0" expanded="true" />
+            <element signature="docComment;method#distance#0;class#JointAngles#0" expanded="true" />
+            <element signature="docComment;method#distance#1;class#JointAngles#0" expanded="true" />
+            <element signature="docComment;method#distance#2;class#JointAngles#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;method#AbstractMotionGraph#0;class#AbstractMotionGraph#0" expanded="true" />
+            <element signature="method#AbstractMotionGraph#0;class#AbstractMotionGraph#0" expanded="false" />
+            <element signature="docComment;method#next#0;class#AbstractMotionGraph#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home/src.zip!/java/util/LinkedList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="11" selection-start-line="105" selection-start-column="11" selection-end-line="105" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#39347#0" expanded="false" />
+            <element signature="docComment;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;field#first#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;field#last#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#LinkedList#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#LinkedList#1;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#linkFirst#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#linkLast#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#linkBefore#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#unlinkFirst#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#unlinkLast#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#unlink#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#getFirst#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#getLast#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#removeFirst#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#removeLast#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#addFirst#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#addLast#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#contains#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#size#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#add#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#remove#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#addAll#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#addAll#1;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#clear#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#get#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#set#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#add#1;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#remove#1;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#isElementIndex#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#isPositionIndex#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#outOfBoundsMsg#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#node#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#indexOf#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#lastIndexOf#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#peek#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#element#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#poll#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#remove#2;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#offer#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#offerFirst#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#offerLast#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#peekFirst#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#peekLast#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#pollFirst#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#pollLast#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#push#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#pop#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#removeFirstOccurrence#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#removeLastOccurrence#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#listIterator#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#descendingIterator#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;class#DescendingIterator#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#clone#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#toArray#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#toArray#1;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#writeObject#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#readObject#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;method#spliterator#0;class#LinkedList#0" expanded="false" />
+            <element signature="docComment;class#LLSpliterator#0;class#LinkedList#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#AsapRealizerDemo#0" expanded="true" />
+            <element signature="docComment;field#avh#0;class#AsapRealizerDemo#0" expanded="true" />
+            <element signature="docComment;method#concatMotions#0;class#AsapRealizerDemo#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;field#isBlend#0;class#Edge#0" expanded="true" />
+            <element signature="docComment;method#Edge#0;class#Edge#0" expanded="true" />
+            <element signature="method#Edge#0;class#Edge#0" expanded="false" />
+            <element signature="docComment;method#Edge#1;class#Edge#0" expanded="true" />
+            <element signature="method#Edge#1;class#Edge#0" expanded="false" />
+            <element signature="method#toString#0;class#Edge#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;method#Node#0;class#Node#0" expanded="true" />
+            <element signature="method#Node#0;class#Node#0" expanded="false" />
+            <element signature="method#addOutgoingEdge#0;class#Node#0" expanded="false" />
+            <element signature="method#hasNext#0;class#Node#0" expanded="false" />
+            <element signature="method#toString#0;class#Node#0" expanded="false" />
+            <element signature="docComment;method#getNext#0;class#Node#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1194,12 +1314,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="208" column="7" selection-start-line="208" selection-start-column="7" selection-end-line="208" selection-end-column="7" />
           <folding>
+            <element signature="method#MotionGraph#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#init#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#init#0;class#MotionGraph#0" expanded="false" />
+            <element signature="method#split#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#removeEdge#0;class#MotionGraph#0" expanded="false" />
-            <element signature="method#randomWalk#0;class#MotionGraph#0" expanded="false" />
+            <element signature="docComment;method#next#0;class#MotionGraph#0" expanded="true" />
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
@@ -1313,6 +1436,7 @@
             <element signature="method#addOutgoingEdge#0;class#Node#0" expanded="false" />
             <element signature="method#hasNext#0;class#Node#0" expanded="false" />
             <element signature="method#toString#0;class#Node#0" expanded="false" />
+            <element signature="docComment;method#getNext#0;class#Node#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1322,12 +1446,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="method#MotionGraph#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#init#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#init#0;class#MotionGraph#0" expanded="false" />
+            <element signature="method#split#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#removeEdge#0;class#MotionGraph#0" expanded="false" />
-            <element signature="method#randomWalk#0;class#MotionGraph#0" expanded="false" />
+            <element signature="docComment;method#next#0;class#MotionGraph#0" expanded="true" />
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
@@ -1368,6 +1495,7 @@
             <element signature="method#addOutgoingEdge#0;class#Node#0" expanded="false" />
             <element signature="method#hasNext#0;class#Node#0" expanded="false" />
             <element signature="method#toString#0;class#Node#0" expanded="false" />
+            <element signature="docComment;method#getNext#0;class#Node#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1377,12 +1505,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="method#MotionGraph#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#init#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#init#0;class#MotionGraph#0" expanded="false" />
+            <element signature="method#split#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#removeEdge#0;class#MotionGraph#0" expanded="false" />
-            <element signature="method#randomWalk#0;class#MotionGraph#0" expanded="false" />
+            <element signature="docComment;method#next#0;class#MotionGraph#0" expanded="true" />
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
@@ -1397,7 +1528,7 @@
           <folding>
             <element signature="docComment;method#AbstractMotionGraph#0;class#AbstractMotionGraph#0" expanded="true" />
             <element signature="method#AbstractMotionGraph#0;class#AbstractMotionGraph#0" expanded="false" />
-            <element signature="docComment;method#randomWalk#0;class#AbstractMotionGraph#0" expanded="true" />
+            <element signature="docComment;method#next#0;class#AbstractMotionGraph#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1427,6 +1558,7 @@
             <element signature="method#addOutgoingEdge#0;class#Node#0" expanded="false" />
             <element signature="method#hasNext#0;class#Node#0" expanded="false" />
             <element signature="method#toString#0;class#Node#0" expanded="false" />
+            <element signature="docComment;method#getNext#0;class#Node#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1436,12 +1568,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
+            <element signature="method#MotionGraph#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#init#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#init#0;class#MotionGraph#0" expanded="false" />
+            <element signature="method#split#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#removeEdge#0;class#MotionGraph#0" expanded="false" />
-            <element signature="method#randomWalk#0;class#MotionGraph#0" expanded="false" />
+            <element signature="docComment;method#next#0;class#MotionGraph#0" expanded="true" />
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
@@ -1469,12 +1604,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="method#MotionGraph#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#init#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#init#0;class#MotionGraph#0" expanded="false" />
+            <element signature="method#split#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#removeEdge#0;class#MotionGraph#0" expanded="false" />
-            <element signature="method#randomWalk#0;class#MotionGraph#0" expanded="false" />
+            <element signature="docComment;method#next#0;class#MotionGraph#0" expanded="true" />
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
@@ -1558,40 +1696,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;method#Node#0;class#Node#0" expanded="true" />
-            <element signature="method#Node#0;class#Node#0" expanded="false" />
-            <element signature="method#addOutgoingEdge#0;class#Node#0" expanded="false" />
-            <element signature="method#hasNext#0;class#Node#0" expanded="false" />
-            <element signature="method#toString#0;class#Node#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/LoadMotion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="62" selection-end-column="46" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;field#isBlend#0;class#Edge#0" expanded="true" />
-            <element signature="docComment;method#Edge#0;class#Edge#0" expanded="true" />
-            <element signature="method#Edge#0;class#Edge#0" expanded="false" />
-            <element signature="docComment;method#Edge#1;class#Edge#0" expanded="true" />
-            <element signature="method#Edge#1;class#Edge#0" expanded="false" />
-            <element signature="method#toString#0;class#Edge#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1624,18 +1733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;method#AbstractMotionGraph#0;class#AbstractMotionGraph#0" expanded="true" />
-            <element signature="method#AbstractMotionGraph#0;class#AbstractMotionGraph#0" expanded="false" />
-            <element signature="docComment;method#randomWalk#0;class#AbstractMotionGraph#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/alignment/Alignment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1647,32 +1744,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java">
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Edge.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.44444445">
-          <caret line="265" column="10" selection-start-line="265" selection-start-column="10" selection-end-line="265" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#AsapRealizerDemo#0" expanded="true" />
-            <element signature="docComment;field#avh#0;class#AsapRealizerDemo#0" expanded="true" />
-            <element signature="docComment;method#concatMotions#0;class#AsapRealizerDemo#0" expanded="true" />
+            <element signature="docComment;field#isBlend#0;class#Edge#0" expanded="true" />
+            <element signature="docComment;method#Edge#0;class#Edge#0" expanded="true" />
+            <element signature="method#Edge#0;class#Edge#0" expanded="false" />
+            <element signature="docComment;method#Edge#1;class#Edge#0" expanded="true" />
+            <element signature="method#Edge#1;class#Edge#0" expanded="false" />
+            <element signature="method#toString#0;class#Edge#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;method#Node#0;class#Node#0" expanded="true" />
+            <element signature="method#Node#0;class#Node#0" expanded="false" />
+            <element signature="method#addOutgoingEdge#0;class#Node#0" expanded="false" />
+            <element signature="method#hasNext#0;class#Node#0" expanded="false" />
+            <element signature="method#toString#0;class#Node#0" expanded="false" />
+            <element signature="docComment;method#getNext#0;class#Node#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/AbstractMotionGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+          <folding>
+            <element signature="docComment;method#AbstractMotionGraph#0;class#AbstractMotionGraph#0" expanded="true" />
+            <element signature="method#AbstractMotionGraph#0;class#AbstractMotionGraph#0" expanded="false" />
+            <element signature="docComment;method#next#0;class#AbstractMotionGraph#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.161342">
-          <caret line="108" column="36" selection-start-line="99" selection-start-column="0" selection-end-line="108" selection-end-column="36" />
+        <state vertical-scroll-proportion="-7.703704">
+          <caret line="196" column="50" selection-start-line="196" selection-start-column="50" selection-end-line="196" selection-end-column="50" />
           <folding>
+            <element signature="method#MotionGraph#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#init#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#init#0;class#MotionGraph#0" expanded="false" />
+            <element signature="method#split#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#removeEdge#0;class#MotionGraph#0" expanded="false" />
-            <element signature="method#randomWalk#0;class#MotionGraph#0" expanded="false" />
+            <element signature="docComment;method#next#0;class#MotionGraph#0" expanded="true" />
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
+            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.82848394">
+          <caret line="397" column="13" selection-start-line="397" selection-start-column="13" selection-end-line="397" selection-end-column="13" />
+          <folding>
+            <element signature="docComment;class#AsapRealizerDemo#0" expanded="true" />
+            <element signature="docComment;field#avh#0;class#AsapRealizerDemo#0" expanded="true" />
+            <element signature="docComment;method#concatMotions#0;class#AsapRealizerDemo#0" expanded="true" />
           </folding>
         </state>
       </provider>

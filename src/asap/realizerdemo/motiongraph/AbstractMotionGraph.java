@@ -32,7 +32,7 @@ public abstract class AbstractMotionGraph {
      *
      * @return random-Walk through the Graph
      */
-    public abstract List<SkeletonInterpolator> randomWalk();
+   // public abstract List<SkeletonInterpolator> randomWalk();
 
     /**
      * returns a random-walk with the given lenght through the Graph.
@@ -40,7 +40,9 @@ public abstract class AbstractMotionGraph {
      * @param lenght lenght for the random-walk
      * @return random-walk through the Graph
      */
-    public abstract List<SkeletonInterpolator> randomWalk(int lenght);
+  //  public abstract List<SkeletonInterpolator> randomWalk(int lenght);
+
+    public abstract SkeletonInterpolator next();
 
 
 

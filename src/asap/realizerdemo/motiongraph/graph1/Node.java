@@ -2,6 +2,7 @@ package asap.realizerdemo.motiongraph.graph1;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Zukie on 15/06/15.
@@ -84,6 +85,18 @@ public class Node {
     }
 
     //<editor-fold desc="Getter and Setter">
+
+
+    /**
+     * @return random Node connected to this node.
+     */
+    public Edge getNext() {
+        Random r = new Random();
+        int next = r.nextInt(this.outgoingEdges.size());
+
+        return this.outgoingEdges.get(next);
+    }
+
     public List<Edge> getIncomingEdges() {
         return incomingEdges;
     }
