@@ -47,15 +47,15 @@ public final class MotionGraph extends AbstractMotionGraph {
     private final IBlend blending;
     private final IDistance metric;
 
-    public MotionGraph(List<SkeletonInterpolator> motions) {
+/*    public MotionGraph(List<SkeletonInterpolator> motions) {
         super(motions);
 
-        this.align = new NopAlignment();
+        this.align = new Alignment();
         this.blending = new Blend(align);
         this.metric = new JointAngles(align);
 
         this.init(motions);
-    }
+    }*/
 
     public MotionGraph(List<SkeletonInterpolator> motions, IAlignment align, IDistance metric, IBlend blending) {
         super(motions);
@@ -97,16 +97,16 @@ public final class MotionGraph extends AbstractMotionGraph {
             edges.add(newEdge);
 
             // Mirror every motion
-            SkeletonInterpolator newSp = new SkeletonInterpolator(sp);
-            newSp.mirror();
-
-            Edge mirroredEdge = new Edge(newSp);
-            Node mirroredStartNode = new Node(null, mirroredEdge);
-            Node mirroredEndNode = new Node(mirroredEdge, null);
-
-            nodes.add(mirroredEndNode);
-            nodes.add(mirroredStartNode);
-            edges.add(mirroredEdge);
+//            SkeletonInterpolator newSp = new SkeletonInterpolator(sp);
+//            newSp.mirror();
+//
+//            Edge mirroredEdge = new Edge(newSp);
+//            Node mirroredStartNode = new Node(null, mirroredEdge);
+//            Node mirroredEndNode = new Node(mirroredEdge, null);
+//
+//            nodes.add(mirroredEndNode);
+//            nodes.add(mirroredStartNode);
+//            edges.add(mirroredEdge);
 
 
             i++;

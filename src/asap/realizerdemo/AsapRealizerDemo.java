@@ -3,6 +3,8 @@ package asap.realizerdemo;
 import asap.realizerdemo.motiongraph.alignment.IAlignment;
 import asap.realizerdemo.motiongraph.alignment.Alignment;
 import asap.realizerdemo.motiongraph.alignment.NopAlignment;
+import asap.realizerdemo.motiongraph.graph1.Edge;
+import asap.realizerdemo.motiongraph.graph1.Node;
 import asap.realizerdemo.motiongraph.metrics.IEquals;
 import asap.realizerdemo.motiongraph.blending.IBlend;
 import asap.realizerdemo.motiongraph.metrics.IDistance;
@@ -14,6 +16,7 @@ import asap.realizerdemo.motiongraph.*;
 import static asap.realizerdemo.motiongraph.Util.X;
 import static asap.realizerdemo.motiongraph.Util.Y;
 import static asap.realizerdemo.motiongraph.Util.Z;
+
 import asap.realizerdemo.motiongraph.metrics.Equals;
 import asap.realizerdemo.motiongraph.graph1.MotionGraph;
 import asap.realizerdemo.motiongraph.metrics.JointAngles;
@@ -32,6 +35,7 @@ import hmi.physicsenvironment.OdePhysicsEnvironment;
 import hmi.renderenvironment.HmiRenderEnvironment;
 import hmi.util.Console;
 import hmi.worldobjectenvironment.WorldObjectEnvironment;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -56,9 +60,10 @@ import saiba.bml.core.PostureShiftBehaviour;
 
 /**
  * Simple demo for the AsapRealizer+environment
- * <p>
+ * <p/>
+ *
  * @author hvanwelbergen
- * <p>
+ *         <p/>
  */
 public class AsapRealizerDemo {
 
@@ -165,12 +170,12 @@ public class AsapRealizerDemo {
         IMovementDetector movementDetector = new MovementDetector();
 
         List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
-            //"y_headmove_Ses01F_impro01_F011.xml",
-            //"y_headmove_Ses01M_impro05_M031.xml", 
-            //"y_headmove_Ses03F_impro02_F016.xml",
-            // "y_headmove_Ses05M_script01_1_M027.xml",
-            //"idle_0_0.99.xml",
-            "idle_0_10.xml", "idle_10_20.xml", "idle_20_30.xml", "idle_30_40.xml", "idle_40_50.xml", "idle_50_60.xml", "idle_60_70.xml"
+                //"y_headmove_Ses01F_impro01_F011.xml",
+                //"y_headmove_Ses01M_impro05_M031.xml",
+                //"y_headmove_Ses03F_impro02_F016.xml",
+                // "y_headmove_Ses05M_script01_1_M027.xml",
+                //"idle_0_0.99.xml",
+                "idle_0_10.xml", "idle_10_20.xml", "idle_20_30.xml", "idle_30_40.xml", "idle_40_50.xml", "idle_50_60.xml", "idle_60_70.xml"
 
         });
 
@@ -250,16 +255,17 @@ public class AsapRealizerDemo {
 
         List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
             /*"idle_0_10.xml",*/"idle_10_20.xml", "idle_20_30.xml", "idle_30_40.xml", "idle_40_50.xml",
-            "idle_50_60.xml", "idle_60_70.xml"
+                "idle_50_60.xml", "idle_60_70.xml"
         });
+
 
         //AsapRealizerDemo demo = new AsapRealizerDemo();
         //demo.test(null);
-       // MotionGraph test = new MotionGraph.Builder(motions).align(new Alignment()).getInstance();
+        MotionGraph test = new MotionGraph.Builder(motions).align(new Alignment()).getInstance();
 
-        MotionGraph test = new MotionGraph(motions);
+        // MotionGraph test = new MotionGraph(motions);
         test.split();
-        //test.createBlends();
+        test.createBlends();
         demo.play(test, demo.avh.getRealizerPort());
         //SkeletonInterpolator newS =  test.getAlign().align(motions.get(0), motions.get(1), motions.get(0).size()-1);
         //motions.remove(1);
@@ -273,7 +279,7 @@ public class AsapRealizerDemo {
         //System.out.println(test);
         //demo.play(demo.concatMotions(test.randomWalk()), demo.avh.getRealizerPort());
 
-       /// demo.testDistance(new JointAngles(new NopAlignment()), motions.get(0));
+        /// demo.testDistance(new JointAngles(new NopAlignment()), motions.get(0));
 
         // motions = test.randomWalk();
         //demo.testStopping(motions);
@@ -321,7 +327,8 @@ public class AsapRealizerDemo {
 
     /**
      * Verknüpft eine Liste von Motions zu einer einzelnen. TODO: Transform anpassen.
-     * <p>
+     * <p/>
+     *
      * @param motions
      * @return
      */
