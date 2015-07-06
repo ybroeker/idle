@@ -2,6 +2,7 @@ package asap.realizerdemo;
 
 import asap.realizerdemo.motiongraph.alignment.IAlignment;
 import asap.realizerdemo.motiongraph.alignment.Alignment;
+import asap.realizerdemo.motiongraph.alignment.NopAlignment;
 import asap.realizerdemo.motiongraph.metrics.IEquals;
 import asap.realizerdemo.motiongraph.blending.IBlend;
 import asap.realizerdemo.motiongraph.metrics.IDistance;
@@ -261,7 +262,7 @@ public class AsapRealizerDemo {
 /*
         //AsapRealizerDemo demo = new AsapRealizerDemo();
         //demo.test(null);
-        MotionGraph test2 = new MotionGraph.Builder(motions).align(new Alignment()).getInstance();
+       // MotionGraph test = new MotionGraph.Builder(motions).align(new Alignment()).getInstance();
 
         MotionGraph test = new MotionGraph(motions);
         test.split();

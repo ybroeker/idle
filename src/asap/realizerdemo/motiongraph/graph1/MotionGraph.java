@@ -3,6 +3,7 @@ package asap.realizerdemo.motiongraph.graph1;
 import asap.realizerdemo.motiongraph.AbstractMotionGraph;
 import asap.realizerdemo.motiongraph.alignment.Alignment;
 import asap.realizerdemo.motiongraph.alignment.IAlignment;
+import asap.realizerdemo.motiongraph.alignment.NopAlignment;
 import asap.realizerdemo.motiongraph.blending.Blend;
 import asap.realizerdemo.motiongraph.blending.IBlend;
 import asap.realizerdemo.motiongraph.metrics.Equals;
@@ -10,17 +11,18 @@ import asap.realizerdemo.motiongraph.metrics.IDistance;
 import asap.realizerdemo.motiongraph.metrics.IEquals;
 import asap.realizerdemo.motiongraph.metrics.JointAngles;
 import hmi.animation.SkeletonInterpolator;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 /**
  * Created by Zukie on 15/06/15.
- * TODO: pruning
+ *
  * @author Zukie
  */
 public final class MotionGraph extends AbstractMotionGraph {
-    
+
     /**
      * Number of Frames to be blended.
      */
@@ -45,23 +47,12 @@ public final class MotionGraph extends AbstractMotionGraph {
     private final IBlend blending;
     private final IDistance metric;
 
-    /**
-     * Creates a new Motiongraph from {@code motions}.
-     * <p>
-     * Uses {@link asap.realizerdemo.motiongraph.alignment.Alignment} as align,
-     * {@link asap.realizerdemo.motiongraph.metrics.JointAngles} als DistanceMetric and
-     * {@link asap.realizerdemo.motiongraph.blending.Blend} as blending.
-     * <p>
-     * @param motions motions to create Graph from.
-     */
     public MotionGraph(List<SkeletonInterpolator> motions) {
         super(motions);
-        if (motions == null || motions.isEmpty()) {
-            throw new IllegalArgumentException("motions null or empty.");
-        }
-        this.align = new Alignment();
+
+        this.align = new NopAlignment();
+        this.blending = new Blend(align);
         this.metric = new JointAngles(align);
-        this.blending = new Blend(this.align);
 
         this.init(motions);
     }
@@ -90,6 +81,7 @@ public final class MotionGraph extends AbstractMotionGraph {
 
     /**
      * Initialise MotionGraph. Creates Edges vor every Motion and mirrors them.
+     *
      * @param motions
      */
     private void init(List<SkeletonInterpolator> motions) {
@@ -115,6 +107,7 @@ public final class MotionGraph extends AbstractMotionGraph {
             nodes.add(mirroredEndNode);
             nodes.add(mirroredStartNode);
             edges.add(mirroredEdge);
+
 
             i++;
         }
@@ -169,7 +162,8 @@ public final class MotionGraph extends AbstractMotionGraph {
 
     /**
      * Remove Edge from MotionGraph and it's nodes.
-     * <p>
+     * <p/>
+     *
      * @param edge
      */
     private void removeEdge(Edge edge) {
@@ -183,7 +177,8 @@ public final class MotionGraph extends AbstractMotionGraph {
 
     /**
      * Randomly chooses a path through the motion graph until it reaches an end.
-     * <p>
+     * <p/>
+     *
      * @return List of Skeletoninterpolators in chronological order
      */
     @Override
@@ -219,7 +214,8 @@ public final class MotionGraph extends AbstractMotionGraph {
 
     /**
      * Randomly chooses a path through the motion graph with given number of frames.
-     * <p>
+     * <p/>
+     *
      * @param length length for the random-walk
      * @return List of Skeletoninterpolators in chronological order
      */
@@ -253,10 +249,13 @@ public final class MotionGraph extends AbstractMotionGraph {
      */
     public void createBlends() {
 
+        
         List<Edge> oldEdges = new LinkedList<>(edges);
 
         System.out.println("Blending started");
 
+        
+        //TODO: doppelte Blendes, für g=m1,e=m2 && g=m2,e=m1, abfangen mit 2 listen? äußere Edges in innere for überspringen? 
         for (Edge e : oldEdges) {
             if (e == null) {
                 continue;
