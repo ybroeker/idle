@@ -97,16 +97,16 @@ public final class MotionGraph extends AbstractMotionGraph {
             edges.add(newEdge);
 
             // Mirror every motion
-//            SkeletonInterpolator newSp = new SkeletonInterpolator(sp);
-//            newSp.mirror();
-//
-//            Edge mirroredEdge = new Edge(newSp);
-//            Node mirroredStartNode = new Node(null, mirroredEdge);
-//            Node mirroredEndNode = new Node(mirroredEdge, null);
-//
-//            nodes.add(mirroredEndNode);
-//            nodes.add(mirroredStartNode);
-//            edges.add(mirroredEdge);
+            SkeletonInterpolator newSp = new SkeletonInterpolator(sp);
+            newSp.mirror();
+
+            Edge mirroredEdge = new Edge(newSp);
+            Node mirroredStartNode = new Node(null, mirroredEdge);
+            Node mirroredEndNode = new Node(mirroredEdge, null);
+
+            nodes.add(mirroredEndNode);
+            nodes.add(mirroredStartNode);
+            edges.add(mirroredEdge);
 
 
             i++;

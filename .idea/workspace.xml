@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4be22b75-6b15-44ac-b31c-6399082a6d09" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java" afterPath="$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="idle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,8 +28,8 @@
       <file leaf-file-name="MotionGraph.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.0127796">
-              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+            <state vertical-scroll-proportion="-2.161342">
+              <caret line="108" column="36" selection-start-line="99" selection-start-column="0" selection-end-line="108" selection-end-column="36" />
               <folding>
                 <element signature="docComment;method#init#0;class#MotionGraph#0" expanded="true" />
                 <element signature="method#removeEdge#0;class#MotionGraph#0" expanded="false" />
@@ -37,7 +37,6 @@
                 <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
                 <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
                 <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
-                <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
                 <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
                 <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
                 <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
@@ -72,7 +71,7 @@
       <file leaf-file-name="AsapRealizerDemo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.555555">
+            <state vertical-scroll-proportion="-0.44444445">
               <caret line="265" column="10" selection-start-line="265" selection-start-column="10" selection-end-line="265" selection-end-column="10" />
               <folding>
                 <element signature="docComment;class#AsapRealizerDemo#0" expanded="true" />
@@ -650,12 +649,12 @@
       <workItem from="1434970091684" duration="35088000" />
       <workItem from="1435917725643" duration="1963000" />
       <workItem from="1435932558900" duration="152000" />
-      <workItem from="1435945471706" duration="8737000" />
+      <workItem from="1435945471706" duration="9116000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58448000" />
+    <option name="totallyTimeSpent" value="58827000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -873,7 +872,6 @@
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
             <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
@@ -1038,7 +1036,6 @@
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
             <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
@@ -1203,7 +1200,6 @@
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
             <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
@@ -1332,45 +1328,9 @@
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
             <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/HmiAnimation-0.24-dev1085.jar!/hmi/animation/SkeletonInterpolator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="697" column="22" selection-start-line="697" selection-start-column="16" selection-end-line="697" selection-end-column="22" />
-          <folding>
-            <element signature="docComment;method#SkeletonInterpolator#0;class#SkeletonInterpolator#0" expanded="true" />
-            <element signature="docComment;method#SkeletonInterpolator#1;class#SkeletonInterpolator#0" expanded="true" />
-            <element signature="method#filterTargetParts#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#getInterpolatedConfig#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#initTime#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#time#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#setTargetParts#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#interpolateTargetParts#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#getInterpolationConfigs#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#sampleTargetParts#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#mirrorParts#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#mirror#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#appendAttributeString#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#decodeAttributes#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#appendContent#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#decodeContent#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#decodeContent#1;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#convertFromAxisAngles#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#reverseQuats#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#subSkeletonInterpolator#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#read#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#read#1;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#read#2;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#xmlTag#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#getXMLTag#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#getTargetParts#0;class#SkeletonInterpolator#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1423,7 +1383,6 @@
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
             <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
@@ -1483,7 +1442,6 @@
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
             <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
@@ -1517,54 +1475,10 @@
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
             <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/HmiAnimation-0.24-dev1085.jar!/hmi/animation/SkeletonInterpolator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="145" column="36" selection-start-line="145" selection-start-column="36" selection-end-line="145" selection-end-column="36" />
-          <folding>
-            <element signature="docComment;method#SkeletonInterpolator#0;class#SkeletonInterpolator#0" expanded="true" />
-            <element signature="docComment;method#SkeletonInterpolator#1;class#SkeletonInterpolator#0" expanded="true" />
-            <element signature="method#filterTargetParts#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#getInterpolatedConfig#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#initTime#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#time#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#setTargetParts#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#interpolateTargetParts#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#getInterpolationConfigs#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#sampleTargetParts#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#mirrorParts#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#mirror#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#appendAttributeString#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#decodeAttributes#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#appendContent#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#decodeContent#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#decodeContent#1;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#convertFromAxisAngles#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#reverseQuats#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#subSkeletonInterpolator#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#read#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#read#1;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#read#2;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#xmlTag#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#getXMLTag#0;class#SkeletonInterpolator#0" expanded="false" />
-            <element signature="method#getTargetParts#0;class#SkeletonInterpolator#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/HmiAnimation-0.24-dev1085.jar!/hmi/animation/ConfigList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.296296">
-          <caret line="52" column="26" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1735,7 +1649,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/AsapRealizerDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.555555">
+        <state vertical-scroll-proportion="-0.44444445">
           <caret line="265" column="10" selection-start-line="265" selection-start-column="10" selection-end-line="265" selection-end-column="10" />
           <folding>
             <element signature="docComment;class#AsapRealizerDemo#0" expanded="true" />
@@ -1747,8 +1661,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/asap/realizerdemo/motiongraph/graph1/MotionGraph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0127796">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+        <state vertical-scroll-proportion="-2.161342">
+          <caret line="108" column="36" selection-start-line="99" selection-start-column="0" selection-end-line="108" selection-end-column="36" />
           <folding>
             <element signature="docComment;method#init#0;class#MotionGraph#0" expanded="true" />
             <element signature="method#removeEdge#0;class#MotionGraph#0" expanded="false" />
@@ -1756,7 +1670,6 @@
             <element signature="docComment;method#connectMotions#0;class#MotionGraph#0" expanded="true" />
             <element signature="method#connectMotions#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;method#createBlends#0;class#MotionGraph#0" expanded="true" />
-            <element signature="method#createBlends#0;class#MotionGraph#0" expanded="false" />
             <element signature="method#toString#0;class#MotionGraph#0" expanded="false" />
             <element signature="docComment;class#Builder#0;class#MotionGraph#0" expanded="true" />
             <element signature="class#Builder#0;class#MotionGraph#0" expanded="false" />
