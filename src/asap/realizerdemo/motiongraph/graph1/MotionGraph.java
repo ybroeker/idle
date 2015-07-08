@@ -297,12 +297,13 @@ public final class MotionGraph extends AbstractMotionGraph {
                     // System.out.println("blend created");
                     this.removeEdge(e);
                     this.removeEdge(g);
+                    System.out.println("blended");
 
                 }
             }
 
         }
-        // System.out.println("blending executed. New Graph as follows: ");
+        System.out.println("blending executed");
         // System.out.println(this.toString());
     }
 
@@ -358,4 +359,7 @@ public final class MotionGraph extends AbstractMotionGraph {
 
     }
 
+    public Node getCurrendNode() {
+        return currendNode;
+    }
 }
