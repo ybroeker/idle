@@ -48,9 +48,9 @@ public class IdleMovement implements RestPose {
     @Override
     public RestPose copy(AnimationPlayer player) {
         IdleMovement copy = new IdleMovement(test, motion);
-            copy.setAnimationPlayer(player);
+        copy.setAnimationPlayer(player);
 
-        
+
         return copy;
     }
 
@@ -82,7 +82,7 @@ public class IdleMovement implements RestPose {
     public IdleMovement() throws IOException {
         List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
             /*"idle_0_10.xml",*/"idle_10_20.xml", "idle_20_30.xml", "idle_30_40.xml", "idle_40_50.xml",
-            "idle_50_60.xml", "idle_60_70.xml"
+                "idle_50_60.xml", "idle_60_70.xml"
         });
 
         test = new MotionGraph.Builder(motions).getInstance();
@@ -90,14 +90,13 @@ public class IdleMovement implements RestPose {
         test.split();
         test.createBlends();
 
-        motion = concat(test.next(), test.getAlign(),0);
+        motion = concat(test.next(), test.getAlign(), 0);
     }
 
-    public SkeletonInterpolator concat (SkeletonInterpolator motion, IAlignment align, double globStartTime) {
+    public SkeletonInterpolator concat(SkeletonInterpolator motion, IAlignment align, double globStartTime) {
         double globTime = globStartTime;
 
-        SkeletonInterpolator newMotion = new SkeletonInterpolator();
-        align.align(motion, newMotion, 1);
+        SkeletonInterpolator newMotion = align.align(test.getCurrentEdge().getMotion(), motion, 1);
 
         ConfigList config = new ConfigList(newMotion.getConfigSize());
         String configType = newMotion.getConfigType();
@@ -157,12 +156,12 @@ public class IdleMovement implements RestPose {
          }
          */
         //TODO!
-        if (time>motion.getEndTime()) {
-            motion = concatMotions(test.randomWalk(), new Alignment(),time);
+        if (motion.getEndTime() < time) {
+            concat(motion, new Alignment(), time);
+            motion.setTarget(aniPlayer.getVNext());
+            motion.time(time);
         }
-        
-        motion.setTarget(aniPlayer.getVNext());
-        motion.time(time);
+
         /*VJoint vj = aniPlayer.getVNext().getPart("");
          float q[] = Quat4f.getQuat4f();
          Quat4f.setFromAxisAngleDegrees(q, 0, 0, 1, 1);
@@ -172,13 +171,13 @@ public class IdleMovement implements RestPose {
 
     @Override
     public TimedAnimationUnit createTransitionToRest(FeedbackManager fbm, Set<String> joints, double startTime, String bmlId, String id,
-            BMLBlockPeg bmlBlockPeg, PegBoard pb) {
+                                                     BMLBlockPeg bmlBlockPeg, PegBoard pb) {
         return createTransitionToRest(fbm, joints, startTime, 1, bmlId, id, bmlBlockPeg, pb);
     }
 
     @Override
     public TimedAnimationMotionUnit createTransitionToRest(FeedbackManager fbm, Set<String> joints, double startTime, double duration,
-            String bmlId, String id, BMLBlockPeg bmlBlockPeg, PegBoard pb) {
+                                                           String bmlId, String id, BMLBlockPeg bmlBlockPeg, PegBoard pb) {
         TimePeg startPeg = new TimePeg(bmlBlockPeg);
         startPeg.setGlobalValue(startTime);
         TimePeg endPeg = new OffsetPeg(startPeg, duration);
@@ -187,7 +186,7 @@ public class IdleMovement implements RestPose {
 
     @Override
     public TimedAnimationMotionUnit createTransitionToRest(FeedbackManager fbm, Set<String> joints, TimePeg startPeg, TimePeg endPeg,
-            String bmlId, String id, BMLBlockPeg bmlBlockPeg, PegBoard pb) {
+                                                           String bmlId, String id, BMLBlockPeg bmlBlockPeg, PegBoard pb) {
         TransitionMU mu = createTransitionToRest(joints);
         mu.addKeyPosition(new KeyPosition("start", 0));
         mu.addKeyPosition(new KeyPosition("end", 1));
@@ -242,11 +241,10 @@ public class IdleMovement implements RestPose {
         List<VJoint> targetJoints = new ArrayList<VJoint>();
         List<VJoint> startJoints = new ArrayList<VJoint>();
         targetJoints.add(aniPlayer.getVNextPartBySid(wigglyJointId));
-              startJoints.add(aniPlayer.getVCurrPartBySid(wigglyJointId));
+        startJoints.add(aniPlayer.getVCurrPartBySid(wigglyJointId));
         AnimationUnit mu = new SlerpTransitionToPoseMU(startJoints, targetJoints, Quat4f.getIdentity());
         return new PostureShiftTMU(bbf, bmlBlockPeg, bmlId, id, mu.copy(aniPlayer), pb, this, aniPlayer);
     }
-
 
 
 }

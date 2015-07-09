@@ -3,14 +3,12 @@ package asap.realizerdemo.motiongraph.graph1;
 import asap.realizerdemo.motiongraph.AbstractMotionGraph;
 import asap.realizerdemo.motiongraph.alignment.Alignment;
 import asap.realizerdemo.motiongraph.alignment.IAlignment;
-import asap.realizerdemo.motiongraph.alignment.NopAlignment;
 import asap.realizerdemo.motiongraph.blending.Blend;
 import asap.realizerdemo.motiongraph.blending.IBlend;
 import asap.realizerdemo.motiongraph.metrics.Equals;
 import asap.realizerdemo.motiongraph.metrics.IDistance;
 import asap.realizerdemo.motiongraph.metrics.IEquals;
 import asap.realizerdemo.motiongraph.metrics.JointAngles;
-import hmi.animation.Skeleton;
 import hmi.animation.SkeletonInterpolator;
 
 import java.util.LinkedList;
@@ -48,7 +46,8 @@ public final class MotionGraph extends AbstractMotionGraph {
     private final IBlend blending;
     private final IDistance metric;
 
-    private Node currendNode;
+    private Node currentNode;
+    private Edge currentEdge;
     private Random r = new Random();
 
 
@@ -185,20 +184,21 @@ public final class MotionGraph extends AbstractMotionGraph {
      * @return Skeletoninterpolator next.
      */
     public SkeletonInterpolator next() {
-        if (currendNode == null) {
-            this.currendNode = edges.get(r.nextInt(edges.size())).getStartNode();
+        if (currentNode == null) {
+            this.currentNode = edges.get(r.nextInt(edges.size())).getStartNode();
         }
 
-        Edge currentEdge = currendNode.getOutgoingEdges().get(r.nextInt(currendNode.getOutgoingEdges().size()));
+        Edge currentEdge = currentNode.getOutgoingEdges().get(r.nextInt(currentNode.getOutgoingEdges().size()));
         SkeletonInterpolator next = currentEdge.getMotion();
 
 
         if (currentEdge.getEndNode().hasNext()) {
-            currendNode = currentEdge.getEndNode();
+            this.currentEdge = currentEdge;
+            currentNode = currentEdge.getEndNode();
             return next;
 
         } else {
-            this.currendNode = null;
+            this.currentNode = null;
             next();
         }
 
@@ -359,7 +359,7 @@ public final class MotionGraph extends AbstractMotionGraph {
 
     }
 
-    public Node getCurrendNode() {
-        return currendNode;
+    public Edge getCurrentEdge() {
+        return currentEdge;
     }
 }
