@@ -11,6 +11,7 @@ import hmi.mixedanimationenvironment.MixedAnimationEnvironment;
 import hmi.physicsenvironment.OdePhysicsEnvironment;
 import hmi.renderenvironment.HmiRenderEnvironment;
 import hmi.util.Console;
+import hmi.worldobjectenvironment.VJointWorldObject;
 import hmi.worldobjectenvironment.WorldObjectEnvironment;
 
 import java.awt.BorderLayout;
@@ -44,7 +45,6 @@ public class AsapRealizerDemo {
     private VJoint sphereJoint;
     protected JFrame mainJFrame = null;
 
-    private static int id = 0;
 
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(AsapRealizerDemo.class);
 
@@ -110,6 +110,13 @@ public class AsapRealizerDemo {
         hre.loadCheckerBoardGround("ground", 0.5f, 0f);
         hre.setBackground(0.2f, 0.2f, 0.2f);
 
+        /*
+        hre.loadBox("bluebox", new float[] { 0.05f, 0.05f, 0.05f }, HmiRenderEnvironment.RenderStyle.FILL, new float[] { 0.2f, 0.2f, 1, 1 }, new float[] { 0.2f,
+                0.2f, 1f, 1f }, new float[] { 0.2f, 0.2f, 1f, 0f }, new float[] { 0.2f, 0.2f, 1f, 1f });
+        VJoint boxJoint = hre.getObjectRootJoint("bluebox");
+        boxJoint.setTranslation(0.0f, 0.0f, 0.0f);
+        we.getWorldObjectManager().addWorldObject("bluebox", new VJointWorldObject(boxJoint));
+        */
         // set camera position
         // hre.setNavigationEnabled(false);
         hre.setViewPoint(new float[]{0, 1, 2});
@@ -129,11 +136,6 @@ public class AsapRealizerDemo {
         mainJFrame.add(canvas, BorderLayout.CENTER);
         mainJFrame.setVisible(true);
 
-    }
-
-    public AsapRealizerDemo() {
-        hre = null;
-        ope = null;
     }
 
     private JComponentEnvironment setupJComponentEnvironment() {
@@ -175,5 +177,13 @@ public class AsapRealizerDemo {
 
         AsapRealizerDemo demo = new AsapRealizerDemo(new JFrame("AsapRealizer demo 1"), spec);
         demo.startClocks();
+        
+        
+        demo.avh.getRealizerPort().performBML("<bml id=\"bml1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\">\n" +
+"    <postureShift id=\"pose1\" start=\"0\">\n" +
+"        <stance type=\"STANDING\"/>\n" +
+"        <pose part=\"BODY\" lexeme=\"IDLE\"/>\n" +
+"    </postureShift>\n" +
+"</bml>");
     }
 }

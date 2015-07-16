@@ -4,6 +4,7 @@ import asap.realizerdemo.motiongraph.Util;
 import static asap.realizerdemo.motiongraph.Util.X;
 import static asap.realizerdemo.motiongraph.Util.Y;
 import static asap.realizerdemo.motiongraph.Util.Z;
+import hmi.animation.Hanim;
 import hmi.animation.SkeletonInterpolator;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,8 +41,8 @@ public class Equals implements IEquals {
         int i = 0;
         int part = 0;
         if (start.getConfigType().contains(Util.ROOT_TRANSFORM)) {
-            startConfigMap.put("Util.ROOT_TRANSFORM", new float[]{startConfig[X], startConfig[Y], startConfig[Z]});
-            endConfigMap.put("Util.ROOT_TRANSFORM", new float[]{endConfig[X], endConfig[Y], endConfig[Z]});
+            //startConfigMap.put("Util.ROOT_TRANSFORM", new float[]{startConfig[X], startConfig[Y], startConfig[Z]});
+            //endConfigMap.put("Util.ROOT_TRANSFORM", new float[]{endConfig[X], endConfig[Y], endConfig[Z]});
             i += 3;
         }
 
@@ -60,6 +61,9 @@ public class Equals implements IEquals {
 
         for (Map.Entry<String, float[]> entrySet : startConfigMap.entrySet()) {
             String startKey = entrySet.getKey();
+            if (startKey.equals(Hanim.HumanoidRoot)) {
+                continue;
+            }
             float[] startValue = entrySet.getValue();
 
             float[] endValue = endConfigMap.get(startKey);

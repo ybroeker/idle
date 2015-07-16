@@ -111,7 +111,7 @@
   <Loader id="animationengine" 
           loader="asap.animationengine.loader.MixedAnimationEngineLoader"
           requiredloaders="mixedskeletonembodiment,physicalembodiment">
-    <GestureBinding basedir="" resources="Humanoids/armandia/gesturebinding/" filename="gesturebinding.xml"/>
+    <GestureBinding basedir="" resources="" filename="gesturebinding_motionsamples.xml"/>
     <StartPose resources="Humanoids/armandia/restposes/" filename="looselyhangingarms.xml"/>
     <Hns resources="Humanoids/armandia/hns" filename="hns_armandia.xml"/>
     <HnsHandShape dir="Humanoids/shared/handshapes"/>

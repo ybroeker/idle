@@ -1,12 +1,15 @@
 package asap.realizerdemo.motiongraph;
 
+import static asap.realizerdemo.motiongraph.Util.X;
 import static asap.realizerdemo.motiongraph.Util.Y;
+import static asap.realizerdemo.motiongraph.Util.Z;
 import hmi.animation.ConfigList;
 import hmi.animation.SkeletonInterpolator;
 import hmi.math.Quat4f;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import org.fest.swing.util.Arrays;
 
 /**
  *
@@ -42,23 +45,36 @@ public final class LoadMotion {
     public static void fixRootTransformation(SkeletonInterpolator motion) {
         ConfigList newConfig = new ConfigList(motion.getConfigSize());
 
+        float[] config0 = motion.getConfig(0).clone();
+        
+        float[] quat1 = {config0[Quat4f.S + 3], config0[Quat4f.X + 3], config0[Quat4f.Y + 3], config0[Quat4f.Z + 3]};
+        //Quaternion of first motion
+
+        float[] firstRollPitchYaw = new float[3];
+        Quat4f.getRollPitchYaw(quat1, firstRollPitchYaw);
+        
+        
         //float zRot = 0;
         for (int i = 0; i < motion.getConfigList().size(); i++) {
             float[] config = motion.getConfig(i);
             double time = motion.getTime(i);
 
-            config[Y] = Y_DEFAULT;
+            config[Y] = config[Y] - config0[Y] + Y_DEFAULT;
+            config[X] = config[X] - config0[X] + 0;
+            config[Z] = config[Z] - config0[Z] + 0;
 
-            float[] quat = {config[Quat4f.S+3], config[Quat4f.X+3], config[Quat4f.Y+3], config[Quat4f.Z+3]};
+            float[] quat = {config[Quat4f.S + 3], config[Quat4f.X + 3], config[Quat4f.Y + 3], config[Quat4f.Z + 3]};
 
             float[] rollPitchYaw = new float[3];
             Quat4f.getRollPitchYaw(quat, rollPitchYaw);
+            
+            
             //zRot = rollPitchYaw[1]=0;
-            Quat4f.setFromRollPitchYaw(quat, rollPitchYaw[0], rollPitchYaw[1], rollPitchYaw[2]);
-            config[Quat4f.S+3] = quat[Quat4f.S];
-            config[Quat4f.X+3] = quat[Quat4f.X];
-            config[Quat4f.Y+3] = quat[Quat4f.Y];
-            config[Quat4f.Z+3] = quat[Quat4f.Z];
+            Quat4f.setFromRollPitchYaw(quat, rollPitchYaw[0], rollPitchYaw[1], rollPitchYaw[2]-firstRollPitchYaw[2]);
+            config[Quat4f.S + 3] = quat[Quat4f.S];
+            config[Quat4f.X + 3] = quat[Quat4f.X];
+            config[Quat4f.Y + 3] = quat[Quat4f.Y];
+            config[Quat4f.Z + 3] = quat[Quat4f.Z];
 
             newConfig.addConfig(time, config);
         }
