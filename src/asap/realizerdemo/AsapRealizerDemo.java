@@ -119,8 +119,8 @@ public class AsapRealizerDemo {
         */
         // set camera position
         // hre.setNavigationEnabled(false);
-        hre.setViewPoint(new float[]{0, 1, 2});
-        avh = ee.loadVirtualHuman("", spec, "AsapRealizer demo 2");
+        hre.setViewPoint(new float[]{0, 1, 4});
+        avh = ee.loadVirtualHuman("", spec, "AsapRealizer Idle-Demo");
 
         j.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(WindowEvent winEvt) {
@@ -175,15 +175,15 @@ public class AsapRealizerDemo {
             spec = args[0];
         }
 
-        AsapRealizerDemo demo = new AsapRealizerDemo(new JFrame("AsapRealizer demo 1"), spec);
+        AsapRealizerDemo demo = new AsapRealizerDemo(new JFrame("AsapRealizer Idle-Demo"), spec);
         demo.startClocks();
         
-        
+        /*
         demo.avh.getRealizerPort().performBML("<bml id=\"bml1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\">\n" +
 "    <postureShift id=\"pose1\" start=\"0\">\n" +
 "        <stance type=\"STANDING\"/>\n" +
 "        <pose part=\"BODY\" lexeme=\"IDLE\"/>\n" +
 "    </postureShift>\n" +
-"</bml>");
+"</bml>");*/
     }
 }
