@@ -17,6 +17,7 @@ import asap.realizer.pegboard.TimePeg;
 import asap.realizer.planunit.KeyPosition;
 import asap.realizer.planunit.ParameterException;
 import asap.realizer.planunit.TimedPlanUnitState;
+import asap.realizerdemo.motiongraph.IMotionGraph;
 import asap.realizerdemo.motiongraph.LoadMotion;
 import static asap.realizerdemo.motiongraph.Util.X;
 import static asap.realizerdemo.motiongraph.Util.Z;

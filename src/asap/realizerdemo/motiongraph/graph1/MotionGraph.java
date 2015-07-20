@@ -1,6 +1,6 @@
 package asap.realizerdemo.motiongraph.graph1;
 
-import asap.realizerdemo.motiongraph.AbstractMotionGraph;
+import asap.realizerdemo.motiongraph.IMotionGraph;
 import asap.realizerdemo.motiongraph.alignment.Alignment;
 import asap.realizerdemo.motiongraph.alignment.IAlignment;
 import asap.realizerdemo.motiongraph.blending.Blend;
@@ -27,7 +27,7 @@ import java.util.Random;
  * <p>
  * @author Zukie
  */
-public final class MotionGraph extends AbstractMotionGraph {
+public final class MotionGraph implements IMotionGraph {
 
     /**
      * Number of Frames to be blended.
@@ -66,7 +66,7 @@ public final class MotionGraph extends AbstractMotionGraph {
     private final Random r = new Random();
     private Node currentNode;
 
-    private MotionGraph(List<SkeletonInterpolator> motions, IAlignment align, IDistance metric, IBlend blending, ISplit split) {
+    public MotionGraph(List<SkeletonInterpolator> motions, IAlignment align, IDistance metric, IBlend blending, ISplit split) {
         if (motions == null || motions.isEmpty()) {
             throw new IllegalArgumentException("motions null or empty.");
         }
