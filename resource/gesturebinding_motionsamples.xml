@@ -1,7 +1,5 @@
 <gesturebinding>
 
-
-
     <RestPoseSpec>
         <constraints>
             <constraint name="stance" value="STANDING"/>
@@ -9,8 +7,6 @@
         </constraints>
         <RestPose type="class" class="asap.realizerdemo.idle.IdleMovement"/>
     </RestPoseSpec>
-
-
 
 
   <RestGazeSpec>
