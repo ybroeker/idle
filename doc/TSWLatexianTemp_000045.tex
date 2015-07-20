@@ -1,0 +1,96 @@
+\documentclass[a4paper,10pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{pdfpages} 
+\usepackage[lmargin=2cm,rmargin=2cm,tmargin=2cm,bmargin=2cm]{geometry}
+
+\inputencoding{utf8}
+\parindent0em
+\pagestyle{fancy}
+
+%opening
+\fancyhf{}
+%%Titel der Veranstaltung -- Ersetze X durch Zettelnr.
+\fancyhead[L]{\textbf{}}
+%%Dein Name
+\fancyhead[C]{\textbf{}}
+%%Dein Tutor
+\fancyhead[R]{\textbf{}}
+%%\fancyfoot[C]{\thepage}
+
+\newcommand{\M}{\begin{pmatrix}}
+\newcommand{\m}{\end{pmatrix}}
+\newcommand{\Pt}{\begin{Vmatrix}}
+\newcommand{\pt}{\end{Vmatrix}}
+           
+        
+        
+\newcommand{\e}{ \mathrm e}
+\renewcommand{\i}{ \mathrm i}
+\newcommand{\arsinh}{\mathrm{arsinh}}
+\newcommand{\rang}{\mathrm{rang}}
+\newcommand{\zz}{\mathrm{\hbox{Z}\kern-.4em\raise-0.4ex\hbox{Z}} \hbox{: } }
+\newcommand{\mb}[1]{\mathbb{#1}}
+
+\let\stdsubsection\subsection
+\renewcommand\subsection{\nopagebreak\stdsubsection}
+
+\begin{document}
+
+\tableofcontents
+
+\section{how to run}
+
+\subsection{Animationenginekonfiguration?}
+
+\subsection{gesturebinding}
+
+\subsection{BML-Aufruf}
+
+\subsubsection{Parameter}
+Klassen? Mocaps?
+
+
+\section{Description of used techniques with references to literature}
+
+\subsection{MotionGraphs}
+\subsection{Distance Metrics}
+\subsection{Blending}
+\subsection{Align, Split, etc}
+
+\section{System overview (e.g class structure / functional overview / dataflow)}
+
+\subsection{Class structure}
+\subsubsection{MotionGraph}
+\subsubsection{IDistance}
+\subsubsection{JointAngles}
+\subsubsection{IBlend}
+\subsubsection{Blend}
+\subsubsection{IAlignment}
+\subsubsection{Alignment}
+\subsubsection{ISplit}
+\subsubsection{DefaultSplit}
+\subsubsection{IdleMovement}
+\subsubsection{MotionGraphBuilder}
+
+
+\subsection{Startup}
+Builder/MotionGraph.init()
+
+\subsection{play()}
+
+\section{Extensibility (e.g. How to use with other mocap files / visemes)}
+
+\subsection{Load mocap}
+
+\subsection{Other Classes?}
+
+%\includepdf[pages={-}]{ueb12.pdf}
+\end{document}
