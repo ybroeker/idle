@@ -9,6 +9,8 @@ import asap.realizerdemo.motiongraph.metrics.Equals;
 import asap.realizerdemo.motiongraph.metrics.IDistance;
 import asap.realizerdemo.motiongraph.metrics.IEquals;
 import asap.realizerdemo.motiongraph.metrics.JointAngles;
+import asap.realizerdemo.motiongraph.split.DefaultSplit;
+import asap.realizerdemo.motiongraph.split.ISplit;
 import hmi.animation.SkeletonInterpolator;
 import java.util.Iterator;
 
@@ -17,6 +19,10 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * Use {@link Builder} to create an Instance.
+ * <p>
+ * TODO: Frames->Seconds
+ * <p>
  * Created by Zukie on 15/06/15.
  * <p>
  * @author Zukie
@@ -25,48 +31,42 @@ public final class MotionGraph extends AbstractMotionGraph {
 
     /**
      * Number of Frames to be blended.
+     * TODO: set
      */
     public static final int DEFAULT_BLENDING_FRAMES = 100;
     /**
      * Max distance suitable for blending.
+     * TODO: set
      */
-    public static final double DEFAULT_THRESHOLD = 300;
+    public static final double DEFAULT_THRESHOLD = 20;
+
     /**
-     * Min number of frames needed when spliiting a motion.
+     * If all motions should be added normal.
+     * TODO: set
      */
-    public static final int DEFAULT_MIN_SIZE = 150;
-    /**
-     * How many times is the motionGraph to be splitted.
-     */
-    public static final int DEFAULT_SPLIT_NUMBER = 50;
-    
-    /**
-    *If all motions should be added normal.
-    */
     public static final boolean NORMAL = true;
     /**
      * If all Motions should also be added mirrored.
+     * TODO: set
+     * 
      */
     public static final boolean MIRRORED = false;
-
 
     private final List<Edge> edges = new LinkedList<>();
     private final List<Node> nodes = new LinkedList<>();
 
     private final IAlignment align;
     private final IBlend blending;
-    
+    private final ISplit split;
+
     /**
      * Random-Generator used in {@link #next()}.
      */
     private final IDistance metric;
     private final Random r = new Random();
     private Node currentNode;
-    private Edge currentEdge;
-    
 
-    public MotionGraph(List<SkeletonInterpolator> motions, IAlignment align, IDistance metric, IBlend blending) {
-        super(motions);
+    private MotionGraph(List<SkeletonInterpolator> motions, IAlignment align, IDistance metric, IBlend blending, ISplit split) {
         if (motions == null || motions.isEmpty()) {
             throw new IllegalArgumentException("motions null or empty.");
         }
@@ -74,16 +74,19 @@ public final class MotionGraph extends AbstractMotionGraph {
             throw new IllegalArgumentException("No IAlignment specified.");
         }
         if (metric == null) {
-            throw new IllegalArgumentException("No AbstractDistance specified.");
+            throw new IllegalArgumentException("No IDistance specified.");
         }
         if (blending == null) {
-            throw new IllegalArgumentException("No AbstractBlend specified.");
+            throw new IllegalArgumentException("No IBlend specified.");
+        }
+        if (split == null) {
+            throw new IllegalArgumentException("No ISplit specified.");
         }
 
         this.align = align;
         this.metric = metric;
         this.blending = blending;
-
+        this.split = split;
         this.init(motions);
     }
 
@@ -95,7 +98,7 @@ public final class MotionGraph extends AbstractMotionGraph {
     private void init(List<SkeletonInterpolator> motions) {
 
         for (SkeletonInterpolator sp : motions) {
-           
+
             if (NORMAL) {
                 Edge newEdge = new Edge(sp);
                 Node startNode = new Node(null, newEdge);
@@ -105,7 +108,7 @@ public final class MotionGraph extends AbstractMotionGraph {
                 nodes.add(endNode);
                 edges.add(newEdge);
             }
-            
+
             // Mirror every motion
             if (MIRRORED) {
                 SkeletonInterpolator newSp = new SkeletonInterpolator(sp);
@@ -122,56 +125,46 @@ public final class MotionGraph extends AbstractMotionGraph {
 
         }
 
+        System.out.println("NODES BEFORE: " + nodes.size());
+        System.out.println("EDGES BEFORE: " + edges.size());
+
         this.connectMotions();
         this.split();
         this.createBlends();
         this.prune();
+        System.out.println("NODES AFTER: " + nodes.size());
+        System.out.println("EDGES AFTER: " + edges.size());
     }
 
     /**
-     * Randomly splits Motions in the graph.
-     * TODO: Create Split-Class.
+     * Randomly splits Motions in the graph. TODO: Create Split-Class.
      */
     private void split() {
-        Random r = new Random();
-        int bound = this.edges.size();
+        List<Edge> oldEdges = new LinkedList<>(edges);
+        for (Edge oldEdge : oldEdges) {
 
-        for (int i = 0; i < DEFAULT_SPLIT_NUMBER; i++) {
-            Edge splittingEdge = this.edges.get(r.nextInt(bound)); //Randomly choose Edge to be splitted
-            int splittingBound = splittingEdge.getMotion().size(); //Get boundary for splitting
-            int splittingPoint;// = r.nextInt(splittingBound); //Randomly choose splitting point
-            if (splittingBound > 2*DEFAULT_MIN_SIZE+2) {
-               splittingPoint = splittingBound/2;
-            } else {continue;}
-            
-            Edge firstEdge = new Edge(splittingEdge.getMotion().subSkeletonInterpolator(0, splittingPoint));
-            //fist half of splitted motion
-            Edge secondEdge = new Edge(splittingEdge.getMotion().subSkeletonInterpolator(splittingPoint));
-            //second half of splitted motion
+            Node startNode = oldEdge.getStartNode();
+            Node endNode = oldEdge.getEndNode();
+            removeEdge(oldEdge);
 
-            if (firstEdge.getMotion().size() >= DEFAULT_MIN_SIZE && secondEdge.getMotion().size() >= DEFAULT_MIN_SIZE) {
+            List<SkeletonInterpolator> splits = split.split(oldEdge.getMotion());
 
-                Node startNode = splittingEdge.getStartNode();
-                Node endNode = splittingEdge.getEndNode();
+            for (int i = 0; i < splits.size(); i++) {
+                SkeletonInterpolator get = splits.get(i);
+                Edge newEdge = new Edge(get);
+                newEdge.setStartNode(startNode);
 
-                firstEdge.setStartNode(startNode);
-                secondEdge.setEndNode(endNode);
-
-                this.edges.add(firstEdge);
-                this.edges.add(secondEdge);
-
-                Node newNode = new Node(firstEdge, secondEdge);
-
-                this.nodes.add(newNode);
-
-                removeEdge(splittingEdge);
+                if (i == splits.size() - 1) {
+                    startNode = endNode;
+                } else {
+                    startNode = new Node();
+                    this.nodes.add(startNode);
+                }
+                newEdge.setEndNode(startNode);
+                this.edges.add(newEdge);
             }
 
         }
-        /*
-         System.out.println("Splitting Executed");
-         */
-
     }
 
     /**
@@ -190,7 +183,7 @@ public final class MotionGraph extends AbstractMotionGraph {
     }
 
     /**
-     * TODO
+     * Removes all Nodes, which have no successors.
      */
     private void prune() {
 
@@ -222,21 +215,20 @@ public final class MotionGraph extends AbstractMotionGraph {
     @Override
     public SkeletonInterpolator next() {
         if (currentNode == null) {
-            System.err.println("nodes: "+nodes.size());
             this.currentNode = nodes.get(r.nextInt(nodes.size()));
         }
 
         Edge currentEdge = currentNode.getOutgoingEdges().get(r.nextInt(currentNode.getOutgoingEdges().size()));
+        currentEdge.played++;
         if (currentEdge.isBlend()) {
-            System.out.println("Edge: " + currentEdge.getId() + "(blend)");
+            System.out.println("Edge: " + currentEdge.getId() + " p: " + currentEdge.played + " (blend)");
         } else {
-            System.out.println("Edge: " + currentEdge.getId());
+            System.out.println("Edge: " + currentEdge.getId() + " p: " + currentEdge.played);
         }
 
         SkeletonInterpolator next = currentEdge.getMotion();
 
         if (currentEdge.getEndNode().hasNext()) {
-            this.currentEdge = currentEdge;
             currentNode = currentEdge.getEndNode();
             return next;
 
@@ -253,7 +245,7 @@ public final class MotionGraph extends AbstractMotionGraph {
      * Reconnect all Motions that have been cut in xml-format. Will not be needed in final implementation
      */
     private void connectMotions() {
-        
+
         IEquals equals = new Equals();
 
         for (Edge start : edges) {
@@ -267,95 +259,115 @@ public final class MotionGraph extends AbstractMotionGraph {
                 }
             }
         }
-        
+
     }
 
     /**
      * Connect all Motions that are similar enough with blends.
      */
     private void createBlends() {
-
-        List<Edge> oldEdges = new LinkedList<>(edges);
-        List<Edge> oldEdges2 = new LinkedList<>(edges);
-        System.out.println("Blending started");
-
-        //TODO: doppelte Blendes, für g=m1,e=m2 && g=m2,e=m1, abfangen mit 2 listen? äußere Edges in innere for überspringen?
-        for (Edge e : oldEdges) {
-            if (e == null) {
-                continue;
+        List<Node> starts = new LinkedList<>();
+        for (Node node : nodes) {
+            if (!node.getIncomingEdges().isEmpty()) {
+                starts.add(node);
             }
-            //oldEdges2 = new LinkedList<>(edges);
-            oldEdges2.remove(e);
-            
-            for (Edge g : oldEdges2) {
-                if (g == null) {
+        }
+        List<Node> ends = new LinkedList<>();
+        for (Node node : nodes) {
+            if (node.hasNext()) {
+                ends.add(node);
+            }
+        }
+
+        for (Node start : starts) {
+            for (Node end : ends) {
+                if (start == end) {
+                    //motions already connected
                     continue;
                 }
-                if (g.isBlend()) {
-                    continue;
-                }
-                if (e == g) {
-                    continue;//TODO vllt doch?
-                }
-                if (e.getEndNode() == g.getStartNode()) {
-                    continue;
-                }
 
-                if (metric.distance(e.getMotion(), g.getMotion(), DEFAULT_BLENDING_FRAMES) <= DEFAULT_THRESHOLD) {
+                if (start.getIncomingEdges().get(0).getMotion().size() >= DEFAULT_BLENDING_FRAMES
+                        && end.getOutgoingEdges().get(0).getMotion().size() >= DEFAULT_BLENDING_FRAMES) {
 
-                    SkeletonInterpolator blendStart = e.getMotion().subSkeletonInterpolator(e.getMotion().size() - DEFAULT_BLENDING_FRAMES);
-                    //Frames of the first motion to be blended
-                    SkeletonInterpolator blendEnd = g.getMotion().subSkeletonInterpolator(0, DEFAULT_BLENDING_FRAMES);
-                    //Frames of the second motion to be blended
-
-                    SkeletonInterpolator blendedMotion = blending.blend(blendStart, blendEnd, DEFAULT_BLENDING_FRAMES);
-
-                    SkeletonInterpolator split1 = e.getMotion().subSkeletonInterpolator(0, e.getMotion().size() - DEFAULT_BLENDING_FRAMES);
-                    //Calculate incoming edge for new Node
-
-                    SkeletonInterpolator split2 = g.getMotion().subSkeletonInterpolator(DEFAULT_BLENDING_FRAMES);
-                    //Calculate outgoing Edge for new Node
-
-                    // Edges for splittet motions
-                    Edge firstMotionPart1 = new Edge(split1);
-                    Edge firstMotionPart2 = new Edge(blendStart);
-                    Edge secondMotionPart1 = new Edge(blendEnd);
-                    Edge secondMotionPart2 = new Edge(split2);
-
-                    Edge blending = new Edge(e.getEndNode(), g.getStartNode(), blendedMotion);
-
-                    //split first motion
-                    e.getStartNode().addOutgoingEdge(firstMotionPart1);
-                    e.getEndNode().addIncomingEdge(firstMotionPart2);
-                    Node newStart = new Node(firstMotionPart1, firstMotionPart2);
-                    nodes.add(newStart);
-                    newStart.addOutgoingEdge(blending);
-
-                    //Split second motion
-                    g.getStartNode().addOutgoingEdge(secondMotionPart1);
-                    g.getEndNode().addIncomingEdge(secondMotionPart2);
-                    Node newEnd = new Node(secondMotionPart1, secondMotionPart2);
-                    nodes.add(newEnd);
-                    newEnd.addIncomingEdge(blending);
-
-                    edges.add(blending);
-                    edges.add(firstMotionPart1);
-                    edges.add(firstMotionPart2);
-                    edges.add(secondMotionPart1);
-                    edges.add(secondMotionPart2);
-
-                    blending.setBlend(true);
-                    // System.out.println("blend created");
-                    this.removeEdge(e);
-                    this.removeEdge(g);
-                    //System.out.println("blended");
-
+                    if (metric.distance(start.getIncomingEdges().get(0).getMotion(),
+                            end.getOutgoingEdges().get(0).getMotion(), DEFAULT_BLENDING_FRAMES) <= DEFAULT_THRESHOLD) {
+                        createBlending(start.getIncomingEdges().get(0), end.getOutgoingEdges().get(0));
+                    }
                 }
             }
 
         }
-        System.out.println("blending executed");
-        // System.out.println(this.toString());
+    }
+
+    /**
+     * Creates Connection between first and second.
+     * <p>
+     * If first are longer than {@link #DEFAULT_BLENDING_FRAMES} Frames, first is splittet in two piece, with the
+     * blended Part {@link #DEFAULT_BLENDING_FRAMES} long. Else, the Start-Node of first is used of the StartNode of the
+     * Blending
+     * <p>
+     * Same for second, excpet that its End-node is used, if it isn't splitet, as the blending-End-Node.
+     * <p>
+     * @param first first motion
+     * @param second second motion
+     */
+    private void createBlending(Edge first, Edge second) {
+        Node newEnd;
+        Node newStart;
+        SkeletonInterpolator blendEnd;
+        SkeletonInterpolator blendStart;
+
+        //Split first
+        if (first.getMotion().size() > DEFAULT_BLENDING_FRAMES) {
+            blendStart = first.getMotion().subSkeletonInterpolator(first.getMotion().size() - DEFAULT_BLENDING_FRAMES);
+            Edge firstMotionPart2 = new Edge(blendStart);
+
+            SkeletonInterpolator split1 = first.getMotion().subSkeletonInterpolator(0, first.getMotion().size() - DEFAULT_BLENDING_FRAMES);//could be length 0
+            Edge firstMotionPart1 = new Edge(split1);
+
+            first.getStartNode().addOutgoingEdge(firstMotionPart1);
+            first.getEndNode().addIncomingEdge(firstMotionPart2);
+            newStart = new Node(firstMotionPart1, firstMotionPart2);
+            this.removeEdge(first);
+
+            edges.add(firstMotionPart1);
+            edges.add(firstMotionPart2);
+            nodes.add(newStart);
+        } else {
+            newStart = first.getStartNode();
+            blendStart = first.getMotion();
+        }
+
+        //split second
+        if (second.getMotion().size() > DEFAULT_BLENDING_FRAMES) {
+
+            blendEnd = second.getMotion().subSkeletonInterpolator(0, DEFAULT_BLENDING_FRAMES);
+            Edge secondMotionPart1 = new Edge(blendEnd);
+
+            SkeletonInterpolator split2 = second.getMotion().subSkeletonInterpolator(DEFAULT_BLENDING_FRAMES);//could be length 0
+            Edge secondMotionPart2 = new Edge(split2);
+
+            second.getStartNode().addOutgoingEdge(secondMotionPart1);
+            second.getEndNode().addIncomingEdge(secondMotionPart2);
+            newEnd = new Node(secondMotionPart1, secondMotionPart2);
+            this.removeEdge(second);
+            edges.add(secondMotionPart1);
+            edges.add(secondMotionPart2);
+            nodes.add(newEnd);
+        } else {
+            newEnd = second.getEndNode();
+            blendEnd = second.getMotion();
+        }
+
+        //create Blend
+        SkeletonInterpolator blendedMotion = blending.blend(blendStart, blendEnd, DEFAULT_BLENDING_FRAMES);
+        Edge blended = new Edge(blendedMotion);
+        blended.setBlend(true);
+
+        newStart.addOutgoingEdge(blended);
+        newEnd.addIncomingEdge(blended);
+
+        edges.add(blended);
     }
 
     @Override
@@ -380,6 +392,7 @@ public final class MotionGraph extends AbstractMotionGraph {
         private IAlignment align;
         private IBlend blending;
         private IDistance metric;
+        private ISplit split;
         private final List<SkeletonInterpolator> motions;
 
         public Builder(List<SkeletonInterpolator> motions) {
@@ -390,7 +403,8 @@ public final class MotionGraph extends AbstractMotionGraph {
             this.align = align != null ? align : new Alignment();
             this.metric = metric != null ? metric : new JointAngles(align);
             this.blending = blending != null ? blending : new Blend(align);
-            return new MotionGraph(this.motions, this.align, this.metric, this.blending);
+            this.split = split != null ? split : new DefaultSplit();
+            return new MotionGraph(this.motions, this.align, this.metric, this.blending, this.split);
         }
 
         public Builder align(IAlignment align) {
@@ -408,9 +422,10 @@ public final class MotionGraph extends AbstractMotionGraph {
             return this;
         }
 
-    }
+        public Builder split(ISplit split) {
+            this.split = split;
+            return this;
+        }
 
-    public Edge getCurrentEdge() {
-        return currentEdge;
     }
 }

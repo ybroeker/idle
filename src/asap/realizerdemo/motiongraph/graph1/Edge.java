@@ -11,6 +11,7 @@ public class Edge {
     private Node endNode;
     public static int edgeId = 0;
     private int id;
+    public int played=0;
 
     /**
      * specifies if motion is an original or a blended motion.

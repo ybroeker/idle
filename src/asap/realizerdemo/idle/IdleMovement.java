@@ -33,13 +33,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * TODO Javadoc.
+ * @author yannick-broeker
+ */
 public class IdleMovement implements RestPose {
+
     private static final String wigglyJointId = Hanim.vt1;
 
     private AnimationPlayer aniPlayer;
     private double startTime = 0;
     private VJoint restPoseTree; // Holds the pose on a VJoint structure. Joints not in the pose are set to have identity rotation.
-    private float amount = 10;
     private MotionGraph motionGraph;
     private SkeletonInterpolator motion;
 
@@ -50,10 +54,14 @@ public class IdleMovement implements RestPose {
 
     public IdleMovement() throws IOException {
         List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
-            "idle_0_10.xml","idle_10_20.xml", "idle_20_30.xml", "idle_30_40.xml", "idle_40_50.xml",
-            "idle_50_60.xml", "idle_60_70.xml",
-                "1_From500.xml",
-            
+            "idle_0_10.xml", 
+            "idle_10_20.xml", 
+            "idle_20_30.xml", 
+            "idle_30_40.xml", 
+            "idle_40_50.xml",
+            "idle_50_60.xml", 
+            "idle_60_70.xml",
+            "1_From500.xml",
             "3_0-530.xml",
             "5.xml",
             "3_1536-2517.xml",
@@ -62,16 +70,10 @@ public class IdleMovement implements RestPose {
             "2_0-867.xml",
             "2_1998-2778.xml",
             "2_867-1998.xml",
-            "3_530-1536.xml",
-            
-        });
-        
-        
-        
-        
-        
+            "3_530-1536.xml",});
+
         motionGraph = new MotionGraph.Builder(motions).getInstance();
-        
+
         motion = alignStart(motionGraph.next(), 0);
     }
 
@@ -102,10 +104,9 @@ public class IdleMovement implements RestPose {
         String configType = motion.getConfigType();
         String[] partIds = motion.getPartIds();
 
-        
         double startTime = motion.getStartTime();
         for (int i = 0; i < motion.size(); i++) {
-            
+
             config.addConfig(motion.getTime(i) - startTime + time, motion.getConfig(i));
         }
 
@@ -118,12 +119,12 @@ public class IdleMovement implements RestPose {
         String[] partIds = motion.getPartIds();
 
         float[] config0 = motion.getConfig(0).clone();
-        
+
         double startTime = motion.getStartTime();
         for (int i = 0; i < motion.size(); i++) {
-            
-            motion.getConfig(i)[X] =motion.getConfig(i)[X]-  config0[X] +0;
-            motion.getConfig(i)[Z] =motion.getConfig(i)[Z]-  config0[Z] +0;
+
+            motion.getConfig(i)[X] = motion.getConfig(i)[X] - config0[X] + 0;
+            motion.getConfig(i)[Z] = motion.getConfig(i)[Z] - config0[Z] + 0;
             config.addConfig(motion.getTime(i) - startTime + time, motion.getConfig(i));
         }
 
@@ -134,16 +135,12 @@ public class IdleMovement implements RestPose {
         newMotion = align.align(motion, newMotion, 1);
         return alignTime(newMotion, time);
     }
-    
+
     @Override
     public void play(double time, Set<String> kinematicJoints, Set<String> physicalJoints) {
-        //TODO!
         if (time > motion.getEndTime()) {
             SkeletonInterpolator next = motionGraph.next();
-            
-            motion = alignMotions(motion,next,motionGraph.getAlign(), time);
-            
-            System.out.println("Translate:" + motion.getConfig(0)[0]+","+motion.getConfig(0)[2]);
+            motion = alignMotions(motion, next, motionGraph.getAlign(), time);
         }
 
         motion.setTarget(aniPlayer.getVNext());
@@ -211,9 +208,6 @@ public class IdleMovement implements RestPose {
 
     @Override
     public void setParameterValue(String name, String value) throws ParameterException {
-        if (name.equals("amount")) {
-            this.amount = Float.parseFloat(value);
-        }
     }
 
     @Override

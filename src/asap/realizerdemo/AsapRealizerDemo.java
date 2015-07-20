@@ -3,6 +3,9 @@ package asap.realizerdemo;
 import asap.bml.ext.bmlt.BMLTInfo;
 import asap.environment.AsapEnvironment;
 import asap.environment.AsapVirtualHuman;
+import asap.realizerdemo.motiongraph.LoadMotion;
+import asap.realizerdemo.motiongraph.graph1.MotionGraph;
+import hmi.animation.SkeletonInterpolator;
 import hmi.animation.VJoint;
 import hmi.audioenvironment.AudioEnvironment;
 import hmi.environmentbase.Environment;
@@ -21,6 +24,7 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -170,7 +174,7 @@ public class AsapRealizerDemo {
     public static void main(String[] args) throws IOException {
         // examples for conversational animation seminar:
         // String spec = "asaparmandia_motionsamples.xml";
-        String spec = "asaparmandia_y_test.xml";
+        String spec = "asaparmandia_motionsamples.xml";
         if (args.length == 1) {
             spec = args[0];
         }
@@ -178,12 +182,6 @@ public class AsapRealizerDemo {
         AsapRealizerDemo demo = new AsapRealizerDemo(new JFrame("AsapRealizer Idle-Demo"), spec);
         demo.startClocks();
         
-        /*
-        demo.avh.getRealizerPort().performBML("<bml id=\"bml1\" xmlns=\"http://www.bml-initiative.org/bml/bml-1.0\">\n" +
-"    <postureShift id=\"pose1\" start=\"0\">\n" +
-"        <stance type=\"STANDING\"/>\n" +
-"        <pose part=\"BODY\" lexeme=\"IDLE\"/>\n" +
-"    </postureShift>\n" +
-"</bml>");*/
+ 
     }
 }
