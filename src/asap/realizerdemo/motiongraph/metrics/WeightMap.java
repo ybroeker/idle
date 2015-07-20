@@ -28,14 +28,14 @@ class WeightMap implements Map<String, Float> {
         weightMap.weights.put(Util.VC7, 1f);
         weightMap.weights.put(Util.VL3, 1f);
         weightMap.weights.put(Util.VT9, 1f);
-        weightMap.weights.put(Util.SKULLBASE, 1f);
+        weightMap.weights.put(Util.SKULLBASE, 0.1f);
         weightMap.weights.put(Util.ACROMIOCLAVICULAR, 1f);
-        weightMap.weights.put(Util.ANKLE, 1f);
-        weightMap.weights.put(Util.ELBOW, 1f);
-        weightMap.weights.put(Util.HIP, 1f);
-        weightMap.weights.put(Util.KNEE, 1f);
+        weightMap.weights.put(Util.ANKLE, 4f);
+        weightMap.weights.put(Util.ELBOW, 0.1f);
+        weightMap.weights.put(Util.HIP, 10f);
+        weightMap.weights.put(Util.KNEE, 6f);
         weightMap.weights.put(Util.SHOULDER, 1f);
-        weightMap.weights.put(Util.WRIST, 1f);
+        weightMap.weights.put(Util.WRIST, 0.1f);
 
         weightMap.weights.put(Util.VT10, 1f);
         weightMap.weights.put(Util.VT6, 1f);
