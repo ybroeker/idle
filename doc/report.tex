@@ -9,6 +9,7 @@
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{pdfpages} 
+\usepackage{listings}
 \usepackage[lmargin=2cm,rmargin=2cm,tmargin=2cm,bmargin=2cm]{geometry}
 
 \inputencoding{utf8}
@@ -53,6 +54,15 @@
 \subsection{gesturebinding}
 
 \subsection{BML-Aufruf}
+
+\begin{lstlisting}[language=XML]
+<bml id="bml1" xmlns="http://www.bml-initiative.org/bml/bml-1.0">
+    <postureShift id="pose1" start="0">
+        <stance type="STANDING"/>
+        <pose part="BODY" lexeme="IDLE"/>
+    </postureShift>
+</bml>
+ \end{lstlisting}
 
 \subsubsection{Parameter}
 Klassen? Mocaps?
