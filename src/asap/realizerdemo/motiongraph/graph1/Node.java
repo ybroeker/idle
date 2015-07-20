@@ -38,6 +38,8 @@ public class Node {
 
 
     }
+    
+    public Node(){this(null,null);}
 
     /**
      * Adds new incoming Edge to Node and sets Node as it's ending point.

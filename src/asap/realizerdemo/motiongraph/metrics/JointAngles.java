@@ -62,9 +62,12 @@ public final class JointAngles implements IDistance {
     @Override
     public double distance(SkeletonInterpolator start, SkeletonInterpolator end, int frames) {
 
+        SkeletonInterpolator endAligned = align.align(start, end, frames);
+
+        
         float totalDist = 0;
         for (int i = 0; i < frames; i++) {
-            totalDist += distance(start, end, frames - i, i);
+            totalDist += distance(start, endAligned, frames -i, i);
         }
 
         return totalDist;
@@ -75,13 +78,16 @@ public final class JointAngles implements IDistance {
      */
     @Override
     public double distance(SkeletonInterpolator start, SkeletonInterpolator end, int startFrame, int endFrame) {
+try {
 
-        SkeletonInterpolator endAligned = align.align(start, end, start.size() - startFrame);
-
+    //start.size() - startFrame = current Frame, so +1 for number of Frames
+        
         //TODO
-        return dist(start.getConfig(start.size() - startFrame), endAligned.getConfig(endFrame),
-                start.getConfigType(), endAligned.getConfigType(),
-                start.getPartIds(), endAligned.getPartIds());
+        return dist(start.getConfig(start.size() - startFrame), end.getConfig(endFrame),
+                start.getConfigType(), end.getConfigType(),
+                start.getPartIds(), end.getPartIds());
+        } catch(Exception e) {System.err.println(start.size() - startFrame);throw e;}
+
     }
 
     private double dist(float[] config1, float[] config2, String configType1, String configType2, String[] partIds1, String[] partIds2) {
