@@ -11,10 +11,10 @@
 \usepackage{pdfpages} 
 \usepackage{listings}
 \usepackage{color}
-\usepackage[svgnames]{xcolor}
-\usepackage[lmargin=2cm,rmargin=2cm,tmargin=2cm,bmargin=2cm]{geometry}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage[lmargin=2cm,rmargin=2cm,tmargin=2cm,bmargin=2cm]{geometry}
+
 
 \lstset{
     frameround=fttt,
@@ -283,9 +283,7 @@ Setting different classes is only possible in IdleMovement.java, which results t
 
 \section{System overview}
 
-\subsection{Class structure}
-
-\subsubsection{IdleMovement}
+\subsection{IdleMovement}
 
 The RestPose, which can be started with BML.
 
@@ -295,28 +293,28 @@ If it's started, it gets the motion which should be played with \lstinline[]{Mot
 \\\\
 Currently, if the idle-behaviour ist running, it overrides every other behaviour that may be started afterwards. This could be fixed in a later version, maybe a Bachelor Thesis.
 
-\subsubsection{IMotionGraph}
+\subsection{IMotionGraph}
 
 Interface for Motion Graphs.
 Its only Method is \lstinline[]{next()}, which returns a following Motion (as SkeletonInterpolator) in the MotionGraph.
 
-\subsubsection{MotionGraph}
+\subsection{MotionGraph}
 
 Our MotionGraph-Implementation.
 \\
 It's described in \fref{sec:motiongraph}.
 
-\subsubsection{MotionGraphBuilder}
+\subsection{MotionGraphBuilder}
 
 Our Builder for the MotionGraph. It's implemented to easily construct a MotionGraph with different implementations for each aspect.
 \\
 It's not necessary, but was usefull for changing different Parts of the MotionGraph.
 
-\subsubsection{IDistance}
+\subsection{IDistance}
 
 Interface for DistanceMetrics.
 
-\subsubsection{JointAngles}
+\subsection{JointAngles}
 \label{sec:jointangles}
 Our implementation of a DistanceMetric. It's based on the Joint-Angle-Method as described in \cite[4.1 Joint angles]{vanbasten2009} with few changes.
 We only compare root-positions and joint angles, and ignore the velocities. Thats mainly because joint velocities are very low in idle motions and if they are also low-weighted, they tend to be close to 0.
@@ -325,33 +323,33 @@ The weights we use are stored in WeightMap, which is an implementation of a map.
 \\
 See \fref{sec:distanceMetric} for more information.
 
-\subsubsection{IBlend}
+\subsection{IBlend}
 
 Interface for Blendings
 
-\subsubsection{Blend}
+\subsection{Blend}
 
 Our Implementation of a blending, as described in \cite[3.3 Creating Transitions]{kovar2012}, see  \fref{sec:blending} for an explanation.
 
-\subsubsection{IAlignment}
+\subsection{IAlignment}
 
 Interface for Alignment.
 
-\subsubsection{Alignment}
+\subsection{Alignment}
 
 Our implementation of an alignment, see \fref{sec:alignment} for an explanation.
 
-\subsubsection{NopAlignment}
+\subsection{NopAlignment}
 
 It's an implementation that doesn't align anything at all, but was usefull for testing.
 
-\subsubsection{ISplit}
+\subsection{ISplit}
 
 Interface for Splitting.
 \\\\
 We think, a good implementation could split long, captured motions, that contain different unrelated motions, into pieces, which contain only one motion.
 
-\subsubsection{DefaultSplit}
+\subsection{DefaultSplit}
 
 Our Implementation currently splits Motions in pieces with lenght around 2.5 seconds.
 
