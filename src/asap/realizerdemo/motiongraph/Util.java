@@ -4,7 +4,7 @@ package asap.realizerdemo.motiongraph;
  *
  * @author yannick-broeker
  */
-public class Util {
+public final class Util {
 
     public static final String ROOT_TRANSFORM = "T1";
     public static final String ROTATION = "R";

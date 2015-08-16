@@ -1,8 +1,6 @@
 package asap.realizerdemo.motiongraph;
 
-import asap.realizerdemo.motiongraph.alignment.IAlignment;
 import hmi.animation.SkeletonInterpolator;
-import java.util.List;
 
 /**
  * Interface for Motiongraphs.
@@ -16,6 +14,6 @@ public interface IMotionGraph {
      * <p>
      * @return Skeletoninterpolator next.
      */
-    public abstract SkeletonInterpolator next();
+    SkeletonInterpolator next();
 
 }

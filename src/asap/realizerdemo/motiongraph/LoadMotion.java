@@ -9,16 +9,25 @@ import hmi.math.Quat4f;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-import org.fest.swing.util.Arrays;
 
 /**
- *
+ * Util-Class to load mocap-files.
+ * <p>
  * @author yannick-broeker
  */
 public final class LoadMotion {
 
+    /**
+     * Y-Height for root.
+     */
     public static final float Y_DEFAULT = 0.975211761f;
 
+    /**
+     * Loads a list of mocap-files.
+     * @param files array of filenames
+     * @return List of the loaded motions
+     * @throws IOException if motion cant be read
+     */
     public static List<SkeletonInterpolator> loadMotion(String[] files) throws IOException {
 
         List<SkeletonInterpolator> motions = new LinkedList<>();
@@ -42,18 +51,22 @@ public final class LoadMotion {
         return motions;
     }
 
+    /**
+     * sets root position to (0,Y_DEFAULT,0).
+     * <p>
+     * @param motion
+     */
     public static void fixRootTransformation(SkeletonInterpolator motion) {
         ConfigList newConfig = new ConfigList(motion.getConfigSize());
 
         float[] config0 = motion.getConfig(0).clone();
-        
+
         float[] quat1 = {config0[Quat4f.S + 3], config0[Quat4f.X + 3], config0[Quat4f.Y + 3], config0[Quat4f.Z + 3]};
         //Quaternion of first motion
 
         float[] firstRollPitchYaw = new float[3];
         Quat4f.getRollPitchYaw(quat1, firstRollPitchYaw);
-        
-        
+
         //float zRot = 0;
         for (int i = 0; i < motion.getConfigList().size(); i++) {
             float[] config = motion.getConfig(i);
@@ -67,10 +80,9 @@ public final class LoadMotion {
 
             float[] rollPitchYaw = new float[3];
             Quat4f.getRollPitchYaw(quat, rollPitchYaw);
-            
-            
+
             //zRot = rollPitchYaw[1]=0;
-            Quat4f.setFromRollPitchYaw(quat, rollPitchYaw[0], rollPitchYaw[1], rollPitchYaw[2]-firstRollPitchYaw[2]);
+            Quat4f.setFromRollPitchYaw(quat, rollPitchYaw[0], rollPitchYaw[1], rollPitchYaw[2] - firstRollPitchYaw[2]);
             config[Quat4f.S + 3] = quat[Quat4f.S];
             config[Quat4f.X + 3] = quat[Quat4f.X];
             config[Quat4f.Y + 3] = quat[Quat4f.Y];
@@ -82,6 +94,11 @@ public final class LoadMotion {
         motion.setConfigList(newConfig);
     }
 
+    /**
+     * Filters joints which cant be processed.
+     * <p>
+     * @param motion
+     */
     public static void fixJoints(SkeletonInterpolator motion) {
         String[] partIds = motion.getPartIds();
 

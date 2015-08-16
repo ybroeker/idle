@@ -23,10 +23,6 @@ import java.util.Set;
 public final class JointAngles implements IDistance {
 
     /**
-     * Default number of frames to be compared.
-     */
-    public static final int DEFAULT_COMPARED_FRAMES = 10;
-    /**
      * Weights for Joints
      */
     private final Map<String, Float> weights = WeightMap.getDefaultInstance();
@@ -42,16 +38,6 @@ public final class JointAngles implements IDistance {
      */
     public JointAngles(IAlignment align) {
         this.align = align;
-    }
-
-    /**
-     * {@inheritDoc} This implementation calls
-     * {@link #distance(SkeletonInterpolator, SkeletonInterpolator, int)} with
-     * {@code frames =}{@link #DEFAULT_COMPARED_FRAMES}.
-     */
-    @Override
-    public double distance(SkeletonInterpolator start, SkeletonInterpolator end) {
-        return distance(start, end, DEFAULT_COMPARED_FRAMES);
     }
 
     /**

@@ -17,7 +17,6 @@ import asap.realizer.pegboard.TimePeg;
 import asap.realizer.planunit.KeyPosition;
 import asap.realizer.planunit.ParameterException;
 import asap.realizer.planunit.TimedPlanUnitState;
-import asap.realizerdemo.motiongraph.IMotionGraph;
 import asap.realizerdemo.motiongraph.LoadMotion;
 import static asap.realizerdemo.motiongraph.Util.X;
 import static asap.realizerdemo.motiongraph.Util.Z;
@@ -36,6 +35,7 @@ import java.util.Set;
 
 /**
  * TODO Javadoc.
+ * <p>
  * @author yannick-broeker
  */
 public class IdleMovement implements RestPose {
@@ -55,12 +55,12 @@ public class IdleMovement implements RestPose {
 
     public IdleMovement() throws IOException {
         List<SkeletonInterpolator> motions = LoadMotion.loadMotion(new String[]{
-            "idle_0_10.xml", 
-            "idle_10_20.xml", 
-            "idle_20_30.xml", 
-            "idle_30_40.xml", 
+            "idle_0_10.xml",
+            "idle_10_20.xml",
+            "idle_20_30.xml",
+            "idle_30_40.xml",
             "idle_40_50.xml",
-            "idle_50_60.xml", 
+            "idle_50_60.xml",
             "idle_60_70.xml",
             "1_From500.xml",
             "3_0-530.xml",
@@ -100,6 +100,13 @@ public class IdleMovement implements RestPose {
 
     }
 
+    /**
+     * Sets the start-time for the motion.
+     * <p>
+     * @param motion motion to set time for.
+     * @param time start-time
+     * @return motion with defined start-time
+     */
     private SkeletonInterpolator alignTime(SkeletonInterpolator motion, double time) {
         ConfigList config = new ConfigList(motion.getConfigSize());
         String configType = motion.getConfigType();
@@ -114,6 +121,13 @@ public class IdleMovement implements RestPose {
         return new SkeletonInterpolator(partIds, config, configType);
     }
 
+    /**
+     * Sets start-time for this motion and sets ist start-root to (0,Y,0).
+     * <p>
+     * @param motion motion to set time an root for.
+     * @param time start-time
+     * @return aligned motion
+     */
     private SkeletonInterpolator alignStart(SkeletonInterpolator motion, double time) {
         ConfigList config = new ConfigList(motion.getConfigSize());
         String configType = motion.getConfigType();
@@ -132,7 +146,17 @@ public class IdleMovement implements RestPose {
         return new SkeletonInterpolator(partIds, config, configType);
     }
 
-    public SkeletonInterpolator alignMotions(SkeletonInterpolator motion, SkeletonInterpolator newMotion, IAlignment align, double time) {
+    /**
+     * Aligns newMotion on motion. Sets start-time of newMotion to time and sets root of newMotion to last root of
+     * motion.
+     * <p>
+     * @param motion motion to align newMotion on
+     * @param newMotion motion to be aligned
+     * @param align Alignment to use
+     * @param time time to set as start-time
+     * @return aligned motion.
+     */
+    private SkeletonInterpolator alignMotions(SkeletonInterpolator motion, SkeletonInterpolator newMotion, IAlignment align, double time) {
         newMotion = align.align(motion, newMotion, 1);
         return alignTime(newMotion, time);
     }

@@ -10,20 +10,6 @@ import hmi.animation.SkeletonInterpolator;
 public interface IDistance {
 
     /**
-     * Computes the distance between {@code start} and {@code end}.
-     * <p>
-     * The number of frames used for comparing depends on implementation.
-     * <p>
-     * @param start First Motion
-     * @param end Second Motion
-     * @return calculated distance
-     * @deprecated Used for testing purposes, better use
-     * {@link #distance(SkeletonInterpolator start, SkeletonInterpolator end, int frames)}.
-     */
-    @Deprecated
-    double distance(SkeletonInterpolator start, SkeletonInterpolator end);
-
-    /**
      * Computes the distance between {@code start} and {@code end} at the {@code startFrame}-last Frame of {@code start}
      * and Frame {@code endFrame} of {@code end}. The calculated distance is the sum of the distance of each compared
      * frames. {@code startFrame=1} means the last frame of {@code start}. {@code endFrame=0} means the first frame of

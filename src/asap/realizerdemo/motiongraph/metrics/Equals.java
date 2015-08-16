@@ -1,9 +1,6 @@
 package asap.realizerdemo.motiongraph.metrics;
 
 import asap.realizerdemo.motiongraph.Util;
-import static asap.realizerdemo.motiongraph.Util.X;
-import static asap.realizerdemo.motiongraph.Util.Y;
-import static asap.realizerdemo.motiongraph.Util.Z;
 import hmi.animation.Hanim;
 import hmi.animation.SkeletonInterpolator;
 import java.util.HashMap;
@@ -23,7 +20,7 @@ public class Equals implements IEquals {
      * @return true, if last frame of first an first frame of second equal.
      */
     @Override
-    public boolean startEndEquals(SkeletonInterpolator start, SkeletonInterpolator end) {
+    public boolean startEndEquals(final SkeletonInterpolator start, final SkeletonInterpolator end) {
         float[] endConfig = end.getConfig(0);
         Map<String, float[]> endConfigMap = new HashMap<String, float[]>();
 
@@ -48,14 +45,14 @@ public class Equals implements IEquals {
 
         for (part = 0; part < end.getPartIds().length; part++) {
             endConfigMap.put(end.getPartIds()[part], new float[]{
-                endConfig[i + part * 3], 
-                endConfig[i + 1 + part * 3], 
-                endConfig[i + 2 + part * 3], 
+                endConfig[i + part * 3],
+                endConfig[i + 1 + part * 3],
+                endConfig[i + 2 + part * 3],
                 endConfig[i + 3 + part * 3]});
             startConfigMap.put(start.getPartIds()[part], new float[]{
-                startConfig[i + part * 3], 
-                startConfig[i + 1 + part * 3], 
-                startConfig[i + 2 + part * 3], 
+                startConfig[i + part * 3],
+                startConfig[i + 1 + part * 3],
+                startConfig[i + 2 + part * 3],
                 startConfig[i + 3 + part * 3]});
         }
 

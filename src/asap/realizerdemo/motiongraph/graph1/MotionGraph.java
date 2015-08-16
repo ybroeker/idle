@@ -21,7 +21,7 @@ import java.util.Random;
 /**
  * Use {@link Builder} to create an Instance.
  * <p>
- * TODO: Frames->Seconds
+ * TODO: Change frame-based-calculation to time-based-calculation, maybe in bachelor-thesis.
  * <p>
  * Created by Zukie on 15/06/15.
  * <p>
@@ -30,43 +30,76 @@ import java.util.Random;
 public final class MotionGraph implements IMotionGraph {
 
     /**
-     * Number of Frames to be blended.
-     * TODO: set
+     * Number of Frames to be blended. TODO: set
      */
     public static final int DEFAULT_BLENDING_FRAMES = 100;
     /**
-     * Max distance suitable for blending.
-     * TODO: set
+     * Max distance suitable for blending. TODO: set
      */
     public static final double DEFAULT_THRESHOLD = 20;
 
     /**
-     * If all motions should be added normal.
-     * TODO: set
+     * If all motions should be added normal. TODO: set
      */
     public static final boolean NORMAL = true;
     /**
-     * If all Motions should also be added mirrored.
-     * TODO: set
-     * 
+     * If all Motions should also be added mirrored. TODO: set
+     * <p>
      */
     public static final boolean MIRRORED = false;
 
+    /**
+     * All Edges of the graph.
+     */
     private final List<Edge> edges = new LinkedList<>();
+    /**
+     * All Nodes of the graph.
+     */
     private final List<Node> nodes = new LinkedList<>();
-
+    /**
+     * Alignment used to align motions.
+     */
     private final IAlignment align;
+    /**
+     * Blending used to Blend motions.
+     */
     private final IBlend blending;
+    /**
+     * Split used to split motions.
+     */
     private final ISplit split;
+    /**
+     * Equals used to conncat Motion.
+     */
+    private final IEquals equals;
+    /**
+     * Metric to calculate distance between Motions.
+     */
+    private final IDistance metric;
 
     /**
      * Random-Generator used in {@link #next()}.
      */
-    private final IDistance metric;
     private final Random r = new Random();
+
+    /**
+     * Current Node used by {@link #next}.
+     */
     private Node currentNode;
 
-    public MotionGraph(List<SkeletonInterpolator> motions, IAlignment align, IDistance metric, IBlend blending, ISplit split) {
+    /**
+     * Construtor for MotionGraph.
+     * <p>
+     * Sets align, metric etc. and starts building the motionGraph with calling {@link #init}.
+     * <p>
+     * @param motions List of motions to use for building the motiongraph.
+     * @param align Alignement to use.
+     * @param metric Metric to use.
+     * @param blending Blending to use.
+     * @param split Split to use.
+     * @param equals Equal to use.
+     */
+    public MotionGraph(List<SkeletonInterpolator> motions, IAlignment align, IDistance metric, IBlend blending, ISplit split, IEquals equals) {
         if (motions == null || motions.isEmpty()) {
             throw new IllegalArgumentException("motions null or empty.");
         }
@@ -83,10 +116,15 @@ public final class MotionGraph implements IMotionGraph {
             throw new IllegalArgumentException("No ISplit specified.");
         }
 
+        if (equals == null) {
+            throw new IllegalArgumentException("No IEquals specified.");
+        }
+
         this.align = align;
         this.metric = metric;
         this.blending = blending;
         this.split = split;
+        this.equals = equals;
         this.init(motions);
     }
 
@@ -245,9 +283,6 @@ public final class MotionGraph implements IMotionGraph {
      * Reconnect all Motions that have been cut in xml-format. Will not be needed in final implementation
      */
     private void connectMotions() {
-
-        IEquals equals = new Equals();
-
         for (Edge start : edges) {
             for (Edge end : edges) {
                 if (equals.startEndEquals(start.getMotion(), end.getMotion())) {
@@ -322,7 +357,8 @@ public final class MotionGraph implements IMotionGraph {
             blendStart = first.getMotion().subSkeletonInterpolator(first.getMotion().size() - DEFAULT_BLENDING_FRAMES);
             Edge firstMotionPart2 = new Edge(blendStart);
 
-            SkeletonInterpolator split1 = first.getMotion().subSkeletonInterpolator(0, first.getMotion().size() - DEFAULT_BLENDING_FRAMES);//could be length 0
+            SkeletonInterpolator split1 = first.getMotion().subSkeletonInterpolator(0, first.getMotion().size() 
+                    - DEFAULT_BLENDING_FRAMES);//could be length 0
             Edge firstMotionPart1 = new Edge(split1);
 
             first.getStartNode().addOutgoingEdge(firstMotionPart1);
@@ -393,39 +429,85 @@ public final class MotionGraph implements IMotionGraph {
         private IBlend blending;
         private IDistance metric;
         private ISplit split;
+        private IEquals equal;
         private final List<SkeletonInterpolator> motions;
 
+        /**
+         * Creates a new Builder for the MotionGraph.
+         * <p>
+         * @param motions List of Motions to use.
+         */
         public Builder(List<SkeletonInterpolator> motions) {
             this.motions = motions;
         }
 
+        /**
+         * Returns an new MotionGraph-Instance.
+         * <p>
+         * @return MotionGraph-Instance
+         */
         public MotionGraph getInstance() {
             this.align = align != null ? align : new Alignment();
             this.metric = metric != null ? metric : new JointAngles(align);
             this.blending = blending != null ? blending : new Blend(align);
             this.split = split != null ? split : new DefaultSplit();
-            return new MotionGraph(this.motions, this.align, this.metric, this.blending, this.split);
+            this.equal = equal != null ? equal : new Equals();
+            return new MotionGraph(this.motions, this.align, this.metric, this.blending, this.split, this.equal);
         }
 
+        /**
+         * Sets Aligment for the MotionGraph.
+         * <p>
+         * @param align Alignemnt
+         * @return Builder
+         */
         public Builder align(IAlignment align) {
             this.align = align;
             return this;
         }
 
+        /**
+         * Sets Blending for the MotionGraph.
+         * <p>
+         * @param blending Blending
+         * @return Builder
+         */
         public Builder blending(IBlend blending) {
             this.blending = blending;
             return this;
         }
 
+        /**
+         * Sets Metric for the MotionGraph.
+         * <p>
+         * @param metric Metric
+         * @return Builder
+         */
         public Builder metric(IDistance metric) {
             this.metric = metric;
             return this;
         }
 
+        /**
+         * Sets Split for the MotionGraph.
+         * <p>
+         * @param split Split
+         * @return Builder
+         */
         public Builder split(ISplit split) {
             this.split = split;
             return this;
         }
 
+        /**
+         * Sets Equals for the MotionGraph.
+         * <p>
+         * @param equal Equals
+         * @return Builder
+         */
+        public Builder equal(IEquals equal) {
+            this.equal = equal;
+            return this;
+        }
     }
 }
